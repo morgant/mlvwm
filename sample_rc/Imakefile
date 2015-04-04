@@ -1,0 +1,18 @@
+XCOMM Imakefile for MLVWM
+
+#include "../configure.h"
+
+XCOMM Do not change from here !
+
+all::
+#if InstallSampleRC
+             SRC_CONFIG = Mlvwmrc
+
+                SAMPLES = Mlvwmrc-Xterm \
+                          Mlvwmrc-Kterm-j \
+                          Mlvwmrc-Netscape \
+                          Mlvwmrc-j
+
+InstallNamedNonExec($(SRC_CONFIG),system$(MLVWMRC),$(MLVWMLIBDIR))
+InstallMultiple($(SAMPLES),$(MLVWMLIBDIR))
+#endif

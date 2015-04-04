@@ -1,0 +1,320 @@
+A configuration file goes to usually see a $HOME/.mlvwmrc file. It is
+possible that this file is changed by the -f option in the start. Copy
+this file on 〜/.mlvwmrc if necessary, and change it because a sample
+file is in sample_rc/Mlvwmrc, Mlvwmrc-j. sample_rc/Mlvwmrc-j is the
+sample of Japanese edition. That goes to see system configuration file 
+when InstallSampleRC is YES, too.
+
+Note) configuration file became a change in .mlvwmrc from
+.desktop. Set up OldRCFile with configure.h in YES when the
+actualities of .desktop are wished to it.
+
+BuiltinCommand
+
+Builtin command which can be used in the menu, the keyboard short cut,
+and so on is as the following.
+
+     Exec
+       The practice of the outside command is performed. The outside
+       command carried out as an argument is taken. Set the name of
+       the application carried out. 
+     Nop
+       Anything isn't done.
+     Refresh
+       It is made that the screen is fresh.
+     Restart
+       Window manager specified as an argument is carried out, and
+       restart of the window environment is performed.
+     Exit
+       Window manager is finished.
+     Desk
+       Desk-top movement is done. An argument takes a number or +,
+       -. It is moved to the shown desk-top of the number at the time
+       of the number. + (-) case current desktop number is
+       added(pulled) 1.
+     NextWindow
+       The window mapped after the present active window is
+       chosen. The window that the window that Hide was done and
+       SkipSelect are specified isn't chosen.
+     PreviousWindow
+       The window mapped before the present active window is
+       chosen. The window that the window that Hide was done and
+       SkipSelect are specified isn't chosen.
+     NextSameDeskWindow
+       A window about the same desk-top number which mapped in the
+       next of present active window is chosen. The window that the
+       window that Hide was done and SkipSelect are specified isn't
+       chosen.
+     PreviousSameDeskWindow
+       A window about the same desk-top number that is mapped
+       previous of present active window is chosen. The window that
+       the window that Hide was done and SkipSelect are specified
+       isn't chosen.
+     ShadedUnShadeActive
+       Shade or UnShade does present active window.
+     HideActive
+       Present active window is hidden.
+     HideOthers
+       The present one except for active window is hidden.
+     ShowAll
+       All hiding windows are indicated.
+     MoveWindow
+       It is moved through the window after the choice.
+     ResizeWindow
+       It resize a window after the choice.
+     KillWindow
+       A window is finished after the choice.
+     SendMessage
+       The event of KeyPress is sent to present active window. The way
+       of setting it moves space to the stop, and describes a key
+       name. If the length of key name is 1, all charactor inside
+       double quotation marks are changed to key name.
+       KeyModifier performs designation with the capital letter, and
+       it can be specified by the same character as the keyboard short
+       cut mentioned later. KeyModifier can be described by combining
+       it with the key name and +.
+         example ) control +x, -> C+x
+    Wait Application name or Application class
+       Wait to start application.
+    ShowBalloon
+       This function can be bound to a key in order to show balloon.
+
+Description
+
+The item which can be set by the initialization file is as the next.
+
+     Desktopnum
+       Virtual screen number of sheets. Default is 1.
+     StickyShade
+       The shaded windows are indicated instead of the desk-top
+       movement. It isn't set up with the default.
+     StickyHide
+       It is indicated in the desk-top number of current when the
+       window which did Hide is chosen from the window list. When
+       ShowAll is performed, it is indicated in the original
+       desk-top. It isn't set up with the default.
+     ShadeMap
+       Shade isn't canceled when Map is done after Hide does the
+       window that Shade was done. Shade is canceled with the default.
+     DoubleClickTime
+       The establishment of the click time to perform double
+       click. Default is 300.
+     Compatible
+       Change to the dotted line that is displayed at move and resize
+       window.
+     FollowToMouse
+       When it is set up, active window is changed in accordance with
+       the movement of the mouse. It isn't set up with the default.
+     SloppyFocus
+       It turns on FollowToMouse with the modification of not loosing
+       focus when in the root window.
+     System8
+       Change to window decoration to System 8(Only Color Monitor).
+     OpaqueMove
+       Enable Opaque move.
+     OpaqueResize
+       Enable Opaque resize.
+     OneClickMenu
+       Click pull down menu and more one click execute selection.
+     ZoomWait
+       Setting Hide animation speed. Default is 10ms. The unit is ms.
+     RotateDesk
+       Rotate desktop number at Desk + and Desk -.
+     DisplayDeskNumber
+       Display window name with desktop number on window list.
+     IconifyShade
+       WindowShade is regarded as Inocify.
+     IconifyHide
+       HideWindow is regarded as Iconify.
+     ScrollBarWidth <n>
+       The variable scroll window is set <n> and defaults to 19 if
+       unspecified.
+     FlushMenu
+       The flashing interval of the menu and number of times are set. An
+       argument can't be omitted in the flashing interval and the number
+       of times. The flashing interval is 100, flashing number of
+       times are 2 as for the default. Flashing interval is set at ms.
+     IconPath
+       An icon path is specified. When it is set in the plural,
+       `Divide it with : ', and set it. Icon specified with Icon and
+       MiniIcon can stop reading it when designation isn't performed
+       before Style, IconMenuIcon and Menu.
+     IconMenuIcon
+       The icon of the window list menu of the right end is
+       specified. When there is no designation, the character line of
+       ICON is indicated. It stopped binding it with.
+     UseRootWin
+       ignore button event on Root Window.
+     UseBalloon "str1" "str2", Icon iconname
+       Use balloon help. str1 is displayed as menu item when Balloon
+       help is not displayed.
+     InitFunction
+     RestartFunction
+       Define the function when start and restart the mlvwm.
+     MenuBarFont
+       The font of the menu bar is set up.
+     MenuFont
+       The font of menu item is set up.
+     TitleBarFont
+       The font of the title bar of the window is set up.
+     BalloonFont
+       The font of Balloon Help is set up.
+     Read
+       The establishment file of the set file name is read.
+     RestartPreviousState
+       It allows to regenerate the screen as it was before the
+       previous window manager was shutdown or the current window
+       manager was restarted.
+     Menu
+       A menu is set up. It is a menu item to END. A menu name is
+       continued, and it describes it. A menu name can't include
+       space. It is divided , and an option is inputted. There is the
+       next thing in the option.
+
+       Right
+         It shows a menu label in the right.
+       Left
+         It shows a menu label in the left. The default of the menu is
+         Left and it is omitted.
+       Icon icon name
+         An icon to the icon name menu bar can be specified. Pixmap
+         and Bitmap files are used as icon.
+       Label
+         The label of the menu bar is set up.
+       Stick
+         The menu label is indicated any time in spite of the
+         designation of MenuBar mentioned later.
+       NonStick
+         The menu label is indicated only MenuBar indication (default).
+
+     How to describe menu item
+       It is "label" options.
+       When a label is the dotted line. See a sample for detail.
+       There is the next thing in the option. Options are divided by ,.
+
+       Gray
+         The character of the menu item is made gray.
+       Black
+         The character of the menu item is made black.
+       Check
+         A check mark is put.
+       NonCheck
+         A check mark isn't put.
+       Select
+         It is made possible  a menu item is chosen.
+       NonSelect
+         A menu item is prevented from being chosen.
+       Icon icon name
+         An icon name icon is specified. Pixmap and Bitmap files are
+         used as icon.
+       SubMenu <MenuName>
+         A submenu is specified.
+       Action builtin command
+         Command when menu is chosen is specified.
+
+     Swallow
+         It is filled up in the menu bar, and the application that it
+         gets crowded is established. It is divided , and an option is
+         inputted. There is the next thing in the option.
+       Right
+         It shows application in the right.
+       Left
+         It shows application in the left.
+         The default of the application is Right and it is omitted.
+       Action
+         The application that it is filled up and crowded is
+         set. Description is to continue the description of Exec of
+         inside command backward.
+       Stick
+         Indication is always in spite of MenuBar definitions.
+       NonStick
+         Indication is performed only with specified MenuBar.
+
+         And, the application of the menu bar describes a name to the
+         application of the menu bar in succession.
+
+     MenuBar
+       The menu of the name described in the space to END becomes the
+       item of this menu bar.
+     Style
+       A window decoration can be set. The ways of setting it are "a
+       window name or a class" a decoration switch, ... It becomes
+       designated completion with END. In the window name, *? can be
+       used for wild card. There is the next thing in the decoration
+       switch.
+
+       NormalDecoration
+         Performs a standard decoration.
+       NoSbarH
+         Horizontal scroll bar isn't indicated.
+       NoSbarV
+         Vertical scroll bar isn't indicated.
+       NoResizeR
+         Resize region isn't indicated.
+       NoTitle
+         A title bar isn't indicated.
+       NoMinMaxR
+         Maximum, minimum region isn't indicated.(When NoTitle is
+         specified, it is set automatically.)
+       NoCloseR
+         Close region isn't indicated.(When NoTitle is
+         specified, it is set automatically.)
+       NoShadeR
+         Shade region isn't indicated(Only to set System8).
+       NoWinList
+         It isn't indicated in the window list.
+       NoFocus
+         The window doesn't have a focus when it mapped.
+       StayOnTop
+         It is indicated on all the windows. The window indicated
+         later becomes the top at the time of which a set window is
+         the same as.
+       Sticky
+         The window is indicated without the desk-top movement.
+       SkipSelect
+         It isn't chosen with NextWindow of inside command,
+         PreviousWindow.
+       EnableScroll
+         A window under the scroll condition of Enable.
+       MaxmizeScale
+         The percentage when it turns most is set or widthxheight.
+       MiniIcon
+         It has the small icon with the designated application. Pixmap
+         and Bitmap files are used as icon.
+       MenuBar
+         It has the menu bar with the designated application. The menu
+         is specified by continuing the name of the menu and
+         describing it.
+       NoTransientDecorate
+         No decorations for transient window.
+
+       All decorations are indicated, and the window of the default is
+       indicated in the window list. StayOnTop isn't designation.
+
+     ShortCut
+       The establishment of the keyboard short cut is performed. It
+       becomes designated completion with END. The way of setting it
+       is as the next.
+
+       KeyName KeyboardModifier Command
+
+       The thing to can spend with Menu is possible (it is set completely).
+       KeyboardModifier performs designation with the capital letter,
+       and it is as the next.
+
+         S Shift key
+         C Control key
+         M Mod1 key
+         1 Mod1 key
+         2 Mod2 key
+         3 Mod3 key
+         4 Mod4 key
+         5 Mod5 key
+         A AnyModifier
+         N No
+
+       And it is to refer to the Mlvwmrc file of the attachment that
+       it is stuck though there may be a thing of the explanation
+       which is not. The description of the pole power all will be
+       performed here.
+

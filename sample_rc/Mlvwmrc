@@ -1,0 +1,209 @@
+## Number of Desktop
+Desktopnum	3
+
+## Follow mouse activation of window
+#FollowToMouse
+
+## Follow mouse activation of window but when mouse go into root window,
+## active window is not changed
+#SloppyFocus
+
+## Shaded window is all desktop
+StickyShade
+
+## Displayed selected window at current desktop,
+## when window is not mappted.
+StickyHide
+
+## Interval and number of flush at flushing menu
+#FlushMenu 100 2
+
+## Map iconify window as shade 
+IconifyShade
+
+## Map window as hide when window is mapped as icon
+#IconifyHide
+
+## Show the window as shade, when hide shaded window is shown
+#ShadeMap
+
+## Enable MacOS 8 decoration feauture
+System8
+
+## Enable Opaque Move
+OpaqueMove
+
+## Enable Opaque Resize
+# OpaqueResize
+
+## Enable one click menu
+#OneClickMenu
+
+# Double click time
+DoubleClickTime 300
+
+## Show window name with desktop number on window list
+#DisplayDeskNumber
+
+## Draw move/resize line with dotted line
+Compatible
+
+# Set icon search path. It needs before "Style".
+IconPath /usr/local/include/X11/pixmaps:/home2/tak/bin/pixmap
+IconMenuIcon label2.xpm
+
+# Balloon help Settings
+UseBalloon "Show Balloon Help" "Hide Balloon Help", Icon label3.xpm
+
+# Font Settings(without LOCALE)
+#MenuBarFont -*-*-medium-i-normal-*-16-*-*-*-*-*-iso8859-*
+#MenuFont -*-*-medium-i-normal-*-16-*-*-*-*-*-iso8859-*
+#TitleBarFont -*-*-medium-i-normal-*-16-*-*-*-*-*-iso8859-*
+#BalloonFont -*-*-medium-i-normal-*-16-*-*-*-*-*-iso8859-*
+
+# Settings of keyborad short cut
+ShortCut
+Up	C	Desk -
+Down	C	Desk +
+Left    C       PreviousWindow
+Right   C       NextWindow
+Left    M       PreviousSameDeskWindow
+Right   M       NextSameDeskWindow
+Escape  M       Restart mlvwm
+Escape  SM      Exit 
+END
+
+# Register the menu
+Menu Apple, Icon label1.xpm, Stick
+"About this Workstation..." NonSelect, Gray, Action About
+"" NonSelect
+"Terminal"	Icon mini-display.xpm, Action Exec "kterm" exec kterm -ls
+"Editor"  Action Exec "mule" exec mule, Icon mini-edit.xpm
+"calculator" Action Exec "xcal" exec xcalc, Icon mini-calc.xpm
+END
+
+Menu def-File, Label "File", Left
+"New Folder" NonSelect, Gray, Action Nop
+"Open" NonSelect, Gray, Action Nop
+"Print" NonSelect, Gray, Action Nop
+"Close Window" NonSelect, Gray, Action Nop
+"" NonSelect
+"Get Info"  NonSelect, Gray,Action Nop
+"Duplicate" NonSelect, Gray, Action Nop
+"" NonSelect
+"Find..." NonSelect, Gray, Action Nop
+"Find Again" NonSelect, Gray, Action Nop
+"" NonSelect
+"Page Setup..." NonSelect, Gray, Action Nop
+"Print Desktop..." NonSelect, Gray, Action Nop
+END
+
+Menu def-Edit, Label "Edit"
+"Undo" NonSelect, Gray, Action Nop
+"" NonSelect
+"Cut" NonSelect, Gray
+"Copy" NonSelect, Gray
+"Paste" NonSelect, Gray
+"Clear" NonSelect, Gray
+"Select All" NonSelect, Gray
+"" NonSelect
+"Show Clipboard" NonSelect, Gray
+END
+
+Menu def-View, Label "View"
+"by Small Icon" NonSelect, Gray
+"by Icon" NonSelect, Gray
+"by Name" NonSelect, Gray
+"by Size" NonSelect, Gray
+"by Kind" NonSelect, Gray
+"by Date" NonSelect, Gray
+"by Version" NonSelect, Gray
+END
+
+Menu def-Label, Label "Label"
+"None" NonSelect, Gray
+"" NonSelect
+"Essential" NonSelect, Gray
+"Hot" NonSelect, Gray
+"In Progress" NonSelect, Gray
+"Cool" NonSelect, Gray
+"Personal" NonSelect, Gray
+"Project 1" NonSelect, Gray
+"Project 2" NonSelect, Gray
+END
+
+Menu restart-sub
+"Start twm"  Action Restart twm
+"Start fvwm" Action Restart fvwm
+END
+
+Menu def-Special, Label "Special"
+"Clean Up Desktop" Action Refresh
+"Empty Trash" NonSelect, Gray
+"" NonSelect
+"Eject Disk" NonSelect, Gray
+"Erase Disk..." NonSelect, Gray
+"" NonSelect
+"Start" SubMenu restart-sub
+"Restart" Action Restart mlvwm
+"Shut down" Action Exit
+END
+
+Menu def-Window
+"Move" Action MoveWindow
+"Resize" Action ResizeWindow
+"Toggle Scroll" Action ToggleScroll
+"" NonSelect
+"Quit" Action KillWindow
+END
+
+# Swallow the application at menu
+#Swallow "XEyes"	Action Exec "xeyes" exec xeyes -geometry 25
+Swallow "XClock" Action Exec "xclock" exec xclock -geometry 180x25 -digital -padding 5 -update 1
+
+# Definition MenuBar
+MenuBar default
+def-File
+def-Edit
+def-View
+def-Label
+def-Special
+def-Window
+END
+
+# Define the initial function
+InitFunction
+Desk 1
+Exec "xterm" xterm -ls -geometry 80x25 &
+Wait xterm
+Desk 0
+Exec "xterm" xterm -ls -geometry 80x25 &
+Wait xterm
+END
+
+# Define the restart function
+RestartFunction
+END
+
+# Define the default window decoration
+Style
+"*" MiniIcon mini-cross.xpm, MaxmizeScale 90, MenuBar default
+END
+
+Style
+"Emacs" MiniIcon mini-edit.xpm
+"xv" MiniIcon mini-xv.xpm, EnableScroll
+"XCalc" MiniIcon mini-calc.xpm
+"Xarchie" MiniIcon mini.xarchie.xpm
+"Xmag" MiniIcon mini.xmag.xpm
+"XMeter" NoSBarH, NoSBarV, NoResizeR, NoMinMaxR, NoTitle, NoCloseR
+"XMeter" NoWinList, Sticky, SkipSelect
+"*biff" NoSBarH, NoSBarV, NoResizeR, NoMinMaxR, NoWinList, NoCloseR
+"XEyes"  NoSBarV, NoMinMaxR, NoSBarH, NoWinList 
+"XCal" NoSBarH, NoSBarV, NoResizeR, NoMinMaxR, NoWinList, NoCloseR
+"XConsole"  NoSBarH, NoSBarV, NoResizeR, NoTitle, NoWinList, SkipSelect
+END
+
+# Read other configuration
+Read Mlvwmrc-Xterm
+Read Mlvwmrc-Netscape

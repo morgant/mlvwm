@@ -1,0 +1,110 @@
+Menu netscape-file, Label "File", Left
+"New Web Browser" Action SendMessage M+N
+"New Mail Message" Action SendMessage M+M
+"Mail Document..." NonSelect, Gray
+"Open Location..." Action SendMessage M+L
+"Open File..." Action SendMessage M+O
+"" NonSelect
+"Close" Action SendMessage M+W
+"Save as" Action SendMessage M+S
+"Upload File..." NonSelect, Gray
+"" NonSelect
+"Page Setup..." NonSelect, Gray
+"Print..." Action SendMessage M+P
+"" NonSelect
+"Quit" Action SendMessage M+Q
+END
+
+Menu netscape-edit, Label "Edit", Left
+"Undo" Action SendMessage M+Z
+"" NonSelect
+"Cut" Action SendMessage M+X
+"Copy" Action SendMessage M+C
+"Paste" Action SendMessage M+Y
+"Clear" NonSelect, Gray
+"" NonSelect
+"Select All" NonSelect, Gray
+"" NonSelect
+"Find" Action SendMessage M+F
+"Find Again" Action SendMessage M+G
+END
+
+Menu netscape-view, Label "View", Left
+"Reload" Action SendMessage M+R
+"Reload Frame" NonSelect, Gray
+"Load Images" Action SendMessage M+I
+"" NonSelect
+"Document Source" NonSelect, Gray
+"Document Info" NonSelect, Gray
+"" NonSelect
+"Frame Source" NonSelect, Gray
+"Frame Info" NonSelect, Gray
+END
+
+Menu netscape-go, Label "Go", Left
+"Back" Action SendMessage M+Left
+"Forward" Action SendMessage M+Right
+"Home" NonSelect, Gray
+"Stop Loading" Action SendMessage ESC
+END
+
+Menu netscape-bookmarks, Label "Bookmarks", Left
+"Add Bookmark" Action SendMessage M+A
+"" NonSelect
+"Mlvwm Home Page" Action Exec netscape -remote 'OpenURL(http://www.bioele.nuee.nagoya-u.ac.jp/member/tak/mlvwm.html)'
+END
+
+Menu netscape-options, Label "Options", Left
+"General Preferences..." NonSelect, Gray
+"Mail and News Preferences..." NonSelect, Gray
+"Network Preferences..." NonSelect, Gray
+"Security Preferences..." NonSelect, Gray
+"" NonSelect
+"Show Menubar" NonSelect, Gray
+"Show Toolbar" NonSelect, Gray
+"Show Location" NonSelect, Gray
+"Show Directory Buttons" NonSelect, Gray
+"Show Java Console" NonSelect, Gray
+"" NonSelect
+"Auto Load Images" NonSelect, Gray
+"" NonSelect
+"Document Encoding" NonSelect, Gray
+"Save Options" NonSelect, Gray
+END
+
+Menu netscape-directory, Label "Directory", Left
+"Netscape's Home" NonSelect, Gray
+"What's New" NonSelect, Gray
+"What's Cool" NonSelect, Gray
+"" NonSelect
+"Customer Showcase" NonSelect, Gray
+"Netscape Destinations" NonSelect, Gray
+"Internet Search" NonSelect, Gray
+"People" NonSelect, Gray
+"About the Internet" NonSelect, Gray
+END
+
+Menu netscape-window, Label "Window", Left
+"Netscape Mail" NonSelect, Gray
+"Netscape News" NonSelect, Gray
+"" NonSelect
+"Address Book" NonSelect, Gray
+"Bookmarks" Action SendMessage M+B
+"History" Action SendMessage M+H
+END
+
+MenuBar netscape
+netscape-file
+netscape-edit
+netscape-view
+netscape-go
+netscape-bookmarks
+netscape-options
+netscape-directory
+netscape-window
+END
+
+Style
+"Netscape" MiniIcon mini-nscape.xpm, MenuBar netscape
+END
+

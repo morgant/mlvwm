@@ -1,0 +1,204 @@
+## デスクトップの数
+Desktopnum	3
+
+## ウインドウのアクティブがマウスについていくか
+#FollowToMouse
+
+## ウインドウのアクティブがマウスについていくが、root ウインドウにマウスが
+## 入った場合アクティブウインドウは保存される
+#SloppyFocus
+
+## シェイドしたウインドウが Stick するか
+StickyShade
+
+## アンマップされているウインドウが Stick するか
+StickyHide
+
+# メニューのフラッシュの時間と回数
+#FlushMenu 100 2
+
+# ダブルクリックを認識する時間
+DoubleClickTime 300
+
+## Icon化をShadeとする
+IconifyShade
+
+## Icon化をHideとする
+#IconifyHide
+
+## ShadeウインドウがHideからShowになるときShadeのまま
+#ShadeMap
+
+## MacOS8のデコレーションを仕様可能に
+#System8
+
+## OpaqueMove を可能に
+OpaqueMove
+
+## OpaqueResize を可能に
+OpaqueResize
+
+## OneClickMenu を可能に
+OneClickMenu
+
+
+## ウインドウリストのウインドウ名にデスクトップ番号が一緒に表示
+#DisplayDeskNumber
+
+## リサイズ/移動の時に表示される線が点線になる
+Compatible
+
+# IconPath の指定。Style の指定の前に必要
+IconPath /usr/local/include/X11/pixmaps:/home2/tak/bin/pixmap
+IconMenuIcon label2.xpm
+
+# Balloon help Settings
+UseBalloon "Show Balloon Help" "Hide Balloon Help", Icon label3.xpm
+
+# Font 設定(LOCALE設定ありのサンプル)
+MenuBarFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
+MenuFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
+TitleBarFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
+
+# Settings of keyborad short cut
+ShortCut
+Up		C	Desk -
+Down	C	Desk +
+Left    C       PreviousWindow
+Right   C       NextWindow
+Escape  M       Restart mlvwm
+Escape  SM      Exit 
+END
+
+# Register the menu
+Menu Apple, Icon label1.xpm, Stick
+"このマシンについて..." NonSelect, Gray, Action About
+"" NonSelect
+"たーみなる"	Icon mini-display.xpm, Action Exec "kterm" exec kterm -ls
+"えでぃた"  Action Exec "mule" exec mule, Icon mini-edit.xpm
+"けいさんき" Action Exec "xcal" exec xcalc, Icon mini-calc.xpm
+END
+
+Menu def-File, Label "ファイル", Left
+"新規フォルダ" NonSelect, Gray, Action Nop
+"開ける" NonSelect, Gray, Action Nop
+"印刷" NonSelect, Gray, Action Nop
+"ウインドウを閉じる" NonSelect, Gray, Action Nop
+"" NonSelect
+"情報..."  NonSelect, Gray,Action Nop
+"複製" NonSelect, Gray, Action Nop
+"" NonSelect
+"検索..." NonSelect, Gray, Action Nop
+"再検索" NonSelect, Gray, Action Nop
+"" NonSelect
+"用紙設定..." NonSelect, Gray, Action Nop
+"デスクトップを印刷..." NonSelect, Gray, Action Nop
+END
+
+Menu def-Edit, Label "編集"
+"取り消し" Action Nop
+"" NonSelect
+"切りとり" Action Nop
+"複製" Action Nop
+"張り付け" Action Nop
+"消去" Action Nop
+"すべてを選択" Action Nop
+"" NonSelect
+"クリップボード表示" Action Nop
+END
+
+Menu def-View, Label "表示"
+"アイコン" NonSelect, Gray
+"小さいアイコン" NonSelect, Gray
+"名前" NonSelect, Gray
+"大きさ" NonSelect, Gray
+"種類" NonSelect, Gray
+"日付" NonSelect, Gray
+"バージョン" NonSelect, Gray
+END
+
+Menu def-Label, Label "ラベル"
+"なし" NonSelect, Gray
+"" NonSelect
+"必須" NonSelect, Gray
+"重要" NonSelect, Gray
+"進行中" NonSelect, Gray
+"未決" NonSelect, Gray
+"個人用" NonSelect, Gray
+"計画1" NonSelect, Gray
+"計画2" NonSelect, Gray
+END
+
+Menu def-Special, Label "特別" 
+"デスクトップを整頓" Action Refresh
+"ゴミ箱を空に" NonSelect, Gray
+"" NonSelect
+"ディスクの取り出し" NonSelect, Gray
+"ディスクの消去..." NonSelect, Gray
+"" NonSelect
+"twmを起動" Action Restart twm
+"再起動" Action Restart mlvwm
+"終了" Action Exit
+END
+
+Menu def-Window 
+"移動" Action MoveWindow
+"大きさ変更" Action ResizeWindow
+"スクロール切替え" Action ToggleScroll
+"" NonSelect
+"ウインドウを閉じる" Action KillWindow
+END
+
+
+# Swallow the application at menu
+#Swallow "XEyes"	Action Exec "xeyes" exec xeyes -geometry 25
+Swallow "XClock" Action Exec "xclock" exec xclock -geometry 180x25 -digital -padding 5 -update 1
+
+# Definition MenuBar
+MenuBar default
+def-File
+def-Edit
+def-View
+def-Label
+def-Special
+def-Window
+END
+
+# Definition MenuBar
+MenuBar default
+def-File
+def-Edit
+def-View
+def-Label
+def-Special
+def-Window
+END
+
+InitFunction
+Desk 1
+Exec "kterm" kterm -ls -geometry 80x25 &
+Wait kterm
+Desk 0
+Exec "kterm" kterm -ls -geometry 80x25 &
+Wait kterm
+END
+
+# Window decoration
+Style
+"*" MiniIcon mini-cross.xpm, MaxmizeScale 90, MenuBar default
+"Netscape" MiniIcon mini-nscape.xpm
+"Emacs" MiniIcon mini-edit.xpm
+"xv" MiniIcon mini-xv.xpm, EnableScroll
+"XCalc" MiniIcon mini-calc.xpm
+"Xarchie" MiniIcon mini.xarchie.xpm
+"Xmag" MiniIcon mini.xmag.xpm
+"XMeter" NoSBarH, NoSBarV, NoResizeR, NoMinMaxR, NoTitle, NoCloseR
+"XMeter" NoWinList, Sticky, SkipSelect
+"*biff" NoSBarH, NoSBarV, NoResizeR, NoMinMaxR, NoWinList, NoCloseR
+"XEyes"  NoSBarV, NoMinMaxR, NoSBarH, NoWinList 
+"XCal" NoSBarH, NoSBarV, NoResizeR, NoMinMaxR, NoWinList, NoCloseR
+"XConsole"  NoSBarH, NoSBarV, NoResizeR, NoTitle, NoWinList, SkipSelect
+END
+
+# 他の設定を読む
+Read Mlvwmrc-Kterm

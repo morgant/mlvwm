@@ -1,0 +1,56 @@
+本ウインドウマネージャの使用により応じた、いかなる事態に対しても当方
+は一切の責任も負いません。
+Bug report, 要望などございましたら、作者までメールを送付して下さい。
+
+How To Install
+
+xmkmf を持っているならば、
+xmkmf -a
+make
+でコンパイルできます。ただし SunOS 4.x の場合 gcc でコンパイルする必要
+があります。
+
+インストールディレクトリの指定は configure.h の変更で行なえます。
+Locale 対応のソースが入りました。configure.h の中で、 HasLocale を YES
+にして下さい。その他にも、 configure.h の修正はかなり行ないましたが、
+適当に対処して下さい。うまくいかない場合は、HasLocale を NO にしてコン
+パイルを行なって下さい。SunOS 4 の setlocale ではうまく動きませんでし
+た。X に X_LOCALE が define された状態でコンパイルされていれば、動くと
+思います。
+
+imake を持っている人は imake を使って makefile を作成してコンパイルし
+て下さい。
+
+Version 0.6.0 以前のものからこのバージョンを使う場合、いろいろな変更があっ
+たので、注意して下さい。
+
+Execute
+
+mlvwm [-f config_file] [-d display_name] [-c] [-debug]
+
+-f 設定ファイルの変更
+-d 起動ディスプレイの変更
+-debug デバグ出力を行なう
+
+Others
+アプリケーションによっては Xt のコマンドラインからの X リソース指定が
+行なえるものがあります。例えば xterm や xfontsel においては、コマンド
+ラインにおいて、
+
+            xterm -xrm "*Desk:1"
+
+と指定することにより、xterm をデスクトップ 1 に開くことができます。す
+べてのアプリケーションでこのオプションを指定できるわけではありません。
+
+メニューバーで biff を使う人用に pixmap を pixmap/ に用意しました。
+Thanks for shingo. MailFull.xpm, MailEmpty.xpm ですので、使って下さい。
+
+マニュアルページができました(Thanks for Daniel Henninger)。
+
+凍りついた時 HUP のシグナルを送ることによりデバグ情報を出すので、凍り
+ついた時は再現の仕方または、どこで凍りついたかのデバグ情報を付けてメー
+ルを下さい。対処可能な場合は、対処します。
+
+See Also
+http://www.bioele.nuee.nagoya-u.ac.jp/member/tak/mlvwm.html
+

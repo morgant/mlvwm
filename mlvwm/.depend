@@ -1,0 +1,113 @@
+add_window.o: add_window.c /usr/include/stdio.h \
+ /usr/include/sys/types.h /usr/include/machine/ansi.h \
+ /usr/include/machine/types.h /usr/include/sys/cdefs.h \
+ /usr/include/machine/endian.h /usr/include/stdlib.h mlvwm.h \
+ /usr/X11R6/include/X11/Xlib.h /usr/X11R6/include/X11/X.h \
+ /usr/X11R6/include/X11/Xfuncproto.h /usr/X11R6/include/X11/Xosdefs.h \
+ /usr/include/stddef.h /usr/X11R6/include/X11/Xutil.h \
+ /usr/X11R6/include/X11/cursorfont.h /usr/X11R6/include/X11/xpm.h \
+ sun_headers.h /usr/include/sys/wait.h screen.h menus.h config.h \
+ borders.h misc.h /usr/include/unistd.h /usr/include/sys/unistd.h \
+ /usr/X11R6/include/X11/Xatom.h /usr/X11R6/include/X11/Xresource.h \
+ /usr/X11R6/include/X11/extensions/shape.h
+balloon.o: balloon.c /usr/include/stdio.h /usr/include/sys/types.h \
+ /usr/include/machine/ansi.h /usr/include/machine/types.h \
+ /usr/include/sys/cdefs.h /usr/include/machine/endian.h \
+ /usr/include/stdlib.h mlvwm.h /usr/X11R6/include/X11/Xlib.h \
+ /usr/X11R6/include/X11/X.h /usr/X11R6/include/X11/Xfuncproto.h \
+ /usr/X11R6/include/X11/Xosdefs.h /usr/include/stddef.h \
+ /usr/X11R6/include/X11/Xutil.h /usr/X11R6/include/X11/cursorfont.h \
+ /usr/X11R6/include/X11/xpm.h sun_headers.h /usr/include/sys/wait.h \
+ screen.h menus.h config.h misc.h /usr/include/unistd.h \
+ /usr/include/sys/unistd.h event.h \
+ /usr/X11R6/include/X11/extensions/shape.h
+borders.o: borders.c /usr/include/stdio.h /usr/include/sys/types.h \
+ /usr/include/machine/ansi.h /usr/include/machine/types.h \
+ /usr/include/sys/cdefs.h /usr/include/machine/endian.h \
+ /usr/include/stdlib.h /usr/include/string.h mlvwm.h \
+ /usr/X11R6/include/X11/Xlib.h /usr/X11R6/include/X11/X.h \
+ /usr/X11R6/include/X11/Xfuncproto.h /usr/X11R6/include/X11/Xosdefs.h \
+ /usr/include/stddef.h /usr/X11R6/include/X11/Xutil.h \
+ /usr/X11R6/include/X11/cursorfont.h /usr/X11R6/include/X11/xpm.h \
+ sun_headers.h /usr/include/sys/wait.h screen.h menus.h config.h \
+ misc.h /usr/include/unistd.h /usr/include/sys/unistd.h borders.h \
+ /usr/X11R6/include/X11/extensions/shape.h
+config.o: config.c /usr/include/stdio.h /usr/include/sys/types.h \
+ /usr/include/machine/ansi.h /usr/include/machine/types.h \
+ /usr/include/sys/cdefs.h /usr/include/machine/endian.h \
+ /usr/include/stdlib.h /usr/include/string.h /usr/include/ctype.h \
+ /usr/include/runetype.h mlvwm.h /usr/X11R6/include/X11/Xlib.h \
+ /usr/X11R6/include/X11/X.h /usr/X11R6/include/X11/Xfuncproto.h \
+ /usr/X11R6/include/X11/Xosdefs.h /usr/include/stddef.h \
+ /usr/X11R6/include/X11/Xutil.h /usr/X11R6/include/X11/cursorfont.h \
+ /usr/X11R6/include/X11/xpm.h sun_headers.h /usr/include/sys/wait.h \
+ screen.h menus.h config.h misc.h /usr/include/unistd.h \
+ /usr/include/sys/unistd.h
+event.o: event.c /usr/include/stdio.h /usr/include/sys/types.h \
+ /usr/include/machine/ansi.h /usr/include/machine/types.h \
+ /usr/include/sys/cdefs.h /usr/include/machine/endian.h \
+ /usr/include/stdlib.h /usr/include/unistd.h /usr/include/sys/unistd.h \
+ /usr/include/string.h /usr/include/sys/time.h /usr/include/time.h \
+ /usr/X11R6/include/X11/Xatom.h mlvwm.h /usr/X11R6/include/X11/Xlib.h \
+ /usr/X11R6/include/X11/X.h /usr/X11R6/include/X11/Xfuncproto.h \
+ /usr/X11R6/include/X11/Xosdefs.h /usr/include/stddef.h \
+ /usr/X11R6/include/X11/Xutil.h /usr/X11R6/include/X11/cursorfont.h \
+ /usr/X11R6/include/X11/xpm.h sun_headers.h /usr/include/sys/wait.h \
+ screen.h menus.h config.h borders.h add_window.h functions.h misc.h \
+ balloon.h /usr/X11R6/include/X11/extensions/shape.h
+functions.o: functions.c /usr/include/stdio.h /usr/include/sys/types.h \
+ /usr/include/machine/ansi.h /usr/include/machine/types.h \
+ /usr/include/sys/cdefs.h /usr/include/machine/endian.h \
+ /usr/include/stdlib.h /usr/include/string.h /usr/include/unistd.h \
+ /usr/include/sys/unistd.h mlvwm.h /usr/X11R6/include/X11/Xlib.h \
+ /usr/X11R6/include/X11/X.h /usr/X11R6/include/X11/Xfuncproto.h \
+ /usr/X11R6/include/X11/Xosdefs.h /usr/include/stddef.h \
+ /usr/X11R6/include/X11/Xutil.h /usr/X11R6/include/X11/cursorfont.h \
+ /usr/X11R6/include/X11/xpm.h sun_headers.h /usr/include/sys/wait.h \
+ screen.h menus.h config.h functions.h borders.h event.h misc.h \
+ balloon.h
+menus.o: menus.c /usr/include/stdio.h /usr/include/sys/types.h \
+ /usr/include/machine/ansi.h /usr/include/machine/types.h \
+ /usr/include/sys/cdefs.h /usr/include/machine/endian.h \
+ /usr/include/stdlib.h /usr/include/string.h /usr/include/ctype.h \
+ /usr/include/runetype.h mlvwm.h /usr/X11R6/include/X11/Xlib.h \
+ /usr/X11R6/include/X11/X.h /usr/X11R6/include/X11/Xfuncproto.h \
+ /usr/X11R6/include/X11/Xosdefs.h /usr/include/stddef.h \
+ /usr/X11R6/include/X11/Xutil.h /usr/X11R6/include/X11/cursorfont.h \
+ /usr/X11R6/include/X11/xpm.h sun_headers.h /usr/include/sys/wait.h \
+ screen.h menus.h config.h event.h functions.h misc.h \
+ /usr/include/unistd.h /usr/include/sys/unistd.h add_window.h \
+ borders.h /usr/X11R6/include/X11/Xatom.h \
+ /usr/X11R6/include/X11/Xresource.h \
+ /usr/X11R6/include/X11/extensions/shape.h
+misc.o: misc.c /usr/include/stdio.h /usr/include/sys/types.h \
+ /usr/include/machine/ansi.h /usr/include/machine/types.h \
+ /usr/include/sys/cdefs.h /usr/include/machine/endian.h \
+ /usr/include/stdlib.h /usr/include/string.h /usr/include/ctype.h \
+ /usr/include/runetype.h /usr/include/unistd.h \
+ /usr/include/sys/unistd.h /usr/include/sys/time.h /usr/include/time.h \
+ mlvwm.h /usr/X11R6/include/X11/Xlib.h /usr/X11R6/include/X11/X.h \
+ /usr/X11R6/include/X11/Xfuncproto.h /usr/X11R6/include/X11/Xosdefs.h \
+ /usr/include/stddef.h /usr/X11R6/include/X11/Xutil.h \
+ /usr/X11R6/include/X11/cursorfont.h /usr/X11R6/include/X11/xpm.h \
+ sun_headers.h /usr/include/sys/wait.h menus.h screen.h config.h
+mlvwm.o: mlvwm.c /usr/include/stdio.h /usr/include/sys/types.h \
+ /usr/include/machine/ansi.h /usr/include/machine/types.h \
+ /usr/include/sys/cdefs.h /usr/include/machine/endian.h \
+ /usr/include/stdlib.h /usr/include/signal.h /usr/include/sys/signal.h \
+ /usr/include/machine/signal.h /usr/include/machine/trap.h \
+ /usr/include/string.h /usr/include/unistd.h /usr/include/sys/unistd.h \
+ /usr/include/fcntl.h mlvwm.h /usr/X11R6/include/X11/Xlib.h \
+ /usr/X11R6/include/X11/X.h /usr/X11R6/include/X11/Xfuncproto.h \
+ /usr/X11R6/include/X11/Xosdefs.h /usr/include/stddef.h \
+ /usr/X11R6/include/X11/Xutil.h /usr/X11R6/include/X11/cursorfont.h \
+ /usr/X11R6/include/X11/xpm.h sun_headers.h /usr/include/sys/wait.h \
+ screen.h menus.h config.h event.h add_window.h functions.h misc.h \
+ /usr/X11R6/include/X11/Xproto.h /usr/X11R6/include/X11/Xmd.h \
+ /usr/X11R6/include/X11/Xprotostr.h /usr/X11R6/include/X11/Xatom.h \
+ /usr/X11R6/include/X11/Xresource.h \
+ /usr/X11R6/include/X11/extensions/shape.h \
+ /usr/X11R6/include/X11/Xlocale.h /usr/include/locale.h
+wild.o: wild.c /usr/include/stdio.h /usr/include/sys/types.h \
+ /usr/include/machine/ansi.h /usr/include/machine/types.h \
+ /usr/include/sys/cdefs.h /usr/include/machine/endian.h

@@ -1,0 +1,57 @@
+This document is transformed README.jp into English by automatic.
+
+We don't assume all responsibility toward any situation which
+responded by the use of this window manager, either.
+Send e-mail to the author if there are a Bug report, a request, and so
+on.
+
+How To Install
+
+If it has xmkmf, it can be compiled with
+xmkmf -a;
+make.
+But, it must be compiled with gcc for SunOS4.x.
+
+The designation of the installation directory can be done by the
+change of configure.h. Sauce complying with Locale came in. Make
+HasLocale YES in configure.h. Cope additionally and suitably though
+the modification of configure.h was performed very much, too. Make
+HasLocale NO, and perform compilation when it doesn't go well. It
+didn't move well with setlocale of SunOS4. It thinks that it moves if
+X_LOCALE is compiled under the condition that it has define done in
+X.
+
+The person who has imake is to make makefile by using imake, and
+compile it.
+
+Be careful because there were various changes when this version is
+used from the thing of the Version0.6.0 before.
+
+Execute
+
+mlvwm [-f config_file] [-d display_name] [-c] [-debug]
+
+-f The change of the establishment file.
+-d The change of the start display.
+-debug Debug output is performed.
+
+Others
+
+Some applications that understand standard Xt command line arguments
+and X resources, like xterm and xfontsel, allow the user to specify
+the start-up desk on the command line:
+
+            xterm -xrm "*Desk:1"
+
+will start an xterm on desk number 1. Not all applications understand
+this option, however.
+
+Pixmap was prepared for in pixmap/ for the person who used biff by the
+menu bar. Use it because they are Thanks for shingo. MailFull.xpm,
+MailEmpty.xpm. It copes when it can cope.
+
+Add manual page(Thanks for Daniel Henninger).
+
+See Also
+http://www.bioele.nuee.nagoya-u.ac.jp/member/tak/mlvwm.html
+

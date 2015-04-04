@@ -1,0 +1,15 @@
+Menu kterm-file, Label "File", Left
+"新規" Action Exec "kterm" exec kterm -ls
+"" NonSelect
+"終了" Action SendMessage "exit" Return
+END
+
+MenuBar kterm
+kterm-file
+def-Edit
+END
+
+Style
+"KTerm" MaxmizeScale 100, MiniIcon mini-term.xpm, MenuBar kterm, NoSBarH, NoSBarV
+END
+

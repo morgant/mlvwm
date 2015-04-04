@@ -1,0 +1,31 @@
+XCOMM Imakefile for MLVWM
+
+#include "../configure.h"
+
+                VERSION = 0.8.9
+        COMPILE_OPTIONS = -DVERSION=\"$(VERSION)\" \
+                          -DCONFIGNAME=\"$(MLVWMRC)\" \
+                          -DMLVWMLIBDIR=\"$(MLVWMLIBDIR)\" 
+
+                 TARGET = mlvwm
+
+XCOMM Do not change from here !
+
+                DEFINES = $(MLVWMDEFINES) $(COMPILE_OPTIONS)
+          LOCAL_LIBRARIES = -lXpm $(XLIB) $(MLVWMLIBRARIES)
+                  SRCS = add_window.c\
+                         balloon.c\
+                         borders.c\
+                         config.c\
+                         event.c\
+                         functions.c\
+                         menus.c\
+                         misc.c\
+                         mlvwm.c\
+                         wild.c
+OBJS = $(SRCS:.c=.o)
+
+all::$(TARGET)
+InstallProgram($(TARGET),$(MLVWMBINDIR))
+DependTarget()
+SingleProgramTarget($(TARGET),$(OBJS),NullParameter,$(LOCAL_LIBRARIES))

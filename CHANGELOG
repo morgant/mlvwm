@@ -1,0 +1,77 @@
+0.8.8 -> 0.8.9
+Change scroll bar expose function and befavior
+Add one click menu(OneClickMenu)
+
+0.8.7p1 -> 0.8.8
+Add OpaqueMove
+Add OpaqueResize
+Change configuration code
+Add ZoomWait configuration
+Change FlushMenu interval unit us to ms.
+Change color of scrollbar anker and function.
+Change transient window mappting position.
+
+0.8.7 -> 0.8.7
+Fix memory leak
+
+0.8.6 -> 0.8.7
+Some changes to use 64bit CPU.
+Fix bugs to display window.
+Some modification.
+Add UseRootWin configuration.
+
+0.8.5 -> 0.8.6
+Add function MaxmizeScale to set WidethxHeight.
+Fix calcurate font height at HasLocale NO.
+Add RotateDesk.
+The bug is fixed that the help balloon don't display at SunOS.
+
+0.8.4 -> 0.8.5
+The bug is fixed that sort window list name.
+The bug is fixed that when the active window is changed form stickey
+window.
+The bug is fixed that when the desktop is changed, active window is not
+selected with FollowToMouse and SloppyFocus.
+Stop the animation at Show Window.
+Fix HandleClientMessage bug.
+The cursors have been reassigned to better match the current state or
+functionality.
+Change BalloonHelp Window to transparent(shape) window.
+Change the menu display method.
+Add function MaxmizeScale to set WidethxHeight.
+Fix calcurate font height at HasLocale NO.
+
+0.8.3 -> 0.8.4
+The bug is fixed that when the active window is changed form stickey
+window, the active window is mapped under other window.
+The cursors have been reassigned to better match the current state or
+functionality.
+Add built-in function `ShowBalloon'.
+When a window is hidden or unhidden, its outline is zoomed from the
+icon menu to the window position or vice versa.
+The black flash has been removed from RefreshScreen. It now looks much
+smoother.
+Left and right corners have been added to provided a rounded screen
+bottom as well.
+The entries in the icon menu get sorted alphabetically.
+Change cursor shape at starting.
+Add configuration `RestartPreviousState'.
+
+0.8.2 -> 0.8.3
+The bug is fixed that the window list problem with display desktop
+number.
+
+0.8.1 -> 0.8.2
+The bug is fixed that the replacement of window on non current desktop 
+is valid at restart time.
+The bug is fixed that the replacement of windows at restart time.
+Fix display outline at resize with System8 configuration.
+Add `DisplayDeskNumber' that means display desktop number on window
+list.
+Modify sample configuration file.
+
+0.8.0 -> 0.8.1
+The bug is fixed that the display of menu bar is incorrect at start
+time with `System8' configuration.
+The bug is fixed that Select{Prev,Next}Window select the window that
+is not mapped on the desktop.

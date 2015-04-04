@@ -1,0 +1,16 @@
+Menu xterm-file, Label "File", Left
+"New" Action Exec "xterm" exec xterm -ls
+"" NonSelect
+"Quit" Action SendMessage "exit" Return
+END
+
+MenuBar xterm
+xterm-file
+def-Edit
+END
+
+Style
+"*Term" MaxmizeScale 80x80, NoSBarH, NoSBarV
+"*Term" MiniIcon mini-term.xpm, MenuBar xterm
+END
+
