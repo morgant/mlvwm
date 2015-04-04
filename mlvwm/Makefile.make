@@ -1,10 +1,10 @@
-VERSION=\"0.6.2\"
-CFLAGS = -g -Wall -DVERSION=$(VERSION) -fpcc-struct-return -DCONFIGNAME=\".mlvwmrc\"
+VERSION=\"0.9.0\"
+CFLAGS = -g -Wall -DVERSION=$(VERSION) -fpcc-struct-return -DCONFIGNAME=\".mlvwmrc\" -DUSE_LOCALE -DMLVWMLIBDIR=\"/usr/X11R6/lib/X11/mlvwm\"
 CC = gcc
 LDFLAGS = -lXpm -lXext -lX11 
 CPPFLAGS = -I/usr/X11R6/include
-SRC = add_window.c borders.c config.c event.c menus.c mlvwm.c functions.c\
-	sound.c
+SRC = add_window.c balloon.c borders.c config.c \
+      event.c functions.c menus.c misc.c mlvwm.c wild.c
 OBJS = $(SRC:.c=.o)	
 TARGET = mlvwm
 

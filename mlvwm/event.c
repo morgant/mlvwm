@@ -255,6 +255,7 @@ MlvwmWindow *NextActiveWin( MlvwmWindow *t )
 		   !(NextActive->flags&NOWINLIST) &&
 		   !(NextActive->flags&SKIPSELECT) &&
 		   !(NextActive->flags&NOFOCUS) &&
+		   (!t->wmhints || t->wmhints->input!=False) &&
 		   NextActive->Desk==Scr.currentdesk)
 			break;
 	}
@@ -527,22 +528,43 @@ void MoveWindow( MlvwmWindow *mw, XEvent *evp )
 				XDrawRectangle( dpy, Scr.Root, Scr.RobberGC, 
 						   mw->frame_x-drag_x, mw->frame_y-drag_y,
 						   mw->frame_w, mw->frame_h );
+
+			/* Calc. edge resistance */
+			/* edge inside the menu bar */
 			if( mw->frame_y-pre_y+y<MENUB_H ){
-				if( last_x==-1 ) last_x = x;
-				x=last_x;
-				y=pre_y-mw->frame_y+MENUB_H;
+				if( last_x==-1 )	last_x = x;
 			}
-			else	last_x = -1;
-			drag_x = pre_x-x;
-			drag_y = pre_y-y;
-			if( Scr.flags&OPAQUEMOVE )
-				XMoveWindow( dpy, mw->frame,
-						   mw->frame_x-drag_x, mw->frame_y-drag_y );
-			else
-				XDrawRectangle( dpy, Scr.Root, Scr.RobberGC, 
-						   mw->frame_x-drag_x, mw->frame_y-drag_y,
-						   mw->frame_w, mw->frame_h );
-			XSync( dpy, 0 );
+			/* edge<0 */
+			if( y<MENUB_H )		x=last_x;
+			else{
+				last_x = -1;
+				if( pre_x-x>0 && Scr.resist_x>abs(mw->frame_x-pre_x+x) &&
+					mw->frame_x-pre_x+x<0 )
+					 x = pre_x-mw->frame_x;
+				/* edge>display width */
+				if( x-pre_x>0 && Scr.resist_x+Scr.MyDisplayWidth>
+					abs(mw->frame_x+mw->frame_w-pre_x+x) &&
+					 mw->frame_x+mw->frame_w-pre_x+x>Scr.MyDisplayWidth )
+					 x = pre_x-mw->frame_x+Scr.MyDisplayWidth-mw->frame_w;
+				/* edge>display height */
+				if( y-pre_y>0 && Scr.resist_y+Scr.MyDisplayHeight>
+					abs(mw->frame_y+mw->frame_h-pre_y+y) &&
+					mw->frame_y+mw->frame_h-pre_y+y>Scr.MyDisplayHeight )
+					 y = pre_y-mw->frame_y+Scr.MyDisplayHeight-mw->frame_h;
+				XWarpPointer( dpy, None, ev.xany.window, 0, 0, 0, 0, x, y );
+				if( mw->frame_y-pre_y+y<MENUB_H ) y=pre_y-mw->frame_y+MENUB_H;
+
+				drag_x = pre_x-x;
+				drag_y = pre_y-y;
+				if( Scr.flags&OPAQUEMOVE )
+					XMoveWindow( dpy, mw->frame,
+							   mw->frame_x-drag_x, mw->frame_y-drag_y );
+				else
+					XDrawRectangle( dpy, Scr.Root, Scr.RobberGC, 
+							   mw->frame_x-drag_x, mw->frame_y-drag_y,
+							   mw->frame_w, mw->frame_h );
+				XSync( dpy, 0 );
+			}
 			break;
 		}
 	}
@@ -863,7 +885,7 @@ void ResizeWindow( MlvwmWindow *mw, XEvent *evp, Bool s_move )
 	}
 	if( !(Scr.flags&OPAQUERESIZE) ){
 		XGrabServer( dpy );
-		DrawResizeFrame( mw->frame_x, mw->frame_y, mw->frame_w, mw->frame_h, mw );
+		DrawResizeFrame(mw->frame_x,mw->frame_y,mw->frame_w,mw->frame_h,mw);
 	}
 	while( !isEnd ){
 		evmask = ButtonReleaseMask|ButtonMotionMask|PointerMotionMask;
@@ -906,15 +928,18 @@ void ResizeWindow( MlvwmWindow *mw, XEvent *evp, Bool s_move )
 			}
 			if( xmotion!=0 || ymotion!=0 ){
 				if( !(Scr.flags&OPAQUERESIZE) )
-					DrawResizeFrame( mw->frame_x, mw->frame_y, new_w, new_h, mw );
+					DrawResizeFrame(mw->frame_x,mw->frame_y,new_w,new_h,mw);
 				if( xmotion!=0 )
 					new_w = org_w + (x - pre_x)*xmotion;
 				if( ymotion!=0 )
 					new_h = org_h + (y - pre_y)*ymotion;
 
-				if( new_w<4*SBAR_WH )		new_w = 4*SBAR_WH+1;
-				if( new_h<4*SBAR_WH+(mw->flags & TITLE ? TITLE_HEIGHT : 0) )
-					new_h = 4*SBAR_WH+(mw->flags & TITLE ? TITLE_HEIGHT : 0)+1;
+				if( new_w<(mw->flags&SBARH?4*SBAR_WH:0) )
+					new_w = (mw->flags*SBARH?4*SBAR_WH:0)+1;
+				if( new_h<(mw->flags&SBARV?4*SBAR_WH:0)+
+								(mw->flags&TITLE?TITLE_HEIGHT:0) )
+					new_h = (mw->flags&SBARV?4*SBAR_WH:0)+
+								(mw->flags&TITLE?TITLE_HEIGHT:0)+1;
 
 				ConstrainSize( mw, &new_w, &new_h );
 
@@ -1686,6 +1711,7 @@ void HandleMapNotify( XEvent *ev )
 		XMapWindow(dpy, tmp_win->frame);
 		if( !(Scr.flags & FOLLOWTOMOUSE) && 
 			!(Scr.flags&SLOPPYFOCUS) &&
+			(!tmp_win->wmhints || tmp_win->wmhints->input!=False) &&
 		   !(tmp_win->flags&NOFOCUS) )
 			SetFocus( tmp_win );
 	}

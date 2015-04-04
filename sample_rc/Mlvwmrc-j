@@ -20,6 +20,9 @@ StickyHide
 # ダブルクリックを認識する時間
 DoubleClickTime 300
 
+# Edge resistance force
+EdgeResistance 50 50
+
 ## Icon化をShadeとする
 IconifyShade
 
@@ -56,9 +59,12 @@ IconMenuIcon label2.xpm
 UseBalloon "Show Balloon Help" "Hide Balloon Help", Icon label3.xpm
 
 # Font 設定(LOCALE設定ありのサンプル)
-MenuBarFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
-MenuFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
-TitleBarFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
+MenuBarFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,\
+	-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
+MenuFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,\
+	-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
+TitleBarFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,\
+	-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
 
 # Settings of keyborad short cut
 ShortCut

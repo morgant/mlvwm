@@ -1,7 +1,7 @@
 XCOMM Imakefile for MLVWM
 
 #define IHaveSubdirs
-SUBDIRS = mlvwm sample_rc
+SUBDIRS = mlvwm sample_rc man
 #define PassCDebugFlags
 
 MakeSubdirs($(SUBDIRS))

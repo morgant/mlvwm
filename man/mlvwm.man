@@ -1,0 +1,372 @@
+.\" t
+.\" @(#)mlvwm.1
+'\"macro stdmacro
+.de EX          \"Begin example
+.ne 5
+.if n .sp 1
+.if t .sp .5
+.nf
+.in +.5i
+..
+.de EE
+.fi
+.in -.5i
+.if n .sp 1
+.if t .sp .5
+..
+.ta .3i .6i .9i 1.2i 1.5i 1.8i
+.nr X
+.TH mlvwm 1 "11 Feb 1997"
+.SH NAME
+mlvwm \- Macintosh Like Virtual Window Manager
+.SH SYNOPSIS
+\fBmlvwm \fP[ \fB\-f\fP \fIinitfile\fP ] [ \fB\-d\fP \fIdpy\fP ]
+[ \fB\-debug\fP ]
+
+
+.SH DESCRIPTION
+.I mlvwm
+is a window manager for X11 designed to look and feel like
+the Macintosh<tm> environment.  It provides multiple desktops, separate
+menu bars for different applications, and the ability to interact with
+applications from that menu bar.  It does this by sending key sequences
+to the application, such as ctrl-X or alt-Y.
+
+.SH OPTIONS
+These are the command line options that are recognized by \fImlvwm\fP:
+.IP "\fB-f\fP \fIconfig_file\fP"
+Causes \fImlvwm\fP to use \fIconfig_fule\fP as it's configuration file.
+.IP "\fB-d\fP \fIdisplay_name\fP"
+Brings \fImlvwm\fP on display \fIdisplay_name\fP instead of the name
+taken from the DISPLAY environment variable.
+.IP "\fB-debug\fP"
+Debug mode.  Displays debugging information.
+
+.SH CONFIGURATION FILES
+The configuration file is used to describe shortcut key bindings, menus, 
+fonts, and various other settings.  It is typically ".mlvwmrc" in your
+home directory, and if that does not exist it falls back to the system
+default.  A different config file can be defined using the -f option
+shown above.
+
+Lines beginning with '#' are ignored by \fImlvwm\fP.
+
+.SH BUILT IN FUNCTIONS
+There are a number of built in functions in \fImlvwm\fP that may be
+used in the configuration file.  If there is an error in the config file,
+\fImlvwm\fP will try it's best to go on.  If it can't find a particular
+icon, it will complain on startup and leave the space blank where the
+icon was meant to go.  Likewise, if you have a command misspelled or something
+to that effect, it will simply put up an error message and continue on
+through the rest of the config file.
+
+The following commands can be used in menus, keyboard short cuts,
+and anything else along those lines:
+
+.IP "\fBExec\fP \fIapp_name command\fP"
+Executes an external command as stated by \fIcommand\fP.  \fIapp_name\fP
+should be set to whatever the name of the application is that will be
+executed.
+.IP "\fBNop\fP"
+Does nothing.
+.IP "\fBRefresh\fP"
+Refreshes the screen.
+.IP "\fBRestart\fP [\fIwindow_manager\fP]"
+Restarts \fImlvwm\fP or, if \fIwindow_mananger\fP is defined, restart into
+that window manager.
+.IP "\fBExit\fP\t"
+Quits \fImlvwm\fP.
+.IP "\fBDesk\fP [\fI+\fP|\fI-\fP|\fInumber\fP]"
+Changes desktops to \fInumber\fP or, if + or - is the argument, goes up
+one or down one desktop, respectively.
+.IP "\fBNextWindow\fP"
+Switches to the next active window.  Windows that are hidden or defined
+in SkipSelect are not chosen.  This includes windows in other desktops
+in it's list of windows to choose from.
+.IP "\fBPreviousWindow\fP"
+Swtiches to the previous active window.  Windows that are hidden or defined
+in SkipSelect are not chosen.  This includes windows in other desktops
+in it's list of windows to choose from.
+.IP "\fBNextSameDeskWindow\fP"
+Switches to the next active window.  Windows that are hidden or defined
+in SkipSelect are not chosen.  Windows in other desktops are not chosen.
+.IP "\fBPreviousSameDeskWindow\fP"
+Switches to the previous active window.  Windows that are hidden or defined
+in SkipSelect are not chosen.  Windows in other desktops are not chosen.
+.IP "\fBShadedUnShadeActive\fP"
+Shades or UnShades active window.
+.IP "\fBHideActive\fP"
+Hides active window.
+.IP "\fBHideOthers\fP"
+Hides all other windows except the active one.
+.IP "\fBShowAll\fP"
+All hidden windows are unhidden.
+.IP "\fBMoveWindow\fP"
+Move a window, chosen after this command is selected.
+.IP "\fBResizeWindow\fP"
+Resize a window, chosen after this command is selected.
+.IP "\fBKillWindow\fP"
+Kills a chosen window.
+.IP "\fBSendMessage\fP \fIsequence\fP"
+A keypress is sent to the active window.  The keys pressed are defined
+in a similar fashion to those in the ShortCut command.  You specify a
+special key with it's corresponding capital letter identifier and a +
+symbol.  For instance, if you wanted to set the sequence: Ctrl-x, you
+would use C+x.
+.IP "\fBWait\fP [\fIApplication name|\fIApplication class\fP]"
+Wait to start application. 
+.IP "\fBShowBalloon\fP"
+This function can be bound to a key in order to show balloon.
+
+.SH DESCRIPTION
+The following commands are used to change or describe \fImlvwm\fP's
+functionality:
+
+.IP "\fBDesktopnum\fP \fInum\fP"
+The number of desktops available.  Defaults to 1.
+.IP "\fBStickShade\fP"
+Shaded windows are present no matter what desktop you are on, instead
+of staying on a particular desktop.  This is not the default behavior.
+.IP "\fBStickHide\fP"
+Hidden windows are present no matter what desktop you are on, instead
+of staying on a particular desktop.  This is not the default behavior.
+This means that if you hide a window in one desktop, and move to another,
+then unhide it, it will appear in that desktop, instead of the desktop
+it was originally in.
+.IP "\fBShadeMap\fP"
+When a window is unhidden, shading remains.  The default is for shading
+to be canceled when a window is unhidden.
+.IP "\fBDoubleClickTime\fP \fItime\fP"
+The number of milliseconds in which you must click the mouse button twice
+in order to register a double click.
+.IP "\fBCompatible\fP"
+When windows are moved or resized, the border displayed is a dotted
+line instead of solid.  This causes a slight speed decline. 
+.IP "\fBFollowToMouse\fP"
+The active window is the window the mouse is currently over.  If you move
+the mouse away from the current window and/or over another, you lose
+focus in the current one.  This is not set up by default.
+.IP "\fBSlopyFocus\fP"
+It turns on FollowToMouse with the modification of not loosing
+focus when in the root window.
+.IP "\fBSystem8\fP"
+Change to window decoration to System 8(Only Color Monitor).
+.IP "\fBOpaqueMove\fP"
+Enable Opaque move.
+.IP "\fBOpaqueResize\fP"
+Enable Opaque resize.
+.IP "\fBOneClickMenu\fP"
+Click pull down menu and more one click execute selection.
+.IP "\fBZoomWait\fP \fIms\fB"
+Setting Hide animation speed. Default is 10ms. The unit is ms.
+.IP "\fBRotateDesk\fP"
+Rotate desktop number at Desk + and Desk -.
+.IP "\fBDisplayDeskNumber\fP"
+Display window name with desktop number on window list.
+.IP "\fBIconifyShade\fP"
+WindowShade is regarded as Inocify.
+.IP "\fBIconifyHide\fP"
+HideWindow is regarded as Iconify.
+.IP "\fBScrollBarWidth\fP \fIn\fP
+The variable scroll window is set \fIn\fP and defaults to 19 if
+unspecified.
+.IP "\fBFlushMenu\fP \fIspeed\fP \fIflashes\fP"
+Determines how fast the flashes are when you choose an option from a menu,
+as well as how many times it does so.
+.IP "\fBIconPath\fP \fIpath\fP"
+Specify the path \fImlvwm\fP is to search in order to find it's icons.
+Separate directories should be separated with a : and listed in the order
+you wish them to be searched.  This needs to be defined before any
+references to icons are made.
+.IP "\fBIconMenuIcon\fP \fIicon\fP"
+This is the icon to be used with the windowlist menu on right side of the
+menu bar.
+.IP "\fBUseRootWin\fP"
+ignore button event on Root Window.
+.IP "\fBUseBalloon\fP \fIstr1\fP \fIstr2\fP, \fBIcon\fP \fIiconname\fP
+Use balloon help. str1 is displayed as menu item when Balloon help is
+not displayed. 
+.IP "\fBInitFunction\fP"
+.IP "\fBRestartFunction\fP"
+ Define the function when start and restart the mlvwm.
+.IP "\fBMenuBarFont\fP \fIfont\fP"
+The font the menu bar is to use.
+.IP "\fBMenuFont\fP \fIfont\fP"
+The font the menus are to use.
+.IP "\fBTitleBarFont\fP \fIfont\fP"
+The font on the title bars of windows.
+.IP "\fBRead\fP \fIfilename\fP"
+Reads in a separate configuration file.
+.IP "\fBRestartPreviousState\fP"
+It allows to regenerate the screen as it was before the
+previous window manager was shutdown or the current window
+manager was restarted.
+.IP "\fBMenu\fP \fIname\fP[, \fIoptions\fP] ... \fBEND\fP"
+Starts a menu block for the specified \fIname\fP menu.  After the name of
+the menu, some options may be defined as listed below to change the behavior
+of that menu.  All lines following the Menu command are read in as menu
+items until an \fBEND\fP statement is reached.  Description of menu
+items will be discussed after the options.
+
+Menu options are as follows:
+
+\fBRight\fP - places the menu on the right side of the menu bar.
+
+\fBLeft\fP - places the menu on the left side of the menu bar.  This is default.
+
+\fBIcon\fP \fIicon\fP - assigns an icon to be displayed on the menu
+bar instead of a label.
+
+\fBLabel\fP \fIlabel\fP - assigns a label to be displayed on the menu
+bar instead of an icon.
+
+\fBStick\fP - menu label is shown any time, in spite of the
+designation of which application it is associated with via the MenuBar
+command. 
+
+
+\fBNonStick\fP - opposite of Stick.  This is default.
+
+
+Menu items are described as follows:
+
+"label" options
+
+Multiple options are separated by commas.  Options you can choose are as
+follows:
+
+\fBGray\fP - grays out a menu item.
+
+\fBBlack\fP - makes a menu item black.
+
+\fBCheck\fP - places a check mark next to item.
+
+\fBNonCheck\fP - doesn't place a check mark next to item.
+
+\fBSelect\fP - makes a menu item selectable.
+
+\fBNonSelect\fP - prevents a menu item from being selectable.
+
+\fBSubMenu\fP \fIMenuName\fP
+A submenu is specified.
+
+\fBIcon\fP \fIicon\fP - specifies an icon to place next to the menu
+item's label. 
+
+\fBAction\fP \fIcommand\fP - performs any built in \fIcommand\fP.
+
+\fBSwallow\fP \fIappname\fP \fIoptions\fP
+Swallows an application into the menu bar.  \fIoptions\fP are separated
+by commas.  \fIappname\fP should match the name of the application that
+will be swallowed.  The following options are allowed:
+
+\fBRight\fP - places the menu on the right side of the menu bar.  This
+is default. 
+
+\fBLeft\fP - places the menu on the left side of the menu bar.
+
+\fBAction\fP \fIcommand\fP - performs any built in \fIcommand\fP.
+This is where an Exec should be performed of the application to be swallowed.
+
+\fBStick\fP - menu label is shown any time, in spite of the
+designation of which application it is associated with via the MenuBar
+command.  This is default. 
+
+\fBNonStick\fP - opposite of Stick.
+
+.IP "\fBMenuBar\fP \fIappname\fP ... \fBEND\fP"
+This describes the names of the menus to be displayed, given a particular
+\fIappname\fP is active.  The keyword \fBdefault\fP can be placed for
+\fIappname\fP to set up a menu bar for any application that does not
+have it's own specific menu bar.  Menus are listed one per line after
+the MenuBar line, and closed off with an \fBEND\fP statement.
+
+.IP "\fBStyle\fP \fIstrings\fP \fBEND\fP"
+This is used to describe certain attributes of particular windows, such
+as decorations, MenuBars, mini-icons, and various other attributes.
+The wildcards, * and ?, can be used.  Lines are set up as follows:
+
+"\fIappname\fP" \fIoptions\fP
+
+Multiple \fIoptions\fP are separated by commas, and can be chosen from
+the following:
+
+\fBNormalDecoration\fP - Places standard decorations (ie all the defaults)
+around a particular window.
+
+\fBNoSbarH\fP - Horizontal scroll bar is removed.
+
+\fBNoSbarV\fP - Vertical scroll bar is removed.
+
+\fBNoResizeR\fP - no resize 'button'.  This is automatic if both
+NoSbarH and NoSbarV are defined.
+
+\fBNoTitle\fP - Removed title bar.
+
+\fBNoMinMaxR\fP - Min/Max 'button' is removed.  Automatic when NoTitle
+defined. 
+
+\fBNoCloseR\fP - Close 'button' is removed.  Automatic when NoTitle defined.
+
+\fBNoWinList\fP - Prevents window from being show on the window list.
+
+\fBNoFocus\fP - Does not allow window to get focus.
+
+\fBStayOnTop\fP - Window stays above all other windows on the screen.
+
+\fBSticky\fP - Window stays on screen even if you change desktops.
+
+\fBSkipSelect\fP - Prevents window from getting chosen by \fBNextWindow\fP,
+\fBPreviousWindow\fP, \fBPreviousSameDeskWindow\fP, and
+\fBNextSameDeskWindow\fP. 
+
+\fBEnableScroll\fP - Activates scroll bars.
+
+\fBMaxmizeScale\fP - The percentage the window will increase in size
+when it maximized.
+
+\fBMiniIcon\fP \fIicon\fP - \fIicon\fP is used to represent that
+particular window. 
+
+\fBNoTransientDecorate\fP -  No decorations for transient window.
+
+\fBMenuBar\fP \fImenubar\fP - Switches the menu bar to \fImenubar\fP when that
+application is active.
+
+.IP "\fBShortCut\fP \fIstring\fP END"
+Binds key combinations to functions.  Short cuts are listed one per line
+in the following format:
+
+\fIKeyName\fP \fIKeyboardModifier\fP \fICommand\fP
+
+After all Short cuts are listed, an END statement should be placed.
+KeyboardModifier's are as follows:
+
+.EX
+\fBS\fP - Shift key
+\fBC\fP - Control key
+\fBM\fP - Mod1 key
+\fB1\fP - Mod1 key
+\fB2\fP - Mod2 key
+\fB3\fP - Mod3 key
+\fB4\fP - Mod4 key
+\fB5\fP - Mod5 key
+\fBA\fP - Any Modifier
+\fBN\fP - No Modifier
+.EE
+
+.SH FILES
+.nf
+$HOME/.mlvwmrc
+$MLVWMLIBDIR/system.mlvwmrc
+.fi
+
+.SH COPYRIGHT NOTICES
+This program is distributed as freeware. The copyright remains with
+the author.
+
+Macintosh is a registered trademark of Apple Computer, Inc.
+
+.SH AUTHOR
+TakaC HASEGAWA
+.I hase@rop2.hitachi-cable.co.jp

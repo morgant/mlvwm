@@ -16,6 +16,31 @@
 #include "menus.h"
 #include "screen.h"
 
+char *SkipSpace( char *str )
+{
+	for( ; (*str==' ' || *str=='\t'); str++ );
+	return str;
+}
+
+char *fgetline( char *str, int size, FILE *fp )
+{
+	int readlen;
+	char strtmp[256];
+
+	if( fgets( str, size, fp )==NULL )
+		return NULL;
+
+	readlen=strlen(str)-2;
+
+	while( str[readlen]=='\\'
+		&& fgets( strtmp, sizeof(strtmp), fp)!=NULL ){
+		str[readlen]='\0';
+		snprintf( str, size, "%s%s", str, SkipSpace(strtmp) );
+		readlen=strlen(str)-2;
+	}
+	return str;
+}
+
 char *LookUpFiles( char *path, char *filename, int mode )
 {
 	char *find;
@@ -26,6 +51,7 @@ char *LookUpFiles( char *path, char *filename, int mode )
 	}
 	if( path==NULL )	return NULL;
 	do{
+		path=SkipSpace( path );
 		find = calloc( strlen(path)+strlen(filename)+2, 1 );
 		if( strchr( path, ':' )==NULL ){
 			sprintf( find, "%s/%s", path, filename );
@@ -76,12 +102,6 @@ char *stripspace_num( char *str )
 	action = calloc( strlen( str ), 1 );
 	strncpy( action, str, strlen( str )-1 );
 	return action;
-}
-
-char *SkipSpace( char *str )
-{
-	for( ; (*str==' ' || *str=='\t'); str++ );
-	return str;
 }
 
 void sleep_a_little(int n)

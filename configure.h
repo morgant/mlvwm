@@ -33,7 +33,7 @@ XCOMM
 #ifdef MlvwmLibDir
     MLVWMLIBDIR = MlvwmLibDir
 #else
-    MLVWMLIBDIR = $(USRLIBDIR)/mlvwm
+    MLVWMLIBDIR = $(USRLIBDIR)/X11/mlvwm
 #endif
 
 #ifndef HasLocale
@@ -69,7 +69,7 @@ XCOMM
 #endif
 
 XCOMM 
-XCOMM      CDEBUGFLAGS = -g -Wall -Wshadow
+      CDEBUGFLAGS = -g -Wall -Wshadow
 XCOMM            CDEBUGFLAGS = -O2 -Wall
 XCOMM            CDEBUGFLAGS = -g -Wall
 XCOMM            CDEBUGFLAGS = -g

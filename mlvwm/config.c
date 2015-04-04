@@ -152,11 +152,14 @@ char *SetMaxmizeScale( styles *tmp_style, char *str )
 	if( (stop = strchr( str, ',' ))!=NULL )		*stop = '\0';
 	if( strchr( SkipNonSpace(str), 'x' )){
 		tmp_style->maxmizescale = 0;
-		sscanf( str, "MaxmizeScale%dx%d",
-			   &(tmp_style->maxmizesize_w), &(tmp_style->maxmizesize_h) );
+		if( sscanf( str, "MaxmizeScale%dx%d",
+			   &(tmp_style->maxmizesize_w), &(tmp_style->maxmizesize_h) )!=2 )
+    	    DrawErrMsgOnMenu( "MaxmizeScale needs ", "width and height" );
 	}
-	else
-		sscanf( str, "MaxmizeScale%d", &(tmp_style->maxmizescale) );
+	else{
+		if( sscanf( str, "MaxmizeScale%d", &(tmp_style->maxmizescale) )!=1 )
+    	    DrawErrMsgOnMenu( "MaxmizeScale needs ", "size" );
+	}
 	if( stop )		stop++;
 	else		stop = str+strlen(str);
 
@@ -238,7 +241,7 @@ void SetStyles( char *line, FILE *fp )
 	int lp;
 
 	for( last = Scr.style_list; last && last->next; last=last->next );
-	while( fgets( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
+	while( fgetline( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
 		if( str[0]=='#' )		continue;
 		top = stripquote( str, &name );
 		if( name==NULL ){
@@ -312,12 +315,12 @@ void SetStartFunction( char *line, FILE *fp )
 
 	if( (!strncmp( line, "InitFunction", 12 ) && Scr.Restarting) ||
 	   (!strncmp( line, "RestartFunction", 15 ) && !Scr.Restarting)){
-		while( fgets( str, 256, fp )!=NULL && strncmp( str, "END", 3) );
+		while( fgetline( str, 256, fp )!=NULL && strncmp( str, "END", 3) );
 		return;
 	}
 
 	new = &Scr.StartFunc;
-	while( fgets( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
+	while( fgetline( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
 		if( str[0]=='#' )		continue;
 		*new = calloc( 1, sizeof( ShortCut ) );
 		top = SkipSpace( str );
@@ -335,7 +338,7 @@ void SetShortCut( char *line, FILE *fp )
 	KeyCode keycode;
 	int len, tag;
 
-	while( fgets( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
+	while( fgetline( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
 		if( str[0]=='#' )		continue;
 		top = SkipSpace( str );
 		end = SkipNonSpace( top );
@@ -469,7 +472,9 @@ void SetBarWidth( char *line, FILE *fp )
 
 void SetMenuFlush( char *line, FILE *fp )
 {
-	sscanf( line, "FlushMenu%d%d", &(Scr.flush_time), &(Scr.flush_times) );
+	if( sscanf( line, "FlushMenu%d%d", &(Scr.flush_time), &(Scr.flush_times) )
+		!=2 )
+		DrawErrMsgOnMenu( "You must set FlushMenu", " length and times" );
 	Scr.flush_time *= 1000;
 }
 
@@ -698,10 +703,21 @@ void SetUseRootWin( char *line, FILE *fp )
 				 SubstructureNotifyMask );
 }
 
+void SetEdgeResist( char *line, FILE *fp )
+{
+	if( sscanf( line, "EdgeResistance%d%d", &(Scr.resist_x), &(Scr.resist_y) )
+		!=2 ){
+		DrawErrMsgOnMenu( "EdgeResistance needs ", "x force and y force" );
+		Scr.resist_x = 0;
+		Scr.resist_y = 0;
+	}
+}
+
 config_func main_config[]={
 	{ "Desktopnum", SetDeskTopNum },
 	{ "DoubleClickTime", SetDoubleClickTime },
 	{ "DisplayDeskNumber", SetDisplayDeskNum },
+    { "EdgeResistance",	SetEdgeResist },
 	{ "FlushMenu", SetMenuFlush },
 	{ "FollowToMouse", SetFollowToMouse },
 	{ "Compatible", SetCompatible },
@@ -740,9 +756,9 @@ config_func main_config[]={
 
 void ReadConfigFile( char *configfile )
 {
-	int lp;
 	FILE *fp;
-	char str[256], *file, *cmp;
+	char str[1024], *file, *cmp;
+	int lp;
 #ifdef MLVWMLIBDIR
 	char *sysrc;
 #endif
@@ -768,7 +784,7 @@ void ReadConfigFile( char *configfile )
 		if( file )	free( file );
 		return;
 	}
-	while( fgets( str, 256, fp )!=NULL ){
+	while( fgetline( str, sizeof(str), fp )!=NULL ){
 		if( Scr.flags & DEBUGOUT )
 			DrawStringMenuBar( str );
 		cmp = str;

@@ -12,6 +12,10 @@ xmkmf -a;
 make.
 But, it must be compiled with gcc for SunOS4.x.
 
+make install
+make install.man
+are install mlvwm and manual.
+
 The designation of the installation directory can be done by the
 change of configure.h. Sauce complying with Locale came in. Make
 HasLocale YES in configure.h. Cope additionally and suitably though

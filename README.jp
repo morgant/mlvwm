@@ -10,6 +10,11 @@ make
 でコンパイルできます。ただし SunOS 4.x の場合 gcc でコンパイルする必要
 があります。
 
+インストールは
+make install
+make install.man
+で行ないます、
+
 インストールディレクトリの指定は configure.h の変更で行なえます。
 Locale 対応のソースが入りました。configure.h の中で、 HasLocale を YES
 にして下さい。その他にも、 configure.h の修正はかなり行ないましたが、

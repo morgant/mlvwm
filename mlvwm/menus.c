@@ -354,23 +354,8 @@ Bool MapMenu( MenuLabel *m, int left, int right, int y, Bool side )
 	int lp, items=0;
 	int label_w, local_mw=0, height;
 	MenuItem *mi;
-	unsigned long valuemask;
-	XSetWindowAttributes attributes;
 
 	if( m->LabelWin!=None )	RedrawMenu( m, True );
-	if( m->PullWin==None ){
-		valuemask = CWCursor | CWEventMask | CWBackPixel;
-		attributes.background_pixel = WhitePixel( dpy, Scr.screen );
-		attributes.cursor = Scr.MlvwmCursors[DEFAULT];
-		attributes.event_mask = (SubstructureRedirectMask | ExposureMask | 
-								 SubstructureNotifyMask | PointerMotionMask |
-								 EnterWindowMask | LeaveWindowMask );
-		m->PullWin = XCreateWindow( dpy, Scr.Root, 0, 0, 10, 10 , 1,
-									CopyFromParent, InputOutput,
-									CopyFromParent,
-									valuemask, &attributes );
-		XSaveContext( dpy, m->PullWin, MenuContext, (caddr_t)m );
-	}
 
 	if( m == &Scr.IconMenu && Scr.iconAnchor->next )
 		SortMenuItem( &Scr.IconMenu, Scr.iconAnchor );
@@ -757,10 +742,14 @@ Bool SwallowMenu( MenuLabel *ml )
 				if(!XGetWMNormalHints( dpy, ev.xmaprequest.window, &hints,
 									  &supplied ))
 					hints.flags = 0;
-				if((USSize | PSize ) & hints.flags )
+				if((USSize | PSize ) & hints.flags ){
 					ml->LabelWidth = hints.width;
-				else
+					ml->LabelHeight = hints.height;
+				}
+				else{
 					ml->LabelWidth = attr.width;
+					ml->LabelHeight = attr.height;
+				}
 				ml->LabelWin = ev.xmaprequest.window;
 				ml->flags &= ~CANDELETE;
 				if(XGetWMProtocols (dpy, ml->LabelWin, &protocols, &n)){
@@ -777,7 +766,7 @@ Bool SwallowMenu( MenuLabel *ml )
 		else
 			HandleEvents( ev );
 		if( ev.type==MapNotify &&
-		   XFindContext( dpy, ev.xany.window, MlvwmContext, (caddr_t *)&tmp_win )
+		   XFindContext(dpy, ev.xany.window, MlvwmContext, (caddr_t *)&tmp_win)
 		   !=XCNOENT)
 			DrawStringMenuBar( tmp_win->name );
 	}
@@ -794,15 +783,18 @@ void CreateMenuLabel( MenuLabel *ml )
 	if( ml->flags&SWALLOW ){
 		if( SwallowMenu( ml ) ){
 			XSetWindowBorderWidth( dpy, ml->LabelWin, 0 );
-			XResizeWindow( dpy, ml->LabelWin, ml->LabelWidth, MENUB_H-2 );
+//			XResizeWindow( dpy, ml->LabelWin, ml->LabelWidth, MENUB_H-2 );
 			XReparentWindow( dpy, ml->LabelWin, Scr.MenuBar, 0, 0 );
-			ml->LabelWidth += 16;
+			ml->LabelWidth += 6;
 		}
 	}
 	else{
-		if( ml->xpm )
+		if( ml->xpm ){
 			ml->LabelWidth = ml->xpm->width+16;
+			ml->LabelHeight = ml->xpm->height;
+		}
 		else{
+			ml->LabelHeight = 0;
 			if( ml->LabelStr ){
 				StrWidthHeight( MENUBARFONT, &width, NULL, NULL,
 					   ml->LabelStr, strlen(ml->LabelStr));
@@ -823,6 +815,18 @@ void CreateMenuLabel( MenuLabel *ml )
 					  CopyFromParent,
 					  valuemask, &attributes );
 		XSaveContext( dpy, ml->LabelWin, MenuContext, (caddr_t)ml );
+
+		valuemask = CWCursor | CWEventMask | CWBackPixel;
+		attributes.background_pixel = WhitePixel( dpy, Scr.screen );
+		attributes.cursor = Scr.MlvwmCursors[DEFAULT];
+		attributes.event_mask = (SubstructureRedirectMask | ExposureMask | 
+								 SubstructureNotifyMask | PointerMotionMask |
+								 EnterWindowMask | LeaveWindowMask );
+		ml->PullWin = XCreateWindow( dpy, Scr.Root, 0, 0, 10, 10 , 1,
+									CopyFromParent, InputOutput,
+									CopyFromParent,
+									valuemask, &attributes );
+		XSaveContext( dpy, ml->PullWin, MenuContext, (caddr_t)ml );
 	}
 }
 
@@ -1170,7 +1174,7 @@ void SetMenu( char *line, FILE *fp )
 		}
 	}
 
-	while( fgets( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
+	while( fgetline( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
 		if( str[0]=='#' )		continue;
 		mode = SELECTON;
 		label = NULL;
@@ -1239,7 +1243,7 @@ void SetMenuBar( char *line, FILE *fp )
 			tmp_link = &(*tmp_link)->next;
 		}
 	}
-	while( fgets( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
+	while( fgetline( str, 256, fp )!=NULL && strncmp( str, "END", 3) ){
 		if( str[0]=='#' )		continue;
 		str[ strlen(str)-1] = '\0';
 		for( tmp_l=Scr.MenuLabelRoot;
@@ -1357,8 +1361,9 @@ void MapMenuBar( MlvwmWindow *win )
 				tmpml->LabelX = right-tmpml->LabelWidth-1;
 				right = tmpml->LabelX;
 			}
-			if( tmpml->flags&SWALLOW )
-				XMoveWindow( dpy, tmpml->LabelWin, tmpml->LabelX+8, 1 );
+			if( tmpml->LabelHeight )
+				XMoveWindow( dpy, tmpml->LabelWin,
+					tmpml->LabelX+3, (MENUB_H-tmpml->LabelHeight)/2 );
 			else
 				XMoveWindow( dpy, tmpml->LabelWin, tmpml->LabelX, 1 );
 		}
@@ -1385,7 +1390,8 @@ void MapMenuBar( MlvwmWindow *win )
 			right = mlink->link->LabelX;
 		}
 		if( mlink->link->flags&SWALLOW )
-			XMoveWindow( dpy, mlink->link->LabelWin, mlink->link->LabelX+8, 1);
+			XMoveWindow( dpy, mlink->link->LabelWin,
+				mlink->link->LabelX+3, (MENUB_H-mlink->link->LabelHeight)/2 );
 		else
 			XMoveWindow( dpy, mlink->link->LabelWin, mlink->link->LabelX, 1 );
 	}
@@ -1590,4 +1596,15 @@ void CreateSimpleMenu( void )
 	Scr.MenuLabelRoot->m_item->mode = SELECTON;
 	Scr.MenuLabelRoot->m_item->label = strdup( "Quit" );
 	Scr.MenuLabelRoot->m_item->action = strdup( "Exit" );
+
+	Scr.MenuRoot = calloc( 1, sizeof(Menu) );
+	Scr.MenuRoot->link = calloc( 1, sizeof(MenuLink) );
+	Scr.MenuRoot->link->link = Scr.MenuLabelRoot;
+	if( !Scr.style_list ){
+		Scr.style_list = calloc( 1, sizeof( styles ) );
+		Scr.style_list->name = strdup("*");
+		Scr.style_list->flags = NORMALWIN;
+		Scr.style_list->maxmizescale = 90;
+		Scr.style_list->menubar = Scr.MenuRoot;
+	}
 }

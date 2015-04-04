@@ -77,7 +77,7 @@ styles *lookupstyles( char *name, XClassHint *class )
 				style = nptr;
 		}
 	}
-	if( style->iconname && !(style->miniicon) )
+	if( style && style->iconname && !(style->miniicon) )
 	   style->miniicon = ReadIcon( style->iconname, NULL, False );
 	return style;
 }
@@ -576,13 +576,13 @@ MlvwmWindow *AddWindow( Window win )
 		tmp_win->frame_y =
 			tmp_win->attr.y+tmp_win->frame_h < Scr.MyDisplayHeight ?
 				tmp_win->frame_y : Scr.MyDisplayHeight-tmp_win->frame_h-2;
-		if( tmp_win->frame_y<MENUB_H )
-			tmp_win->frame_y = MENUB_H;
 	}
 	else{
 		tmp_win->frame_x -= diff_x;
 		tmp_win->frame_y -= diff_y;
 	}
+
+	if( tmp_win->frame_y<MENUB_H ) tmp_win->frame_y = MENUB_H;
 
 	valuemask = CWCursor | CWEventMask | CWBackPixel;
 	

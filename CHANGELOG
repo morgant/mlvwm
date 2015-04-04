@@ -1,3 +1,10 @@
+0.8.9 -> 0.9.0
+Add EdgeResistance
+Change menu create function
+\ can be use to joint configuration line
+Some small bug fix.
+Change Swallow margin.
+
 0.8.8 -> 0.8.9
 Change scroll bar expose function and befavior
 Add one click menu(OneClickMenu)

@@ -63,6 +63,7 @@ typedef struct MenuLabel
 	struct MenuLabel *next;
 	Window LabelWin;
 	int LabelWidth;
+	int LabelHeight;
 	char *LabelStr;
 	char *name;
 	char *action; /* use for swallow */

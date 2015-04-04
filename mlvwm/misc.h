@@ -9,6 +9,7 @@
 #define _MISC_
 #include <unistd.h>
 
+extern char *fgetline( char *, int, FILE * );
 extern char *SkipNonSpace( char * );
 extern char *LookUpFiles( char *, char *, int );
 extern void sleep_a_little( int );

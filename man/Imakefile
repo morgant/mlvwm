@@ -1,0 +1,8 @@
+XCOMM Imakefile for MLVWM
+
+#include "../configure.h"
+
+XCOMM Do not change from here !
+
+all::
+InstallManPage(mlvwm,$(MANDIR))

@@ -202,6 +202,8 @@ void InitScrParams( void )
 										   Scr.d_depth );
 	Scr.StartFunc = NULL;
 	Scr.flags |= STARTING;
+	Scr.resist_x = 0;
+	Scr.resist_y = 0;
 }
 
 void InitGCs( void )
@@ -540,7 +542,7 @@ void DoStartFunc( void )
 	}
 }
 
-void main( int argc, char *argv[] )
+int main( int argc, char *argv[] )
 {
 	char *display_name=NULL;
 	char *display_string;
@@ -680,7 +682,7 @@ void main( int argc, char *argv[] )
 	}
 	XUngrabServer( dpy );
 	if( !Scr.MenuLabelRoot )	CreateSimpleMenu();
-	else						CreateMenuItems();
+	CreateMenuItems();
 	for( Scr.iconAnchor = Scr.IconMenu.m_item;
 		Scr.iconAnchor->next->next != NULL;
 		Scr.iconAnchor = Scr.iconAnchor->next );
@@ -696,4 +698,5 @@ void main( int argc, char *argv[] )
 	MapMenuBar( Scr.ActiveWin );
 
 	while( True )		WaitEvents();
+	return 0;
 }

@@ -94,6 +94,7 @@ Description
   OpaqueResize    リサイズ時に中身を表示したまま移動
   OneClickMenu    クリックでメニューがプルダウンして、もう一回のクリック
                   で実行
+  EdgeResistance  ウインドウが画面の外に出るために必要な移動量を x, y で追加
   ZoomWait        Hide のアニメーションスピードを ms で指定。デフォルトは
                   10ms。
   RotateDesk      デスクトップの加算、減算をローテーションする。

@@ -116,6 +116,8 @@ The item which can be set by the initialization file is as the next.
        Enable Opaque resize.
      OneClickMenu
        Click pull down menu and more one click execute selection.
+     EdgeResistance x y
+       Edge resistance force.
      ZoomWait
        Setting Hide animation speed. Default is 10ms. The unit is ms.
      RotateDesk

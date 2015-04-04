@@ -105,6 +105,7 @@ typedef struct ScreenInfo
 	int bar_width;
 	int flush_time;
 	int flush_times;
+	int resist_x, resist_y;
 	int zoom_wait;
 
 	char *IconPath;

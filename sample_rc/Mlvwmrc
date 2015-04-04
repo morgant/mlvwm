@@ -42,6 +42,9 @@ OpaqueMove
 # Double click time
 DoubleClickTime 300
 
+# Edge resistance force
+EdgeResistance 50 50
+
 ## Show window name with desktop number on window list
 #DisplayDeskNumber
 
