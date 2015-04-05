@@ -502,7 +502,10 @@ Bool ChoiseMenu( MenuLabel *m, Window *entwin, int ignore, Bool side )
 	MenuLabel *mapped=NULL, *tmp_menu;
 
 	while( !isEnd && !finishall){
-		XNextEvent( dpy, &Event );
+		XMaskEvent( dpy, ExposureMask | ButtonReleaseMask | ButtonPressMask|
+						EnterWindowMask | PointerMotionMask | ButtonMotionMask,
+						&Event );
+//		XNextEvent( dpy, &Event );
 		switch( Event.type ){
 		case Expose:
 			if( XFindContext( dpy, Event.xany.window, MenuContext,
@@ -622,7 +625,10 @@ void press_menu( MenuLabel *m )
 
 	mapped = m;
 	while( !isEnd ){
-		XNextEvent( dpy, &Event );
+		XMaskEvent( dpy, ExposureMask | ButtonReleaseMask | ButtonPressMask|
+						EnterWindowMask | PointerMotionMask | ButtonMotionMask,
+						&Event );
+//		XNextEvent( dpy, &Event );
 		switch( Event.type ){
 		case Expose:
 			if( mapped && Event.xany.window==mapped->PullWin &&

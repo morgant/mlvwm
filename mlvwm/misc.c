@@ -264,6 +264,8 @@ void RaiseMlvwmWindow( MlvwmWindow *win )
 		wins[set++] = win->frame;
 
 	XRaiseWindow( dpy, wins[0] );
+	XRaiseWindow( dpy, wins[1] );
+	XRaiseWindow( dpy, wins[2] );
 	XRestackWindows( dpy, wins, set );
 
 	free( wins );
