@@ -1,6 +1,6 @@
 /****************************************************************************/
 /* This module is based on fvwm, but has been siginificantly modified       */
-/* by TakaC Hasegawa (tak@bioele.nuee.nagoya-u.ac.jp)                       */
+/* by TakaC Hasegawa (tac.hasegawa@gmail.com)                               */
 /****************************************************************************/
 /****************************************************************************
  * This module is based on Twm, but has been siginificantly modified 

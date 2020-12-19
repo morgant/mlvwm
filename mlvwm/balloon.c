@@ -1,6 +1,6 @@
 /****************************************************************************/
 /* This module is mostly all new                                            */
-/* by TakaC Hasegawa (tak@bioele.nuee.nagoya-u.ac.jp)                       */
+/* by TakaC Hasegawa (tac.hasegawa@gmail.com)                               */
 /* Copyright 1996 TakaC Hasegawa. No restrictions are placed on this code,  */
 /* as long as the copyright notice is preserved                             */
 /****************************************************************************/
