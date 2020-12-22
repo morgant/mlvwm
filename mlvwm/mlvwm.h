@@ -34,7 +34,7 @@
 /*****************************************************************************/
 
 #ifndef _MLVWM_
-#define _MLVFM_
+#define _MLVWM_
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
