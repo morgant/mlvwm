@@ -1596,6 +1596,7 @@ void handle_property_request( XEvent *ev )
 	XTextProperty text_prop;
 	unsigned int JunkWidth, JunkHeight, JunkBW, JunkDepth;
 	char desk[8], *str, action[24];
+	size_t str_size;
 #ifdef USE_LOCALE
 	int num;
 	char **list;
@@ -1640,8 +1641,9 @@ void handle_property_request( XEvent *ev )
 		ChangeMenuItemLabel( "ICON", oldWinName, winname,
 							action, M_ALLSET, M_AND );
 		if( tmp_win==Scr.ActiveWin ){
-			str = calloc( strlen( tmp_win->name )+6, 1 );
-			sprintf( str, "Hide %s", tmp_win->name );
+			str_size = strlen(tmp_win->name)+6;
+			str = calloc( str_size, 1 );
+			snprintf( str, str_size, "Hide %s", tmp_win->name );
 			ChangeMenuItemLabel( "ICON", Scr.IconMenu.m_item->label,
 								str, NULL, SELECTON, M_COPY );
 			free( str );

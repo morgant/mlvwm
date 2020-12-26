@@ -614,7 +614,7 @@ int main( int argc, char *argv[] )
     if(!single){
         for(lp=0;lp<Scr.NumberOfScreens;lp++){
             if(lp!= Scr.screen){
-                sprintf(message,"%s -d %s",argv[0],XDisplayString(dpy));
+                snprintf(message, sizeof(message), "%s -d %s", argv[0], XDisplayString(dpy));
                 len = strlen(message);
                 message[len-1] = '\0';
                 sprintf(num,"%d",lp);
@@ -633,7 +633,7 @@ int main( int argc, char *argv[] )
 	}
 	len = strlen( XDisplayString( dpy ) );
 	display_string = calloc( len+10, sizeof( char ) );
-	sprintf( display_string, "DISPLAY=%s", XDisplayString( dpy ) );
+	snprintf( display_string, len+10, "DISPLAY=%s", XDisplayString(dpy) );
 	putenv( display_string );
 
 	XShapeQueryExtension( dpy, &ShapeEventBase, &ShapeErrorBase );

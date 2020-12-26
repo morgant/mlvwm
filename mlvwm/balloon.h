@@ -8,5 +8,7 @@
 #ifndef _BALLOON_
 #define _BALLOON_
 
+#define MAX_BALLOON_STR_LEN   255
+
 extern void BalloonHelp( void );
 #endif /* _BALLOON_ */

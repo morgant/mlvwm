@@ -966,6 +966,7 @@ void DrawAllDecorations( MlvwmWindow *t, Bool on_off )
 void SetFocus( MlvwmWindow *t )
 {
 	char *str, action[24], *winname;
+	size_t str_size;
 	unsigned long mask, valuemask;
 	XSetWindowAttributes attributes;
 	XGCValues xgcv;
@@ -1016,8 +1017,9 @@ void SetFocus( MlvwmWindow *t )
 	ChangeMenuLabel( &(Scr.IconMenu), NULL, 
 					t->miniicon==NULL?Scr.SystemIcon:t->miniicon );
 	if( !(t->flags&TRANSIENT) ){
-		str = calloc( strlen(t->name)+6, 1 );
-		sprintf( str, "Hide %s", t->name );
+		str_size = strlen(t->name)+6;
+		str = calloc( str_size, 1 );
+		snprintf( str, str_size, "Hide %s", t->name );
 		ChangeMenuItemLabel( "ICON", Scr.IconMenu.m_item->label,
 							str, NULL, SELECTON, M_COPY );
 		ChangeMenuItemLabel( "ICON", "Hide Others", "Hide Others",

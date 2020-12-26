@@ -13,6 +13,7 @@
 #include "screen.h"
 #include "misc.h"
 #include "event.h"
+#include "balloon.h"
 
 #include <X11/extensions/shape.h>
 
@@ -156,7 +157,7 @@ void ShapeBalloon( int fx, int fy, int xoff, int yoff, int woff, int hoff, int w
 void BalloonSize( int *lh, int *lw, int *offset, int *w, int *h, MlvwmWindow *mw )
 {
 	int lp;
-	char contents[256];
+	char contents[MAX_BALLOON_STR_LEN];
 	int contents_width=0, strw, strh;
 	int xinc, yinc;
 
@@ -223,7 +224,7 @@ void BalloonSize( int *lh, int *lw, int *offset, int *w, int *h, MlvwmWindow *mw
 void DrawWindowBalloon( int xoff, int yoff, int lh, int offset, int lw, MlvwmWindow *mw )
 {
 	int lp;
-	char contents[255];
+	char contents[MAX_BALLOON_STR_LEN];
 	int xinc, yinc;
 
 	for( lp=0; WinLabel[lp]!=NULL; lp++ ){
