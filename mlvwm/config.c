@@ -761,6 +761,7 @@ void ReadConfigFile( char *configfile )
 	int lp;
 #ifdef MLVWMLIBDIR
 	char *sysrc;
+	size_t sysrc_size;
 #endif
 
 	if( (file = LookUpFiles( NULL, configfile, R_OK ))==NULL )
@@ -768,12 +769,14 @@ void ReadConfigFile( char *configfile )
 #ifdef MLVWMLIBDIR
 	if( !file ){
 		if( strcmp( configfile, CONFIGNAME) ){
-			sysrc = calloc( strlen(MLVWMLIBDIR)+strlen(configfile)+2, 1 );
-			sprintf( sysrc, "%s/%s", MLVWMLIBDIR, configfile );
+			sysrc_size = strlen(MLVWMLIBDIR)+strlen(configfile)+2;
+			sysrc = calloc( sysrc_size, 1 );
+			snprintf( sysrc, sysrc_size, "%s/%s", MLVWMLIBDIR, configfile );
 		}
 		else{
-			sysrc = calloc( strlen(MLVWMLIBDIR)+strlen(configfile)+9, 1 );
-			sprintf( sysrc, "%s/system%s", MLVWMLIBDIR, configfile );
+			sysrc_size = strlen(MLVWMLIBDIR)+strlen(configfile)+9;
+			sysrc = calloc( sysrc_size, 1 );
+			snprintf( sysrc, sysrc_size, "%s/system%s", MLVWMLIBDIR, configfile );
 		}
 		file = LookUpFiles( NULL, sysrc, R_OK );
 		free( sysrc );

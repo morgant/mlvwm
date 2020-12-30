@@ -545,10 +545,11 @@ void DoStartFunc( void )
 int main( int argc, char *argv[] )
 {
 	char *display_name=NULL;
+	char *display_screen;
 	char *display_string;
 	char *config_file=NULL;
 	char message[255];
-	char num[10];
+	char *cp;
 	Window StartWin;
 	XSetWindowAttributes attributes;
 	int len, lp;
@@ -614,26 +615,36 @@ int main( int argc, char *argv[] )
     if(!single){
         for(lp=0;lp<Scr.NumberOfScreens;lp++){
             if(lp!= Scr.screen){
-                sprintf(message,"%s -d %s",argv[0],XDisplayString(dpy));
-                len = strlen(message);
-                message[len-1] = '\0';
-                sprintf(num,"%d",lp);
-                strcat(message,num);
-                strcat(message," -s ");
+                len = strlen(XDisplayString(dpy)) + 10;
+                display_screen = calloc(len, sizeof(char));
+                snprintf(display_screen, len, "%s", XDisplayString(dpy));
+                /*
+                 * Truncate the string 'whatever:n.n' to 'whatever:n',
+                 * and then append the screen number.
+                 */
+                cp = strchr(display_screen, ':');
+                if (cp != NULL)
+                {
+                  cp = strchr(cp, '.');
+                  if (cp != NULL)
+                  *cp = '\0';  /* truncate at display part */
+                }
+                snprintf(message, sizeof(message), "%s -d %s.%d -s", argv[0], display_screen, lp);
+                free(display_screen);
+
                 if( Scr.flags & DEBUGOUT)
-					strcat(message," -debug");
-				if( config_file!=NULL ){
-					strcat(message," -f ");
-					strcat(message,config_file);
-				}
-                strcat(message," &\n");
+                    snprintf(message + strlen(message), sizeof(message) - strlen(message), " -debug");
+                if( config_file != NULL )
+                    snprintf(message + strlen(message), sizeof(message) - strlen(message) ," -f %s", config_file);
+                snprintf(message + strlen(message), sizeof(message) - strlen(message), " &\n");
+
                 system(message);
 			}
 		}
 	}
 	len = strlen( XDisplayString( dpy ) );
 	display_string = calloc( len+10, sizeof( char ) );
-	sprintf( display_string, "DISPLAY=%s", XDisplayString( dpy ) );
+	snprintf( display_string, len+10, "DISPLAY=%s", XDisplayString(dpy) );
 	putenv( display_string );
 
 	XShapeQueryExtension( dpy, &ShapeEventBase, &ShapeErrorBase );

@@ -43,7 +43,8 @@ char *fgetline( char *str, int size, FILE *fp )
 
 char *LookUpFiles( char *path, char *filename, int mode )
 {
-	char *find;
+	char *find, *separator;
+	size_t find_size;
 
 	if( !access( filename, mode ) ){
 		find = strdup( filename );
@@ -52,14 +53,16 @@ char *LookUpFiles( char *path, char *filename, int mode )
 	if( path==NULL )	return NULL;
 	do{
 		path=SkipSpace( path );
-		find = calloc( strlen(path)+strlen(filename)+2, 1 );
+		find_size = strlen(path)+strlen(filename)+2;
+		find = calloc( find_size, 1 );
 		if( strchr( path, ':' )==NULL ){
-			sprintf( find, "%s/%s", path, filename );
+			snprintf( find, find_size, "%s/%s", path, filename );
 			path += strlen( path );
 		}
 		else{
 			strcpy( find, path );
-			sprintf( strchr( find, ':' ), "/%s", filename );
+			separator = strchr( find, ':' );
+			snprintf( separator, strlen(separator)+strlen(filename)+2, "/%s", filename );
 			path = strchr( path, ':') + 1;
 		}
 		if( !access(find, mode ) ){
@@ -120,12 +123,14 @@ void sleep_a_little(int n)
 void DrawErrMsgOnMenu( char *str1, char *str2 )
 {
 	char *str;
+	size_t str_size;
 	static int call=0;
 	int wait_s;
 
 	call++;
-	str = calloc( strlen(str1)+strlen(str2)+1, 1 );
-	sprintf( str, "%s%s", str1, str2 );
+	str_size = strlen(str1)+strlen(str2)+1;
+	str = calloc( str_size, 1 );
+	snprintf( str, str_size, "%s%s", str1, str2 );
 	if( call<5 )	XBell( dpy, 30 );
 	DrawStringMenuBar( str );
 	wait_s = 3000000-call/5*500000;
@@ -274,13 +279,15 @@ void RaiseMlvwmWindow( MlvwmWindow *win )
 char *WinListName( MlvwmWindow *mw )
 {
 	char *winname;
+	size_t winname_size;
 
-	winname = calloc( strlen( mw->name )+1+(Scr.flags&DISPDESK?3:0), 1 );
+	winname_size = strlen( mw->name )+1+(Scr.flags&DISPDESK?3:0);
+	winname = calloc( winname_size, 1 );
 	if( Scr.flags&DISPDESK ){
 		if( mw->flags&STICKY )
-			sprintf( winname, "S:%s", mw->name );
+			snprintf( winname, winname_size, "S:%s", mw->name );
 		else
-			sprintf( winname, "%d:%s", mw->Desk, mw->name );
+			snprintf( winname, winname_size, "%d:%s", mw->Desk, mw->name );
 	}
 	else
 		strcpy( winname, mw->name );
