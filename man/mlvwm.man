@@ -155,6 +155,9 @@ Change to window decoration to System 8(Only Color Monitor).
 Enable Opaque move.
 .IP "\fBOpaqueResize\fP"
 Enable Opaque resize.
+.IP "\fBEdgeResistance\fP \fIx\fP \fIy\fP"
+Determines the amount of force needed to drag a window beyond the bounds
+of the screen. Default is 0px. The unit is px.
 .IP "\fBOneClickMenu\fP"
 Click pull down menu and more one click execute selection.
 .IP "\fBZoomWait\fP \fIms\fB"
