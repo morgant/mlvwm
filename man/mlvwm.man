@@ -370,6 +370,14 @@ the author.
 
 Macintosh is a registered trademark of Apple Computer, Inc.
 
-.SH AUTHOR
+.SH AUTHORS
 TakaC HASEGAWA
-.I hase@rop2.hitachi-cable.co.jp
+.I tac.hasegawa@gmail.com
+
+Morgan Aldridge
+.I morgant@makkintosshu.com
+
+.SH HISTORY
+.I mlvwm
+was developed by TakaC HASEGAWA in 1997 and is based on the FVWM window
+manager.
