@@ -674,7 +674,7 @@ void RestartSystem( char *action )
 
 	top = SkipSpace( SkipNonSpace( action+6 ));
 	if( strncmp( top, "mlvwm", 5 ) )
-		Done( 1, top );
+		Done( 1, strdup(top) );
 	else
 		Done( 1, NULL );
 }
