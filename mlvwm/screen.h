@@ -141,6 +141,7 @@ typedef struct ScreenInfo
 #define OPAQUERESIZE	 	0x00008000
 #define ONECLICKMENU	 	0x00010000
 #define DEBUGOUT            0x00020000
+#define ROUNDEDCORNERS      0x00040000
 
 #ifdef USE_LOCALE
 #define MENUBARFONT Scr.MenuBarFs
