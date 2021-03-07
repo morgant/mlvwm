@@ -494,8 +494,7 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
                     DrawShadowBox( 4, lp-1, t->frame_w-14, 2, t->title_w, 1,
 								  Scr.WhiteGC, Scr.Gray1GC, SHADOW_ALL );
                 else
-                    DrawShadowBox(0, lp, t->frame_w, 2, t->title_w, 1,
-                                  Scr.Gray1GC, Scr.WhiteGC, SHADOW_ALL );
+                    XDrawLine( dpy, t->title_w, Scr.Gray1GC, 0, lp, t->frame_w, lp );
 			}
 			else
 				XDrawLine( dpy, t->title_w, Scr.BlackGC,
