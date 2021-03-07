@@ -334,7 +334,7 @@ void DrawCloseBox( MlvwmWindow *t, Bool on )
 		if( Scr.flags&SYSTEM8 ){
 			XFillRectangle( dpy, t->title_w, Scr.Gray4GC,
 						   4, (TITLE_HEIGHT-BOXSIZE)/2-2,
-						   BOXSIZE+7, BOXSIZE+2 );
+                           BOXSIZE+2, BOXSIZE+2 );
 			FillGradation( t->close_b );
 		}
 		else{
@@ -376,7 +376,7 @@ void DrawMinMax( MlvwmWindow *t, Bool on )
 	if( on ){
 		if( Scr.flags&SYSTEM8 ){
 			XFillRectangle( dpy, t->title_w, Scr.Gray4GC,
-						   t->frame_w-BOXSIZE-15-
+                           t->frame_w-BOXSIZE-9-
 						   (t->flags&SHADER?BOXSIZE+6:0),
 						   (TITLE_HEIGHT-BOXSIZE)/2-1,
 						   BOXSIZE+8, BOXSIZE+2 );
@@ -488,30 +488,19 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
 	while( w+20>drawable && titlelength>0 );
 
 	if( on_off ){
-		for( lp=4; lp<14; lp+=3 ){
+        for( lp=4; lp<16; lp+=2 ){
 			if( Scr.d_depth>1 ){
-				if( Scr.flags&SYSTEM8 )
-					DrawShadowBox( 4, lp-2, t->frame_w-15, 2, t->title_w, 1,
+                if( Scr.flags&SYSTEM8 )
+                    DrawShadowBox( 4, lp-1, t->frame_w-14, 2, t->title_w, 1,
 								  Scr.WhiteGC, Scr.Gray1GC, SHADOW_ALL );
-				else
-					DrawShadowBox( 4, lp-1, t->frame_w-11, 2, t->title_w, 1,
-								  Scr.Gray1GC, Scr.WhiteGC, SHADOW_ALL );
+                else
+                    XDrawLine( dpy, t->title_w, Scr.Gray1GC, 0, lp, t->frame_w, lp );
 			}
 			else
 				XDrawLine( dpy, t->title_w, Scr.BlackGC,
 						  4, lp-1, t->frame_w-7, lp-1 );
-		}
-		if( Scr.d_depth>1 ){
-			if( Scr.flags&SYSTEM8 )
-				DrawShadowBox( 4, 14, t->frame_w-15, 2, t->title_w, 1,
-							  Scr.WhiteGC, Scr.Gray1GC, SHADOW_ALL );
-			else
-				XDrawLine( dpy, t->title_w, Scr.Gray1GC,
-						  4, 15, t->frame_w-9, 15 );
-		}
-		else
-			XDrawLine( dpy, t->title_w, Scr.BlackGC,
-					  4, 15, t->frame_w-7, 15 );
+        }
+
 		if( Scr.flags&SYSTEM8 ){
 			DrawShadowBox( 0, 0, t->frame_w-2, TITLE_HEIGHT, t->title_w,
 						  1, Scr.WhiteGC, Scr.Gray2GC, SHADOW_TOP );
@@ -523,7 +512,7 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
 			DrawShadowBox( 0, 0, t->frame_w-2, TITLE_HEIGHT, t->title_w,
 						  1, Scr.WhiteGC, Scr.Gray2GC, SHADOW_ALL );
 		XFillRectangle( dpy, t->title_w, Scr.Gray4GC,
-					   (t->frame_w-w)/2-10, 1, w+20, TITLE_HEIGHT-2 );
+                       (t->frame_w-w)/2-5, 1, w+10, TITLE_HEIGHT-2 );
 		dispgc = Scr.BlackGC;
 	}
 	else{
