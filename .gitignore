@@ -1,0 +1,5 @@
+man/mlvwm._man
+mlvwm/mlvwm
+**/Makefile*
+**/*.o
+mlvwm.*
