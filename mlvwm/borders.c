@@ -55,13 +55,13 @@ void DrawShadowBox( int x, int y, int w, int h, Window win, int d, GC hilight, G
 	h--;
 	for( lp=0; lp<d; lp++ ){
 		if( mode&SHADOW_BOTTOM )
-			XDrawLine( dpy, win, shadow, x+lp, y+h-lp, x+w-lp, y+h-lp );
+            XDrawLine( dpy, win, shadow, x+lp+1, y+h-lp, x+w-lp, y+h-lp );
 		if( mode&SHADOW_LEFT )
-			XDrawLine( dpy, win, hilight, x+lp, y+lp, x+lp, y+h-lp );
+            XDrawLine( dpy, win, hilight, x+lp, y+lp, x+lp, y+h-lp-1 );
 		if( mode&SHADOW_TOP )
-			XDrawLine( dpy, win, hilight, x+lp, y+lp, x+w-lp, y+lp );
+            XDrawLine( dpy, win, hilight, x+lp, y+lp, x+w-lp-1, y+lp );
 		if( mode&SHADOW_RIGHT )
-			XDrawLine( dpy, win, shadow, x+w-lp, y+lp, x+w-lp, y+h-lp );
+            XDrawLine( dpy, win, shadow, x+w-lp, y+lp+1, x+w-lp, y+h-lp-1 );
 	}
 }
 
@@ -129,7 +129,7 @@ void SetUpFrame( MlvwmWindow *t, int x, int y, int w, int h, Bool sendEvent )
 	if( t->flags&MINMAXR ){
 		if( Scr.flags&SYSTEM8 )
 			XMoveWindow(dpy, t->minmax_b,
-						w-BOXSIZE-9-(t->flags&SHADER?BOXSIZE+4:0),
+                        w-BOXSIZE-7-(t->flags&SHADER?BOXSIZE+4:0),
 						(TITLE_HEIGHT-BOXSIZE)/2);
 		else
 			XMoveWindow(dpy, t->minmax_b,
@@ -137,7 +137,7 @@ void SetUpFrame( MlvwmWindow *t, int x, int y, int w, int h, Bool sendEvent )
 						(TITLE_HEIGHT-BOXSIZE)/2);
 	}
 	if( t->flags&SHADER )
-		XMoveWindow(dpy, t->shade_b, w-BOXSIZE-9,
+        XMoveWindow(dpy, t->shade_b, w-BOXSIZE-8,
 					(TITLE_HEIGHT-BOXSIZE)/2);
 	if( !(t->flags&SHADE) ){
 		if( t->flags & ( TITLE | SBARV | SBARH | RESIZER ) ){
