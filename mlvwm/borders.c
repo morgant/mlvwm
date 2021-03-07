@@ -382,7 +382,7 @@ void DrawMinMax( MlvwmWindow *t, Bool on )
 						   BOXSIZE+8, BOXSIZE+2 );
 			FillGradation( t->minmax_b );
 			XDrawRectangle( dpy, t->minmax_b, Scr.BlackGC,
-						   1, 1, BOXSIZE-6, BOXSIZE-6 );
+                           1, 1, BOXSIZE-7, BOXSIZE-7 );
 		}
 		else{
 			XFillRectangle( dpy, t->title_w, Scr.Gray4GC,

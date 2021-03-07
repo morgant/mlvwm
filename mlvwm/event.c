@@ -969,7 +969,7 @@ void MinMaxWindow( MlvwmWindow *mw, XEvent *evp )
 
 	DisplayPush( mw->minmax_b );
 	XDrawRectangle( dpy, mw->minmax_b, Scr.BlackGC,
-				   1, 1, BOXSIZE-6, BOXSIZE-6 );
+                   1, 1, BOXSIZE-7, BOXSIZE-7 );
 	while( !isEnd ){
 		XMaskEvent( dpy,
 				   ButtonReleaseMask|EnterWindowMask|LeaveWindowMask, &ev );
@@ -983,7 +983,7 @@ void MinMaxWindow( MlvwmWindow *mw, XEvent *evp )
 			if( ev.xcrossing.window==mw->minmax_b ){
 				DisplayPush( mw->minmax_b );
 				XDrawRectangle( dpy, mw->minmax_b, Scr.BlackGC,
-							   1, 1, BOXSIZE-6, BOXSIZE-6 );
+                               1, 1, BOXSIZE-6, BOXSIZE-6 );
 				isIn = True;
 			}
 			break;
