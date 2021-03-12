@@ -151,6 +151,8 @@ It turns on FollowToMouse with the modification of not loosing
 focus when in the root window.
 .IP "\fBSystem8\fP"
 Change to window decoration to System 8(Only Color Monitor).
+.IP "\fBRoundedScreenCorners\fP"
+Enable rounded screen corners.
 .IP "\fBOpaqueMove\fP"
 Enable Opaque move.
 .IP "\fBOpaqueResize\fP"
