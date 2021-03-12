@@ -179,7 +179,7 @@ extern Atom _XA_WM_DESKTOP;
 extern void Done( int, char * );
 #ifdef USE_LOCALE
 #define DEFAULTFS "-adobe-*-*-r-*-*-12-*-*-*-p-*-*-*,\
--*-*-*-r-*-*-14-*-*-*-*-*-*-*"
+-*-*-*-r-*-*-12-*-*-*-*-*-*-*"
 #else
 #define DEFAULTFONT "-adobe-*-*-r-*-*-12-*-*-*-p-*-*-*"
 #endif
