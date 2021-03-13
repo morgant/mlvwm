@@ -887,26 +887,26 @@ void DrawResizeBox( MlvwmWindow *t, Bool on_off )
 		if( Scr.flags&SYSTEM8 ){
 			for(lp=0; lp<3; lp++ ){
 				XDrawLine( dpy, t->resize_b, Scr.WhiteGC,
-						  2+lp*3, 9+lp*3, 8+lp*3, 3+lp*3 );
+						  3+lp*2, 8+lp*2, 7+lp*2, 4+lp*2 );
 				XDrawLine( dpy, t->resize_b, Scr.BlackGC,
-						  4+lp*3, 8+lp*3, 9+lp*3, 3+lp*3 );
+						  4+lp*2, 8+lp*2, 8+lp*2, 4+lp*2 );
 			}
 		}
 		else{
-			point = 6*SBAR_WH/19.+0.5;
-			scale = 9*SBAR_WH/19.+0.5;
+			point = 4*SBAR_WH/16.;
+			scale = 9*SBAR_WH/16.;
 			DrawShadowBox( point, point,  scale,  scale, t->resize_b,
 						  1, Scr.WhiteGC, Scr.BlackGC, SHADOW_ALL );
 			DrawShadowBox( point-1, point-1, scale+2, scale+2, t->resize_b,
 						  1, Scr.BlackGC, Scr.WhiteGC, SHADOW_ALL );
 			
-			point = 3*SBAR_WH/19.+0.5;
-			scale = 8*SBAR_WH/19.+0.5;
+			point = 3*SBAR_WH/16.;
+			scale = 6*SBAR_WH/16.;
 			XFillRectangle( dpy, t->resize_b, Scr.Gray4GC,
 						   point, point, scale, scale );
 
-			point = 4*SBAR_WH/19.+0.5;
-			scale = 7*SBAR_WH/19.+0.5;
+			point = 3*SBAR_WH/16.;
+			scale = 5*SBAR_WH/16.;
 			DrawShadowBox( point, point,  scale,  scale, t->resize_b,
 						  1, Scr.WhiteGC, Scr.BlackGC, SHADOW_ALL );
 			DrawShadowBox( point-1, point-1, scale+2, scale+2, t->resize_b,
