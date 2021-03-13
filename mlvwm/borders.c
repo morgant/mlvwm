@@ -538,8 +538,8 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
 void DrawArrow( Window w, int direction, GC color )
 {
 	XPoint arrow_p[] = {
-		{9,3},{2,10},{6,10},{6,15},{12,15},{12,10},{16,10},{9,3}, {0,0}},
-	arrow_p8[] = {{15,11},{9,5},{3,11},{15,11}, {0,0}};
+		{7,3},{2,8},{5,8},{5,12},{9,12},{9,8},{12,8},{7,3}, {0,0}},
+	arrow_p8[] = {{7,6},{4,9},{11,9},{8,6},{7,6}, {0,0}};
 	XPoint *use_p;
 	int lp, JunkX, point;
 
@@ -547,8 +547,8 @@ void DrawArrow( Window w, int direction, GC color )
 	else		use_p = arrow_p;
 
 	for( point=0; use_p[point].x!=0; point++ ){
-		use_p[point].x = use_p[point].x*SBAR_WH/19.+0.5;
-		use_p[point].y = use_p[point].y*SBAR_WH/19.+0.5;
+		use_p[point].x = use_p[point].x*SBAR_WH/16.;
+		use_p[point].y = use_p[point].y*SBAR_WH/16.;
 	}
 
 	if( direction==C_SBAR_LEFT || direction==C_SBAR_RIGHT ){
@@ -604,18 +604,17 @@ void DrawSbarAnk( MlvwmWindow *t, int context, Bool on_off )
 
 			DrawShadowBox( 0, 0, SBAR_WH, SBAR_WH, win, 1,
 						  Scr.WhiteGC, Scr.Gray2GC, SHADOW_ALL );
-			scale = 11*SBAR_WH/19.+0.5;
+			scale = 8*SBAR_WH/16.;
 			if( context==C_SBAR_H_AN ){
-				for( lp=0; lp<(SBAR_WH-6)/3; lp++ )
-					DrawShadowBox( (lp+1)*3, (SBAR_WH-scale)/2+1,
-								  3, scale, win, 1,
+				for( lp=0; lp<(SBAR_WH-8)/2; lp++ )
+					DrawShadowBox( (lp+2)*2, (SBAR_WH-scale)/2,
+								  2, scale, win, 1,
 								  Scr.WhiteGC, Scr.BlackGC, SHADOW_ALL );
 			}
 			if( context==C_SBAR_V_AN ){
-				scale = 11*SBAR_WH/19.+0.5;
-				for( lp=0; lp<(SBAR_WH-6)/3; lp++ )
-					DrawShadowBox( (SBAR_WH-scale)/2, (lp+1)*3,
-								  scale, 3, win, 1,
+				for( lp=0; lp<(SBAR_WH-8)/2; lp++ )
+					DrawShadowBox( (SBAR_WH-scale)/2, (lp+2)*2,
+								  scale, 2, win, 1,
 								  Scr.WhiteGC, Scr.BlackGC, SHADOW_ALL );
 			}
 		}
