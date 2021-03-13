@@ -186,10 +186,7 @@ void InitScrParams( void )
 	Scr.style_list = NULL;
 	Scr.ShortCutRoot = NULL;
 	Scr.double_click_time = 300;
-	if( Scr.flags&SYSTEM8 )
-		Scr.bar_width = 16;
-	else
-		Scr.bar_width = 19;
+	Scr.bar_width = 16;
 	Scr.flush_time = 100000;
 	Scr.flush_times = 2;
 	Scr.zoom_wait = 10000;
