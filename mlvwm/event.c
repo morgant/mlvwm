@@ -1248,7 +1248,10 @@ void PressSbar( Bool isHbar, Window pressedwin, MlvwmWindow *tmp_win )
 		anker = tmp_win->scroll_v[3];
 	}
 	if( pushd!=0 ){
-		DrawArrow( pressedwin, direction, Scr.BlackGC, Scr.BlackGC );
+		if( Scr.flags&SYSTEM8 )
+			DrawShadowBox( 0, 0, SBAR_WH, SBAR_WH, pressedwin, 1, Scr.Gray2GC, Scr.WhiteGC, SHADOW_ALL );
+		else
+			DrawArrow( pressedwin, direction, Scr.BlackGC, Scr.BlackGC );
 		XSync( dpy, 0 );
 	}
 
@@ -1289,15 +1292,23 @@ void PressSbar( Bool isHbar, Window pressedwin, MlvwmWindow *tmp_win )
 					break;
 				case EnterNotify:
 					if( ev.xcrossing.window==pressedwin ){
-						if( !isSelect )
-							DrawArrow( pressedwin, direction, Scr.BlackGC, Scr.BlackGC );
+						if( !isSelect ) {
+							if( Scr.flags&SYSTEM8 )
+								DrawShadowBox( 0, 0, SBAR_WH, SBAR_WH, pressedwin, 1, Scr.Gray2GC, Scr.WhiteGC, SHADOW_ALL );
+							else
+								DrawArrow( pressedwin, direction, Scr.BlackGC, Scr.BlackGC );
+						}
 						isSelect = True;
 					}
 					break;
 				case LeaveNotify:
 					if( ev.xcrossing.window==pressedwin ){
-						if( isSelect )
-							DrawArrow( pressedwin, direction, Scr.Gray3GC, Scr.BlackGC );
+						if( isSelect ) {
+							if( Scr.flags&SYSTEM8 )
+								DrawShadowBox( 0, 0, SBAR_WH, SBAR_WH, pressedwin, 1, Scr.WhiteGC, Scr.Gray2GC, SHADOW_ALL );
+							else
+								DrawArrow( pressedwin, direction, Scr.Gray3GC, Scr.BlackGC );
+						}
 						isSelect = False;
 					}
 					break;
@@ -1329,8 +1340,12 @@ void PressSbar( Bool isHbar, Window pressedwin, MlvwmWindow *tmp_win )
 	}
 	while( !isEnd );
 
-	if( pushd!=0 )
-		DrawArrow( pressedwin, direction, Scr.Gray3GC, Scr.BlackGC );
+	if( pushd!=0 ) {
+		if( Scr.flags&SYSTEM8 )
+			DrawShadowBox( 0, 0, SBAR_WH, SBAR_WH, pressedwin, 1, Scr.WhiteGC, Scr.Gray2GC, SHADOW_ALL );
+		else
+			DrawArrow( pressedwin, direction, Scr.Gray3GC, Scr.BlackGC );
+	}
 	XSync( dpy, 0 );
 }
 

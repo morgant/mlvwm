@@ -649,6 +649,7 @@ void DrawSbarArrow( MlvwmWindow *t, int context, Bool on_off )
 	XGCValues xgcv;
 	XSetWindowAttributes attributes;
 	Cursor	cursor;
+	GC fill, outline;
 
 	switch( context ){
 	case C_SBAR_UP:
@@ -692,11 +693,19 @@ void DrawSbarArrow( MlvwmWindow *t, int context, Bool on_off )
 		if( t->flags&SCROLL && size<0 ) {
 			DrawShadowBox( 0, 0, SBAR_WH, SBAR_WH, win, 1,
 						  Scr.WhiteGC, Scr.Gray2GC, SHADOW_ALL );
-			DrawArrow( win, context, Scr.Gray3GC, Scr.BlackGC);
+			if( Scr.flags&SYSTEM8 )
+				fill = outline = Scr.BlackGC;
+			else {
+				fill = Scr.Gray3GC;
+				outline = Scr.BlackGC;
+			}
 		}
 		else{
-			DrawArrow( win, context, Scr.Gray4GC, Scr.Gray2GC);
+			fill = outline = Scr.Gray2GC;
+ 			if( !(Scr.flags&SYSTEM8) )
+				fill = Scr.Gray4GC;
 		}
+		DrawArrow( win, context, fill, outline);
 	}
 	else{
 		mask = GCForeground;
