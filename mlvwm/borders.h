@@ -17,7 +17,7 @@
 extern void SetShape( MlvwmWindow *, int );
 extern void SetUpFrame( MlvwmWindow *, int, int, int, int, Bool );
 extern void SetTitleBar( MlvwmWindow *, Bool );
-extern void DrawArrow( Window, int, GC );
+extern void DrawArrow( Window, int, GC, GC );
 extern void DrawSbarAnk( MlvwmWindow *, int, Bool );
 extern void DrawSbarArrow( MlvwmWindow *, int, Bool );
 extern void DrawSbarBar( MlvwmWindow *, int, Bool );

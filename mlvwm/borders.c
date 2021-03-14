@@ -535,7 +535,7 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
 	}
 }
 
-void DrawArrow( Window w, int direction, GC color )
+void DrawArrow( Window w, int direction, GC fill, GC outline )
 {
 	XPoint arrow_p[] = {
 		{7,3},{2,8},{5,8},{5,12},{9,12},{9,8},{12,8},{7,3}, {0,0}},
@@ -564,8 +564,8 @@ void DrawArrow( Window w, int direction, GC color )
 	if( direction==C_SBAR_DOWN )
 		for( lp=0; lp<point; lp++ )		use_p[lp].y = SBAR_WH-use_p[lp].y-1;
 
-	XFillPolygon( dpy, w, color, use_p, point, Nonconvex, CoordModeOrigin );
-	XDrawLines( dpy, w, Scr.BlackGC, use_p, point, CoordModeOrigin );
+	XFillPolygon( dpy, w, fill, use_p, point, Nonconvex, CoordModeOrigin );
+	XDrawLines( dpy, w, outline, use_p, point, CoordModeOrigin );
 }
 
 void DrawSbarAnk( MlvwmWindow *t, int context, Bool on_off )
@@ -689,11 +689,14 @@ void DrawSbarArrow( MlvwmWindow *t, int context, Bool on_off )
 		XChangeWindowAttributes( dpy, win, valuemask, &attributes );
 		XClearWindow( dpy, win );
 
-		if( t->flags&SCROLL && size<0 )
+		if( t->flags&SCROLL && size<0 ) {
 			DrawShadowBox( 0, 0, SBAR_WH, SBAR_WH, win, 1,
 						  Scr.WhiteGC, Scr.Gray2GC, SHADOW_ALL );
-
-		DrawArrow( win, context, Scr.Gray3GC );
+			DrawArrow( win, context, Scr.Gray3GC, Scr.BlackGC);
+		}
+		else{
+			DrawArrow( win, context, Scr.Gray4GC, Scr.Gray2GC);
+		}
 	}
 	else{
 		mask = GCForeground;
