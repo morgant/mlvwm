@@ -171,7 +171,7 @@ WindowShade is regarded as Inocify.
 .IP "\fBIconifyHide\fP"
 HideWindow is regarded as Iconify.
 .IP "\fBScrollBarWidth\fP \fIn\fP
-The variable scroll window is set \fIn\fP and defaults to 19 if
+The variable scroll window is set \fIn\fP and defaults to 16 if
 unspecified.
 .IP "\fBFlushMenu\fP \fIspeed\fP \fIflashes\fP"
 Determines how fast the flashes are when you choose an option from a menu,
