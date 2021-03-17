@@ -246,21 +246,21 @@ void SetUpFrame( MlvwmWindow *t, int x, int y, int w, int h, Bool sendEvent )
 	if( (!(t->wShaped) || t->flags&SHADE) &&
 	   t->flags & ( TITLE | SBARV | SBARH | RESIZER )){
 		int lp;
-		XRectangle rect[7];
+		XRectangle rect[5];
 
 		rect[0].x = -1;		rect[0].y = -1;
 		rect[0].width = t->frame_w-1;	rect[0].height = t->frame_h-1;
 
-		for( lp=0; lp<3; lp++ ){
+		for( lp=0; lp<2; lp++ ){
 			rect[lp+1].x = t->frame_w-2+lp;	rect[lp+1].y = lp;
-			rect[lp+1].width = 1;	rect[lp+1].height = t->frame_h+1-lp;
+			rect[lp+1].width = 1;	rect[lp+1].height = t->frame_h-lp;
 		}
-		for( lp=0; lp<3; lp++ ){
-			rect[lp+4].x = lp;			rect[lp+4].y = t->frame_h-2+lp;
-			rect[lp+4].width = t->frame_w+1-lp;	rect[lp+4].height = 1;
+		for( lp=0; lp<2; lp++ ){
+			rect[lp+3].x = lp;			rect[lp+3].y = t->frame_h-2+lp;
+			rect[lp+3].width = t->frame_w-lp;	rect[lp+3].height = 1;
 		}
 		XShapeCombineRectangles(dpy,t->frame,ShapeBounding,
-								0,0,rect,7,ShapeSet,YSorted);
+								0,0,rect,5,ShapeSet,YSorted);
 	}
 	if( t->wShaped )		SetShape( t, w );
 	if (sendEvent && !(t->flags&SHADE) ){

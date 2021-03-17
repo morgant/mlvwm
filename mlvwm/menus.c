@@ -416,19 +416,19 @@ Bool MapMenu( MenuLabel *m, int left, int right, int y, Bool side )
 	XMoveResizeWindow( dpy, m->PullWin, m->MenuX, m->MenuY,
 					  m->MenuWidth+2, m->MenuHeight+2 );
 	{
-		XRectangle rect[7];
+		XRectangle rect[5];
 		int point=0;
 
 		rect[point].x = -1;		rect[point].y = -1;
 		rect[point].width = m->MenuWidth+1;
 		rect[point].height = m->MenuHeight+1;
 		point++;
-		for( lp=1; lp<4; lp++ ){
+		for( lp=1; lp<3; lp++ ){
 			rect[point].x = m->MenuWidth+lp-1;	rect[point].y = lp-1;
 			rect[point].width = 1;	rect[point].height = m->MenuHeight+2-lp+1;
 			point++;
 		}
-		for( lp=1; lp<4; lp++ ){
+		for( lp=1; lp<3; lp++ ){
 			rect[point].x = lp-1;	rect[point].y = m->MenuHeight+lp-1;
 			rect[point].width = m->MenuWidth+2-lp+1;	rect[point].height = 1;
 			point++;
