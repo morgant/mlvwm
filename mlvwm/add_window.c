@@ -204,7 +204,7 @@ void create_titlebar( MlvwmWindow *tmp_win )
 	if( tmp_win->flags&CLOSER ){
 		attributes.cursor = Scr.MlvwmCursors[DESTROY];
 		tmp_win->close_b = XCreateWindow( dpy, tmp_win->title_w,
-										 Scr.flags&SYSTEM8?4:BOXSIZE+1,
+                                         Scr.flags&SYSTEM8?2:BOXSIZE+1,
 										 (TITLE_HEIGHT-BOXSIZE)/2,
 										 BOXSIZE, BOXSIZE, 0,
 										 CopyFromParent, InputOutput,

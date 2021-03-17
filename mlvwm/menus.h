@@ -12,7 +12,7 @@
 #include <X11/Xutil.h>
 #include <X11/xpm.h>
 
-#define MENUB_H			25
+#define MENUB_H			20
 
 /* Definitions of Menu Item */
 #define STRGRAY  1 /* Draw String Black or Gray? */
