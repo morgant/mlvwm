@@ -713,6 +713,11 @@ void SetEdgeResist( char *line, FILE *fp )
 	}
 }
 
+void SetRoundedCorners( char *line, FILE *fp )
+{
+    Scr.flags |= ROUNDEDCORNERS;
+}
+
 config_func main_config[]={
 	{ "Desktopnum", SetDeskTopNum },
 	{ "DoubleClickTime", SetDoubleClickTime },
@@ -734,6 +739,7 @@ config_func main_config[]={
 	{ "Menu", SetMenu},
 	{ "Read", ReadNewConfigFile },
 	{ "RestartPreviousState", SetRstPrevState },
+    { "RoundedScreenCorners", SetRoundedCorners },
 	{ "ScrollBarWidth", SetBarWidth },
 	{ "ShadeMap", SetShadeMap },
 	{ "ShortCut", SetShortCut },

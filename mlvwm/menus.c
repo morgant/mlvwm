@@ -120,27 +120,32 @@ void RedrawMenuBar( void )
 	if( Scr.flags&SYSTEM8 )
 		DrawShadowBox( 0, 0, Scr.MyDisplayWidth, MENUB_H, Scr.MenuBar, 1,
 					  Scr.WhiteGC, Scr.Gray1GC, SHADOW_ALL );
-	XFillRectangle( dpy, Scr.MenuBar, Scr.BlackGC, 0, 0, 7, 7 );
-	XFillRectangle( dpy, Scr.MenuBar,
-				   Scr.BlackGC, Scr.MyDisplayWidth-7, 0, 7, 7 );
-	if( Scr.flags&SYSTEM8 && !(Scr.flags&STARTING) ){
-		for( lp=0; lp<2; lp++ ){
-			XDrawArc( dpy, Scr.MenuBar, Scr.WhiteGC, 0, 0,
-					 14-lp, 14-lp, 180*64, -(90*64) );
-			XDrawArc( dpy, Scr.MenuBar, Scr.Gray1GC, Scr.MyDisplayWidth-15, 0,
-					 14-lp, 14-lp, 0, 90*64 );
-		}
-		XFillArc( dpy, Scr.MenuBar, Scr.MenuBlueGC, 0, 0,
-				 14, 14, 180*64, -(90*64) );
-		XFillArc( dpy, Scr.MenuBar, Scr.MenuBlueGC, Scr.MyDisplayWidth-15, 0,
-				 14, 14, 0, 90*64 );
-	}
-	else{
-		XFillArc( dpy, Scr.MenuBar, Scr.WhiteGC, 0, 0,
-				 14, 14, 180*64, -(90*64) );
-		XFillArc( dpy, Scr.MenuBar, Scr.WhiteGC, Scr.MyDisplayWidth-15, 0,
-				 14, 14, 0, 90*64 );
-	}
+    if(Scr.flags&ROUNDEDCORNERS){
+        XFillRectangle( dpy, Scr.MenuBar, Scr.BlackGC, 0, 0, 7, 7 );
+        XFillRectangle( dpy, Scr.MenuBar,
+                       Scr.BlackGC, Scr.MyDisplayWidth-7, 0, 7, 7 );
+        if( Scr.flags&SYSTEM8 && !(Scr.flags&STARTING) ){
+            for( lp=0; lp<2; lp++ ){
+                XDrawArc( dpy, Scr.MenuBar, Scr.WhiteGC, 0, 0,
+                         14-lp, 14-lp, 180*64, -(90*64) );
+                XDrawArc( dpy, Scr.MenuBar, Scr.Gray1GC, Scr.MyDisplayWidth-15, 0,
+                         14-lp, 14-lp, 0, 90*64 );
+            }
+            XFillArc( dpy, Scr.MenuBar, Scr.MenuBlueGC, 0, 0,
+                     14, 14, 180*64, -(90*64) );
+            XFillArc( dpy, Scr.MenuBar, Scr.MenuBlueGC, Scr.MyDisplayWidth-15, 0,
+                     14, 14, 0, 90*64 );
+        }
+        else{
+            XFillArc( dpy, Scr.MenuBar, Scr.WhiteGC, 0, 0,
+                     14, 14, 180*64, -(90*64) );
+            XFillArc( dpy, Scr.MenuBar, Scr.WhiteGC, Scr.MyDisplayWidth-15, 0,
+                     14, 14, 0, 90*64 );
+        }
+
+        XMapWindow( dpy, Scr.lbCorner );
+        XMapWindow( dpy, Scr.rbCorner );
+    }
 	if( !(Scr.flags&SYSTEM8) )
 		XDrawLine( dpy, Scr.MenuBar, Scr.BlackGC,
 				  0, MENUB_H-1, Scr.MyDisplayWidth, MENUB_H-1 );
@@ -1293,30 +1298,26 @@ Window PixmapWin (char **data_xpm, Window root, int x, int y)
 
 void CreateMenuBar( void )
 {
-	static char *lbot_xpm[] = {
-		"7 7 2 1",
-		"  c none s none",
-		"# c black",
-		"#      ",
-		"#      ",
-		"#      ",
-		"##     ",
-		"###    ",
-		"####   ",
-		"#######"
-	};
-	static char *rbot_xpm[] = {
-		"7 7 2 1",
-		"  c none s none",
-		"# c black",
-		"      #",
-		"      #",
-		"      #",
-		"     ##",
-		"    ###",
-		"   ####",
-		"#######"
-	};
+    static char *lbot_xpm[] = {
+        "5 5 2 1",
+        "  c none s none",
+        "# c black",
+        "#    ",
+        "#    ",
+        "##   ",
+        "###  ",
+        "#####"
+    };
+    static char *rbot_xpm[] = {
+        "5 5 2 1",
+        "  c none s none",
+        "# c black",
+        "    #",
+        "    #",
+        "   ##",
+        "  ###",
+        "#####"
+    };
 	unsigned long valuemask;
 	XSetWindowAttributes attributes;
 
@@ -1331,11 +1332,9 @@ void CreateMenuBar( void )
 								CopyFromParent, InputOutput, CopyFromParent,
 								valuemask, &attributes );
 	XMapWindow( dpy, Scr.MenuBar );
-	Scr.lbCorner = PixmapWin( lbot_xpm, Scr.Root,  0, -1 );
-	XMapWindow( dpy, Scr.lbCorner );
+    Scr.lbCorner = PixmapWin( lbot_xpm, Scr.Root,  0, -1 );
+    Scr.rbCorner = PixmapWin( rbot_xpm, Scr.Root, -1, -1 );
 
-	Scr.rbCorner = PixmapWin( rbot_xpm, Scr.Root, -1, -1 );
-	XMapWindow( dpy, Scr.rbCorner );
 	RedrawMenuBar( );
 }
 
