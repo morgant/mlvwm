@@ -496,6 +496,8 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
                 else
                     XDrawLine( dpy, t->title_w, Scr.Gray1GC, 0, lp, t->frame_w, lp );
             }
+            else
+              XDrawLine( dpy, t->title_w, Scr.BlackGC, 0, lp, t->frame_w, lp );
         }
 
 		if( Scr.flags&SYSTEM8 ){
