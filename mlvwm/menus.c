@@ -125,12 +125,10 @@ void RedrawMenuBar( void )
         XFillRectangle( dpy, Scr.MenuBar,
                        Scr.BlackGC, Scr.MyDisplayWidth-7, 0, 7, 7 );
         if( Scr.flags&SYSTEM8 && !(Scr.flags&STARTING) ){
-            for( lp=0; lp<2; lp++ ){
-                XDrawArc( dpy, Scr.MenuBar, Scr.WhiteGC, 0, 0,
-                         14-lp, 14-lp, 180*64, -(90*64) );
-                XDrawArc( dpy, Scr.MenuBar, Scr.Gray1GC, Scr.MyDisplayWidth-15, 0,
-                         14-lp, 14-lp, 0, 90*64 );
-            }
+            XDrawArc( dpy, Scr.MenuBar, Scr.WhiteGC, 0, 0,
+                     14, 14, 180*64, -(90*64) );
+            XDrawArc( dpy, Scr.MenuBar, Scr.Gray1GC, Scr.MyDisplayWidth-15, 0,
+                     14, 14, 0, 90*64 );
             XFillArc( dpy, Scr.MenuBar, Scr.MenuBlueGC, 0, 0,
                      14, 14, 180*64, -(90*64) );
             XFillArc( dpy, Scr.MenuBar, Scr.MenuBlueGC, Scr.MyDisplayWidth-15, 0,
