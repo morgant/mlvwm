@@ -68,7 +68,7 @@ void RedrawMenu( MenuLabel *m, Bool onoroff )
 		tmp_f_GC = Scr.BlackGC;
 		tmp_b_GC = Scr.WhiteGC;
 	}
-	if( !(m->flags&ACTIVE) && Scr.d_depth>1 )
+	if( !(m->flags&ACTIVE) && Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )
 		tmp_f_GC = Scr.Gray3GC;
 	if( !m->xpm ){
 		if( m->LabelStr ){
@@ -77,7 +77,7 @@ void RedrawMenu( MenuLabel *m, Bool onoroff )
 						(MENUB_H-2)/2-offset,
 						m->LabelStr, strlen(m->LabelStr) );
 /* Mask String for Mono Display */
-			if( !(m->flags&ACTIVE) && Scr.d_depth<2 ){
+			if( !(m->flags&ACTIVE) && (Scr.d_depth<2 || Scr.flags&SYSTEM6) ){
 				if( onoroff )		gcv.function = GXand;
 				else				gcv.function = GXor;
 				gcm = GCFunction;
@@ -225,7 +225,7 @@ MenuLabel *DrawMenuItem( MenuLabel *ml, int sel, Bool on )
 		s_tmpGC = Scr.BlackGC;
 	}
 
-	if( mi->mode&STRGRAY && Scr.d_depth>2 )
+	if( mi->mode&STRGRAY && Scr.d_depth>2 && !(Scr.flags&SYSTEM6) )
 		s_tmpGC = Scr.Gray3GC;
 	XFillRectangle( dpy, ml->PullWin, r_tmpGC,
 				   0+(Scr.flags&SYSTEM8?1:0), top_y,
@@ -283,7 +283,7 @@ MenuLabel *DrawMenuItem( MenuLabel *ml, int sel, Bool on )
 					top_y+ml->ItemHeight/2-offset,
 					mi->label, strlen(mi->label) );
 /* Mask String for Mono Display */
-		if( mi->mode&STRGRAY && Scr.d_depth<2 ){
+		if( mi->mode&STRGRAY && (Scr.d_depth<2 || Scr.flags&SYSTEM6) ){
 			if( on )		gcv.function = GXand;
 			else			gcv.function = GXor;
 			gcm = GCFunction;
@@ -297,7 +297,7 @@ MenuLabel *DrawMenuItem( MenuLabel *ml, int sel, Bool on )
 		}
 	}
 	if( mi->label && mi->label[0]=='\0' ){
-		if( Scr.d_depth>1 ){
+		if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) ){
 			if( Scr.flags&SYSTEM8 ){
 				XDrawLine( dpy, ml->PullWin, Scr.Gray2GC,
 						  2, top_y+ml->ItemHeight/2,

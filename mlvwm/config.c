@@ -478,6 +478,16 @@ void SetMenuFlush( char *line, FILE *fp )
 	Scr.flush_time *= 1000;
 }
 
+void SetSystem6( char *line, FILE *fp )
+{
+	if( Scr.d_depth<2)
+		DrawErrMsgOnMenu( "Option is assumed ", "System6" );
+  else if( Scr.flags&SYSTEM8 )
+		DrawErrMsgOnMenu( "Option cannot be used with System8 ", "System6" );
+	else
+		Scr.flags |= SYSTEM6;
+}
+
 void SetSystem8( char *line, FILE *fp )
 {
 	XGCValues gcv;
@@ -486,6 +496,8 @@ void SetSystem8( char *line, FILE *fp )
 
 	if( Scr.d_depth<2 )
 		DrawErrMsgOnMenu( "Can't use option ", "System8" );
+	else if( Scr.flags&SYSTEM6 )
+		DrawErrMsgOnMenu( "Option cannot be used with System6 ", "System8" );
 	else{
 		Scr.flags |= SYSTEM8;
 		gcm = GCForeground;
@@ -748,6 +760,7 @@ config_func main_config[]={
 	{ "StickyHide", SetStickyHide },
 	{ "Style",	SetStyles },
 	{ "Swallow", SetSwallow },
+	{ "System6", SetSystem6 },
 	{ "System8", SetSystem8 },
 	{ "OpaqueMove", SetOpaqueMove },
 	{ "OpaqueResize", SetOpaqueResize },

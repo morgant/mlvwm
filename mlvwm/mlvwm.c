@@ -213,7 +213,7 @@ void InitGCs( void )
 	gcv.subwindow_mode = IncludeInferiors;
 	gcv.line_width = 1;
 
-	if( Scr.d_depth>1 )
+	if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )
 		gcv.foreground = GetColor( "#777777" );
 	else
 		gcv.foreground = WhitePixel( dpy, Scr.screen );
@@ -236,32 +236,32 @@ void InitGCs( void )
 	gcv.background = BlackPixel( dpy, Scr.screen );
 	Scr.WhiteGC = XCreateGC( dpy, Scr.Root, gcm, &gcv );
 
-	if( Scr.d_depth>1 )	gcv.foreground = GetColor( "#444444" );
+	if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )	gcv.foreground = GetColor( "#444444" );
 	gcv.background = WhitePixel( dpy, Scr.screen );
 	Scr.Gray1GC = XCreateGC( dpy, Scr.Root, gcm, &gcv );
 
-	if( Scr.d_depth>1 )	gcv.foreground = GetColor( "#777777" );
+	if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )	gcv.foreground = GetColor( "#777777" );
 	gcv.background = WhitePixel( dpy, Scr.screen );
 	Scr.Gray2GC = XCreateGC( dpy, Scr.Root, gcm, &gcv );
 
-	if( Scr.d_depth>1 )		gcv.foreground = GetColor( "#bbbbbb" );
-	if( Scr.d_depth>1 )		gcv.foreground = GetColor( "#aaaaaa" );
+	if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )		gcv.foreground = GetColor( "#bbbbbb" );
+	if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )		gcv.foreground = GetColor( "#aaaaaa" );
 	gcv.background = WhitePixel( dpy, Scr.screen );
 	Scr.Gray3GC = XCreateGC( dpy, Scr.Root, gcm, &gcv );
 
-	if( Scr.d_depth>1 )	gcv.foreground = GetColor( "#e0e0e0" );
+	if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )	gcv.foreground = GetColor( "#e0e0e0" );
 	gcv.background = WhitePixel( dpy, Scr.screen );
 	Scr.Gray4GC = XCreateGC( dpy, Scr.Root, gcm, &gcv );
 
-	if( Scr.d_depth>1 )	gcv.foreground = GetColor( "#3333ff" );
+	if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )	gcv.foreground = GetColor( "#3333ff" );
 	gcv.background = WhitePixel( dpy, Scr.screen );
 	Scr.MenuSelectBlueGC = XCreateGC( dpy, Scr.Root, gcm, &gcv );
 
-	if( Scr.d_depth>1 )	gcv.foreground = GetColor( "#dddddd" );
+	if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )	gcv.foreground = GetColor( "#dddddd" );
 	gcv.background = WhitePixel( dpy, Scr.screen );
 	Scr.MenuBlueGC = XCreateGC( dpy, Scr.Root, gcm, &gcv );
 
-	if( Scr.d_depth>1 )	gcv.foreground = GetColor( "#ccccff" );
+	if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )	gcv.foreground = GetColor( "#ccccff" );
 	gcv.background = WhitePixel( dpy, Scr.screen );
 	Scr.ScrollBlueGC = XCreateGC( dpy, Scr.Root, gcm, &gcv );
 }

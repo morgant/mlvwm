@@ -489,7 +489,7 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
 
 	if( on_off ){
         for( lp=4; lp<16; lp+=2 ){
-			if( Scr.d_depth>1 ){
+			if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) ){
                 if( Scr.flags&SYSTEM8 )
                     DrawShadowBox( 4, lp-1, t->frame_w-14, 2, t->title_w, 1,
 								  Scr.WhiteGC, Scr.Gray1GC, SHADOW_ALL );
@@ -515,7 +515,7 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
 		dispgc = Scr.BlackGC;
 	}
 	else{
-		if( Scr.d_depth>1 )			dispgc = Scr.Gray3GC;
+		if( Scr.d_depth>1 && !(Scr.flags&SYSTEM6) )			dispgc = Scr.Gray3GC;
 		else			dispgc = Scr.BlackGC;
 	}
 	if( t->flags&CLOSER )		DrawCloseBox( t, on_off );
@@ -524,7 +524,7 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
 
 	XDRAWSTRING( dpy, t->title_w, WINDOWFONT, dispgc, (t->frame_w-w)/2,
 				TITLE_HEIGHT/2-offset, t->name, titlelength );
-	if( Scr.d_depth<2 && !on_off ){
+	if( (Scr.d_depth<2 || Scr.flags&SYSTEM6) && !on_off ){
 		xgcv.function = GXor;
 		mask = GCFunction;
 		XChangeGC( dpy, Scr.BlackGC, mask, &xgcv );
@@ -761,7 +761,7 @@ void DrawSbarBar( MlvwmWindow *t, int context, Bool on_off )
 
 	if( on_off ){
 		if( t->flags&SCROLL && size<0 ){
-			if( Scr.flags&SYSTEM8 ){
+			if( Scr.flags&SYSTEM8 && !(Scr.flags&SYSTEM6) ){
 				Pixmap bgpix;
 				bgpix = XCreatePixmap( dpy, Scr.Root, width_f,
 					height_f, Scr.d_depth );
