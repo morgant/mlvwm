@@ -58,7 +58,7 @@
 #endif
 
 #define TITLE_HEIGHT 20
-#define BOXSIZE 13
+#define BOXSIZE (Scr.flags&SYSTEM8?13:11)
 #define SBAR_WH Scr.bar_width
 
 extern Display *dpy;

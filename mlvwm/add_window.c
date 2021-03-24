@@ -204,7 +204,7 @@ void create_titlebar( MlvwmWindow *tmp_win )
 	if( tmp_win->flags&CLOSER ){
 		attributes.cursor = Scr.MlvwmCursors[DESTROY];
 		tmp_win->close_b = XCreateWindow( dpy, tmp_win->title_w,
-                                         Scr.flags&SYSTEM8?2:BOXSIZE+1,
+                                         Scr.flags&SYSTEM8?2:BOXSIZE-3,
 										 (TITLE_HEIGHT-BOXSIZE)/2,
 										 BOXSIZE, BOXSIZE, 0,
 										 CopyFromParent, InputOutput,
@@ -215,7 +215,7 @@ void create_titlebar( MlvwmWindow *tmp_win )
 	if( tmp_win->flags&MINMAXR ){
 		attributes.cursor = Scr.MlvwmCursors[SELECT];
 		tmp_win->minmax_b = XCreateWindow( dpy, tmp_win->title_w,
-										  tmp_win->frame_w-BOXSIZE*2-1,
+										  tmp_win->frame_w-(BOXSIZE*2-3),
 										  (TITLE_HEIGHT-BOXSIZE)/2,
 										  BOXSIZE, BOXSIZE, 0,
 										  CopyFromParent, InputOutput,

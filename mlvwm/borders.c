@@ -133,7 +133,7 @@ void SetUpFrame( MlvwmWindow *t, int x, int y, int w, int h, Bool sendEvent )
 						(TITLE_HEIGHT-BOXSIZE)/2);
 		else
 			XMoveWindow(dpy, t->minmax_b,
-						w-BOXSIZE*2-1,
+						w-(BOXSIZE*2-2),
 						(TITLE_HEIGHT-BOXSIZE)/2);
 	}
 	if( t->flags&SHADER )
@@ -339,8 +339,8 @@ void DrawCloseBox( MlvwmWindow *t, Bool on )
 		}
 		else{
 			XFillRectangle( dpy, t->title_w, Scr.Gray4GC,
-						   BOXSIZE-1, (TITLE_HEIGHT-BOXSIZE)/2-1,
-						   BOXSIZE+4, BOXSIZE+1 );
+						   BOXSIZE-4, (TITLE_HEIGHT-BOXSIZE)/2-1,
+						   BOXSIZE+2, BOXSIZE+1 );
 			DrawShadowBox( 0, 0, BOXSIZE, BOXSIZE, t->close_b, 1,
 						  Scr.BlackGC, Scr.WhiteGC, SHADOW_ALL );
 			DrawShadowBox( 1, 1, BOXSIZE-2, BOXSIZE-2, t->close_b, 1,
@@ -386,13 +386,13 @@ void DrawMinMax( MlvwmWindow *t, Bool on )
 		}
 		else{
 			XFillRectangle( dpy, t->title_w, Scr.Gray4GC,
-						   t->frame_w-BOXSIZE*2-3,(TITLE_HEIGHT-BOXSIZE)/2-1,
-						   BOXSIZE+4, BOXSIZE+1 );
+						   t->frame_w-(BOXSIZE*2-1),(TITLE_HEIGHT-BOXSIZE)/2-1,
+						   BOXSIZE+2, BOXSIZE+1 );
 			DrawShadowBox( 0, 0, BOXSIZE, BOXSIZE, t->minmax_b, 1,
 						  Scr.BlackGC, Scr.WhiteGC, SHADOW_ALL );
 			DrawShadowBox( 1, 1, BOXSIZE-2, BOXSIZE-2, t->minmax_b, 1,
 						  Scr.WhiteGC, Scr.BlackGC, SHADOW_ALL );
-			DrawShadowBox( 1, 1, BOXSIZE-6, BOXSIZE-6, t->minmax_b, 1,
+			DrawShadowBox( 1, 1, BOXSIZE-5, BOXSIZE-5, t->minmax_b, 1,
 						  Scr.WhiteGC, Scr.BlackGC, SHADOW_ALL );
 		}
 	}
