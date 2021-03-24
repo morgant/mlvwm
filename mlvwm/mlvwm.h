@@ -57,7 +57,7 @@
 #define ReapChildren()  while ((wait3(NULL, WNOHANG, NULL)) > 0);
 #endif
 
-#define TITLE_HEIGHT 20
+#define TITLE_HEIGHT (Scr.flags&SYSTEM8?20:17)
 #define BOXSIZE (Scr.flags&SYSTEM8?13:11)
 #define SBAR_WH Scr.bar_width
 

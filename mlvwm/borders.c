@@ -488,28 +488,30 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
 	while( w+20>drawable && titlelength>0 );
 
 	if( on_off ){
-        for( lp=4; lp<16; lp+=2 ){
-			if( Scr.d_depth>1 ){
-                if( Scr.flags&SYSTEM8 )
-                    DrawShadowBox( 4, lp-1, t->frame_w-14, 2, t->title_w, 1,
+		if( Scr.d_depth>1 && Scr.flags&SYSTEM8 ){
+			for( lp=4; lp<16; lp+=2 ){
+				DrawShadowBox( 4, lp-1, t->frame_w-14, 2, t->title_w, 1,
 								  Scr.WhiteGC, Scr.Gray1GC, SHADOW_ALL );
-                else
-                    XDrawLine( dpy, t->title_w, Scr.Gray1GC, 0, lp, t->frame_w, lp );
-            }
-            else
-              XDrawLine( dpy, t->title_w, Scr.BlackGC, 0, lp, t->frame_w, lp );
-        }
+			}
 
-		if( Scr.flags&SYSTEM8 ){
 			DrawShadowBox( 0, 0, t->frame_w-2, TITLE_HEIGHT, t->title_w,
 						  1, Scr.WhiteGC, Scr.Gray2GC, SHADOW_TOP );
 			if( !(t->flags&SHADE) )
 				XDrawLine( dpy, t->title_w, Scr.Gray2GC,
 						  2, TITLE_HEIGHT-1, t->frame_w-9, TITLE_HEIGHT-1 );
 		}
-		else
+		else{
+			for( lp=3; lp<15; lp+=2 ){
+				if( Scr.d_depth>1 )
+					XDrawLine( dpy, t->title_w, Scr.Gray1GC, 0, lp, t->frame_w, lp );
+				else
+					XDrawLine( dpy, t->title_w, Scr.BlackGC, 0, lp, t->frame_w, lp );
+			}
+
 			DrawShadowBox( 0, 0, t->frame_w-2, TITLE_HEIGHT, t->title_w,
 						  1, Scr.WhiteGC, Scr.Gray2GC, SHADOW_ALL );
+		}
+
 		XFillRectangle( dpy, t->title_w, Scr.Gray4GC,
                        (t->frame_w-w)/2-5, 1, w+10, TITLE_HEIGHT-2 );
 		dispgc = Scr.BlackGC;
@@ -523,7 +525,7 @@ void SetTitleBar( MlvwmWindow *t, Bool on_off )
 	if( t->flags&SHADER )		DrawShadeR( t, on_off );
 
 	XDRAWSTRING( dpy, t->title_w, WINDOWFONT, dispgc, (t->frame_w-w)/2,
-				TITLE_HEIGHT/2-offset, t->name, titlelength );
+				TITLE_HEIGHT/2-offset+(Scr.flags&SYSTEM8?0:1), t->name, titlelength );
 	if( Scr.d_depth<2 && !on_off ){
 		xgcv.function = GXor;
 		mask = GCFunction;
