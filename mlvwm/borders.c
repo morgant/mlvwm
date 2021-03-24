@@ -763,16 +763,29 @@ void DrawSbarBar( MlvwmWindow *t, int context, Bool on_off )
 
 	if( on_off ){
 		if( t->flags&SCROLL && size<0 ){
-			if( Scr.flags&SYSTEM8 ){
-				Pixmap bgpix;
-				bgpix = XCreatePixmap( dpy, Scr.Root, width_f,
-					height_f, Scr.d_depth );
-				XFillRectangle(dpy,bgpix,Scr.Gray3GC,0,0,width_f,height_f);
+			if( Scr.d_depth>1 ){
+				if( Scr.flags&SYSTEM8 ){
+					Pixmap bgpix;
+					bgpix = XCreatePixmap( dpy, Scr.Root, width_f,
+						height_f, Scr.d_depth );
+					XFillRectangle(dpy,bgpix,Scr.Gray3GC,0,0,width_f,height_f);
 
-				DrawShadowBox( x, y, width, height, bgpix, 1,
+					DrawShadowBox( x, y, width, height, bgpix, 1,
 							  Scr.Gray2GC, Scr.WhiteGC, SHADOW_ALL );
-				XSetWindowBackgroundPixmap( dpy, win, bgpix );
-				XFreePixmap( dpy, bgpix );
+					XSetWindowBackgroundPixmap( dpy, win, bgpix );
+					XFreePixmap( dpy, bgpix );
+				}
+				else{
+					XGCValues gcv_gray4, gcv_gray2;
+          XGetGCValues(dpy, Scr.Gray4GC, GCForeground, &gcv_gray4);
+          XGetGCValues(dpy, Scr.Gray2GC, GCForeground, &gcv_gray2);
+					XSetWindowBackgroundPixmap( dpy, win,
+                     XCreatePixmapFromBitmapData( dpy, Scr.Root,
+												 mesh, mesh_w, mesh_h,
+												 gcv_gray2.foreground,
+												 gcv_gray4.foreground,
+												 Scr.d_depth ));
+				}
 			}
 			else{
 				XSetWindowBackgroundPixmap( dpy, win,
