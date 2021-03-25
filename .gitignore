@@ -3,3 +3,4 @@ mlvwm/mlvwm
 **/Makefile*
 **/*.o
 mlvwm.*
+**/*.swp
