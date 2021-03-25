@@ -56,6 +56,10 @@ We suggest reading the manual page (`man mlvwm`; English), but you may also find
 
 Note: the English documentation above was automatically generated from the Japanese documentation.
 
+## CONTRIBUTING
+
+Contributions are welcome and appreciated. Please read and follow the [CONTRIBUTING](CONTRIBUTING.md) guidelines.
+
 ## HISTORY
 
 MLVWM was originally developed in 1997 by Takashi HASEGAWA, based on FVWM, while studying at Nagoya University. Active development proceeded through 2000. In 2020, Morgan Aldridge obtained permission to continue maintenance & development.
