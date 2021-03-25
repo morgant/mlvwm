@@ -25,6 +25,8 @@ MLVWM (Macintosh-Like Virtual Window Manager) is an X11 window manager with a cl
 
 ## INSTALLATION
 
+### Building from Source
+
 Build & installation currently still requires [imake](https://en.wikipedia.org/wiki/Imake) & make. While the original documentation says that `xmkmf -a` should work, we've found it's usually necessary to do the following:
 
     cd man && xmkmf && cd -
@@ -32,6 +34,12 @@ Build & installation currently still requires [imake](https://en.wikipedia.org/w
     cd mlvwm && xmkmf && cd -
     xmkmf
     make && make install
+
+### Package Managers
+
+Native packages are provided on some operating systems, including:
+
+* OpenBSD: `pkg_add mlvwm`
 
 ## CONFIGURATION
 
