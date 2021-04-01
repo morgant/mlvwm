@@ -1,4 +1,4 @@
-VERSION=\"0.9.0\"
+VERSION=\"0.9.3\"
 CFLAGS = -g -Wall -DVERSION=$(VERSION) -fpcc-struct-return -DCONFIGNAME=\".mlvwmrc\" -DUSE_LOCALE -DMLVWMLIBDIR=\"/usr/X11R6/lib/X11/mlvwm\"
 CC = gcc
 LDFLAGS = -lXpm -lXext -lX11 
