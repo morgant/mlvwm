@@ -1,6 +1,6 @@
 # MLVWM
 
-[![MLVWM System 7 Theme](/img/System7-640x320.png?raw=true)](#SCREENSHOTS)
+[![MLVWM System 7 Theme](/img/System7-640x360.png?raw=true)](#SCREENSHOTS)
 
 ## OVERVIEW
 
@@ -29,11 +29,11 @@ MLVWM (Macintosh-Like Virtual Window Manager) is an X11 window manager with a cl
 
 Default theme (System 7-like):
 
-[![Default System 7 Theme](/img/System7-640x320.png?raw=true)](/img/System7-1920x1080.png)
+[![Default System 7 Theme](/img/System7-640x360.png?raw=true)](/img/System7-1920x1080.png)
 
 `System8` theme (MacOS 8/9-like):
 
-[![MacOS 8/9 Theme](/img/MacOS8-640x320.png?raw=true)](/img/MacOS8-1920x1080.png)
+[![MacOS 8/9 Theme](/img/MacOS8-640x360.png?raw=true)](/img/MacOS8-1920x1080.png)
 
 ## INSTALLATION
 
