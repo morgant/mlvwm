@@ -383,7 +383,7 @@ void handle_configure_request( XEvent *ev )
 	unsigned long xwcm;
 	MlvwmWindow *tmp_win;
 	XConfigureRequestEvent *xcr = &ev->xconfigurerequest;
-	int x, y, width, height, old_x, old_y;
+	int x, y, width, height;
 	int title_height, sbar_v, sbar_h;
 	Bool notify=False;
 
@@ -418,8 +418,6 @@ void handle_configure_request( XEvent *ev )
 
 	x = tmp_win->frame_x;
 	y = tmp_win->frame_y;
-	old_x = x;
-	old_y = y;
 	width = tmp_win->frame_w;
 	height = tmp_win->frame_h;
 
@@ -442,23 +440,20 @@ void handle_configure_request( XEvent *ev )
 		if (xcr->value_mask & CWHeight)		height = xcr->height+12;
 	}
 
-	tmp_win->frame_x = x<0 ? 0 : x;
-	tmp_win->frame_y = y<MENUB_H ? MENUB_H : y;
+	// prevent windows from being moved above menu bar
+	if (y < MENUB_H)
+		y = MENUB_H;
 
-	tmp_win->win_w = width;
-	tmp_win->win_h = height;
-
-	if( old_x!=x || old_y!=y )	notify = True;
+	if( tmp_win->frame_x!=x || tmp_win->frame_y!=y )	notify = True;
 
 	if( !(tmp_win->flags&SCROLL) || 
-	   tmp_win->frame_w>tmp_win->win_w || !(tmp_win->flags&SBARH) )
-		tmp_win->frame_w = tmp_win->win_w;
+	   width>tmp_win->win_w || !(tmp_win->flags&SBARH) )
+		width = tmp_win->win_w;
 	if( !(tmp_win->flags&SCROLL) || 
-	   tmp_win->frame_h>tmp_win->win_h || !(tmp_win->flags&SBARV) )
-		tmp_win->frame_h = tmp_win->win_h;
+	   height>tmp_win->win_h || !(tmp_win->flags&SBARV) )
+		height = tmp_win->win_h;
 
-	SetUpFrame(tmp_win, tmp_win->frame_x, tmp_win->frame_y,
-			   tmp_win->frame_w, tmp_win->frame_h, notify );
+	SetUpFrame(tmp_win, x, y, width, height, notify );
 	
 	if( tmp_win==Scr.ActiveWin ){
 		Scr.ActiveWin = NULL;
