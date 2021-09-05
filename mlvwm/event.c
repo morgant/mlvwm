@@ -441,10 +441,10 @@ void handle_configure_request( XEvent *ev )
 		if (xcr->value_mask & CWWidth)		width = xcr->width+12;
 		if (xcr->value_mask & CWHeight)		height = xcr->height+12;
 	}
-/*
+
 	tmp_win->frame_x = x<0 ? 0 : x;
 	tmp_win->frame_y = y<MENUB_H ? MENUB_H : y;
-*/
+
 	tmp_win->win_w = width;
 	tmp_win->win_h = height;
 
