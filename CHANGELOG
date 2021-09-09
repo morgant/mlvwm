@@ -1,3 +1,8 @@
+0.9.2 -> 0.9.4
+Improved config command parsing in ReadConfigFile()
+Add SwallowFocusClick configuration command
+Fixed handle_configure_request() to support moving windows
+
 0.9.2 -> 0.9.3
 Fix RestartSystem()/Done() to correctly restart into other window managers
 Add RoundedScreenCorners configuration
