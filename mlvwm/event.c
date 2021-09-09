@@ -1384,7 +1384,11 @@ void handle_button_press( XEvent *ev )
 				ev->xany.window = ev->xbutton.subwindow;
 				context = GetContext( Tmp_win, ev, &win );
 			}
-			XAllowEvents(dpy, AsyncPointer, CurrentTime ); 
+			if ( context==C_TITLE || Scr.flags&SWALLOWFOCUSCLICK )
+				XAllowEvents(dpy, AsyncPointer, CurrentTime );
+			else {
+				XAllowEvents(dpy, ReplayPointer, CurrentTime );
+			}
 		}
 		else
 			XAllowEvents(dpy, ReplayPointer, CurrentTime ); 

@@ -44,6 +44,7 @@ struct configure
 
 extern void SetDeskTopNum( char *, FILE * );
 extern void SetFollowToMouse( char *, FILE * );
+extern void SetSwallowFocusClick( char *, FILE * );
 extern void ReadConfigFile( char * );
 extern void FreeStyles( void );
 

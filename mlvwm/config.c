@@ -431,6 +431,11 @@ void SetSloppyFocus( char *line, FILE *fp )
 	Scr.flags |= SLOPPYFOCUS;
 }
 
+void SetSwallowFocusClick( char *line, FILE *fp )
+{
+	Scr.flags |= SWALLOWFOCUSCLICK;
+}
+
 void SetStickyHide( char *line, FILE *fp )
 {
 	Scr.flags |= STICKHIDE;
@@ -748,6 +753,7 @@ config_func main_config[]={
 	{ "StickyHide", SetStickyHide },
 	{ "Style",	SetStyles },
 	{ "Swallow", SetSwallow },
+	{ "SwallowFocusClick", SetSwallowFocusClick },
 	{ "System8", SetSystem8 },
 	{ "OpaqueMove", SetOpaqueMove },
 	{ "OpaqueResize", SetOpaqueResize },
