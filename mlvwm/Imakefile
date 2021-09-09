@@ -2,7 +2,7 @@ XCOMM Imakefile for MLVWM
 
 #include "../configure.h"
 
-                VERSION = 0.9.3
+                VERSION = 0.9.4
         COMPILE_OPTIONS = -DVERSION=\"$(VERSION)\" \
                           -DCONFIGNAME=\"$(MLVWMRC)\" \
                           -DMLVWMLIBDIR=\"$(MLVWMLIBDIR)\" 
