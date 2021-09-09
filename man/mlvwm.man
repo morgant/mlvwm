@@ -149,6 +149,9 @@ focus in the current one.  This is not set up by default.
 .IP "\fBSlopyFocus\fP"
 It turns on FollowToMouse with the modification of not loosing
 focus when in the root window.
+.IP "\fBSwallowFocusClick\fP"
+Initial clicks in inactive windows will be ignored. This is not set by
+default.
 .IP "\fBSystem8\fP"
 Change to window decoration to System 8(Only Color Monitor).
 .IP "\fBRoundedScreenCorners\fP"
