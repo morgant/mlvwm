@@ -76,7 +76,7 @@ char *LookUpFiles( char *path, char *filename, int mode )
 
 char *SkipNonSpace( char *str )
 {
-	for( ; *str!=' ' && *str!='\t' && *str; str++ );
+	for( ; *str!=' ' && *str!='\t' && *str!='\n' && *str; str++ );
 	return str;
 }
 

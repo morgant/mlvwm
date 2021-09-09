@@ -763,8 +763,9 @@ config_func main_config[]={
 void ReadConfigFile( char *configfile )
 {
 	FILE *fp;
-	char str[1024], *file, *cmp;
+	char str[1024], cmp[1024], *file, *str_start, *cmp_end;
 	int lp;
+  size_t len;
 #ifdef MLVWMLIBDIR
 	char *sysrc;
 	size_t sysrc_size;
@@ -796,14 +797,21 @@ void ReadConfigFile( char *configfile )
 	while( fgetline( str, sizeof(str), fp )!=NULL ){
 		if( Scr.flags & DEBUGOUT )
 			DrawStringMenuBar( str );
-		cmp = str;
 
-		if( *cmp == '#' ) continue;
-		cmp = SkipSpace( cmp );
-		if( *cmp == '\n' )		continue;
+		str_start = str;
+		if( *str_start == '#' ) continue;
+		str_start = SkipSpace( str_start );
+		if( *str_start == '\n' )		continue;
+
+		snprintf( cmp, sizeof(cmp), "%s", str_start );
+		cmp_end = SkipNonSpace( cmp );
+		*cmp_end = '\0';
+
 		for( lp=0; main_config[lp].label!=NULL; lp++ ){
-			if( !strncmp( cmp, main_config[lp].label,
-						 strlen(main_config[lp].label) )){
+			len = strlen(cmp);
+			if( strlen(main_config[lp].label) > len )
+				len = strlen(main_config[lp].label);
+			if( !strncmp( cmp, main_config[lp].label, len )){
 				main_config[lp].action( str, fp );
 				break;
 			}
