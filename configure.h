@@ -46,7 +46,6 @@ XCOMM
 
 #if HasLocale
     Locale_DEFINES = -DUSE_LOCALE
-    Loacle_INCLUDES = 
 #if defined(FreeBSDArchitecture) && OSMajorVersion>1 && OSMinorVersion>1
     Locale_LIBRARIES = -lxpg4
 #endif /* End FreeBSD */

@@ -52,8 +52,6 @@
 
 #include <X11/extensions/shape.h>
 
-#define MAX_NAME_LEN 200L               /* truncate to this many */
-
 extern int ShapeEventBase;
 
 extern void handle_expose( XEvent * );

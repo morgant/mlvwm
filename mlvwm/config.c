@@ -31,6 +31,8 @@ struct configure key_modifiers[]=
   {0,0}
 };
 
+#define FALLBACK_FONT "-*-*-*-r-*-*-*-*-*-*-*-*-*-*"
+
 char *NoTitleStyle( styles *tmp_style, char *str )
 {
 	tmp_style->flags &= ~TITLE;
@@ -577,10 +579,21 @@ XFontStruct **font,
 #endif
 
 #ifdef USE_LOCALE
+	asprintf(&fontname, "%s, %s", fontname, FALLBACK_FONT);
 	newfont = XCreateFontSet( dpy, fontname, &miss, &n_miss, &def );
-	if( n_miss>0 ){
-		for( lp=0; lp<n_miss; lp++ )
-			DrawErrMsgOnMenu( "Load miss font ", miss[lp] );
+
+	if( Scr.flags & DEBUGOUT )
+		fprintf( stderr, "Loading fontset %s\n", fontname );
+
+	if( n_miss>0 ) {
+		if( Scr.flags & DEBUGOUT )
+		{
+			fprintf( stderr, "Missing font encodings" );
+			for( lp=0; lp<n_miss; lp++ )
+				fprintf( stderr, "%s;", miss[lp] );
+
+			fprintf( stderr, "\n" );
+		}
 		XFreeStringList( miss );
 	}
 	if( newfont==NULL )

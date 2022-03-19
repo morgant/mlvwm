@@ -98,6 +98,9 @@ void LoadDefaultFonts( void )
 	char **miss, *def;
 	int n_miss, lp;
 
+	if( Scr.flags & DEBUGOUT )
+		fprintf( stderr, "Locale: %s\n", setlocale(LC_ALL, NULL)); 
+
 	Scr.MenuBarFs =	XCreateFontSet( dpy, DEFAULTFS, &miss, &n_miss, &def );
 	if( n_miss>0 ){
 		for( lp=0; lp<n_miss; lp++ )
