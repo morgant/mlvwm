@@ -1,7 +1,7 @@
 Menu kterm-file, Label "File", Left
-"$B?75,(B" Action Exec "kterm" exec kterm -ls
+"新規" Action Exec "kterm" exec kterm -ls
 "" NonSelect
-"$B=*N;(B" Action SendMessage "exit" Return
+"終了" Action SendMessage "exit" Return
 END
 
 MenuBar kterm

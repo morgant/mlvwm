@@ -1,64 +1,64 @@
-## ¥Ç¥¹¥¯¥È¥Ã¥×¤Î¿ô
+## ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã®æ•°
 Desktopnum	3
 
-## ¥¦¥¤¥ó¥É¥¦¤Î¥¢¥¯¥Æ¥£¥Ö¤¬¥Ş¥¦¥¹¤Ë¤Ä¤¤¤Æ¤¤¤¯¤«
+## ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãŒãƒã‚¦ã‚¹ã«ã¤ã„ã¦ã„ãã‹
 #FollowToMouse
 
-## ¥¦¥¤¥ó¥É¥¦¤Î¥¢¥¯¥Æ¥£¥Ö¤¬¥Ş¥¦¥¹¤Ë¤Ä¤¤¤Æ¤¤¤¯¤¬¡¢root ¥¦¥¤¥ó¥É¥¦¤Ë¥Ş¥¦¥¹¤¬
-## Æş¤Ã¤¿¾ì¹ç¥¢¥¯¥Æ¥£¥Ö¥¦¥¤¥ó¥É¥¦¤ÏÊİÂ¸¤µ¤ì¤ë
+## ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãŒãƒã‚¦ã‚¹ã«ã¤ã„ã¦ã„ããŒã€root ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã«ãƒã‚¦ã‚¹ãŒ
+## å…¥ã£ãŸå ´åˆã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã¯ä¿å­˜ã•ã‚Œã‚‹
 #SloppyFocus
 
-## ¥·¥§¥¤¥É¤·¤¿¥¦¥¤¥ó¥É¥¦¤¬ Stick ¤¹¤ë¤«
+## ã‚·ã‚§ã‚¤ãƒ‰ã—ãŸã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãŒ Stick ã™ã‚‹ã‹
 StickyShade
 
-## ¥¢¥ó¥Ş¥Ã¥×¤µ¤ì¤Æ¤¤¤ë¥¦¥¤¥ó¥É¥¦¤¬ Stick ¤¹¤ë¤«
+## ã‚¢ãƒ³ãƒãƒƒãƒ—ã•ã‚Œã¦ã„ã‚‹ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãŒ Stick ã™ã‚‹ã‹
 StickyHide
 
-# ¥á¥Ë¥å¡¼¤Î¥Õ¥é¥Ã¥·¥å¤Î»ş´Ö¤È²ó¿ô
+# ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã®æ™‚é–“ã¨å›æ•°
 #FlushMenu 100 2
 
-# ¥À¥Ö¥ë¥¯¥ê¥Ã¥¯¤òÇ§¼±¤¹¤ë»ş´Ö
+# ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã‚’èªè­˜ã™ã‚‹æ™‚é–“
 DoubleClickTime 300
 
 # Edge resistance force
 EdgeResistance 50 50
 
-## Icon²½¤òShade¤È¤¹¤ë
+## IconåŒ–ã‚’Shadeã¨ã™ã‚‹
 IconifyShade
 
-## Icon²½¤òHide¤È¤¹¤ë
+## IconåŒ–ã‚’Hideã¨ã™ã‚‹
 #IconifyHide
 
-## Shade¥¦¥¤¥ó¥É¥¦¤¬Hide¤«¤éShow¤Ë¤Ê¤ë¤È¤­Shade¤Î¤Ş¤Ş
+## Shadeã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãŒHideã‹ã‚‰Showã«ãªã‚‹ã¨ãShadeã®ã¾ã¾
 #ShadeMap
 
-## MacOS8¤Î¥Ç¥³¥ì¡¼¥·¥ç¥ó¤ò»ÅÍÍ²ÄÇ½¤Ë
+## MacOS8ã®ãƒ‡ã‚³ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä»•æ§˜å¯èƒ½ã«
 #System8
 
-## OpaqueMove ¤ò²ÄÇ½¤Ë
+## OpaqueMove ã‚’å¯èƒ½ã«
 OpaqueMove
 
-## OpaqueResize ¤ò²ÄÇ½¤Ë
+## OpaqueResize ã‚’å¯èƒ½ã«
 OpaqueResize
 
-## OneClickMenu ¤ò²ÄÇ½¤Ë
+## OneClickMenu ã‚’å¯èƒ½ã«
 OneClickMenu
 
 
-## ¥¦¥¤¥ó¥É¥¦¥ê¥¹¥È¤Î¥¦¥¤¥ó¥É¥¦Ì¾¤Ë¥Ç¥¹¥¯¥È¥Ã¥×ÈÖ¹æ¤¬°ì½ï¤ËÉ½¼¨
+## ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãƒªã‚¹ãƒˆã®ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦åã«ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ç•ªå·ãŒä¸€ç·’ã«è¡¨ç¤º
 #DisplayDeskNumber
 
-## ¥ê¥µ¥¤¥º/°ÜÆ°¤Î»ş¤ËÉ½¼¨¤µ¤ì¤ëÀş¤¬ÅÀÀş¤Ë¤Ê¤ë
+## ãƒªã‚µã‚¤ã‚º/ç§»å‹•ã®æ™‚ã«è¡¨ç¤ºã•ã‚Œã‚‹ç·šãŒç‚¹ç·šã«ãªã‚‹
 Compatible
 
-# IconPath ¤Î»ØÄê¡£Style ¤Î»ØÄê¤ÎÁ°¤ËÉ¬Í×
+# IconPath ã®æŒ‡å®šã€‚Style ã®æŒ‡å®šã®å‰ã«å¿…è¦
 IconPath /usr/local/include/X11/pixmaps:/home2/tak/bin/pixmap
 IconMenuIcon label2.xpm
 
 # Balloon help Settings
 UseBalloon "Show Balloon Help" "Hide Balloon Help", Icon label3.xpm
 
-# Font ÀßÄê(LOCALEÀßÄê¤¢¤ê¤Î¥µ¥ó¥×¥ë)
+# Font è¨­å®š(LOCALEè¨­å®šã‚ã‚Šã®ã‚µãƒ³ãƒ—ãƒ«)
 MenuBarFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,\
 	-misc-marumoji-*-*-*-*-16-*-*-*-*-*-jisx0208.1983
 MenuFont -*-*-*-r-*-*-16-*-*-*-*-*-*-*,\
@@ -78,81 +78,81 @@ END
 
 # Register the menu
 Menu Apple, Icon label1.xpm, Stick
-"¤³¤Î¥Ş¥·¥ó¤Ë¤Ä¤¤¤Æ..." NonSelect, Gray, Action About
+"ã“ã®ãƒã‚·ãƒ³ã«ã¤ã„ã¦..." NonSelect, Gray, Action About
 "" NonSelect
-"¤¿¡¼¤ß¤Ê¤ë"	Icon mini-display.xpm, Action Exec "kterm" exec kterm -ls
-"¤¨¤Ç¤£¤¿"  Action Exec "mule" exec mule, Icon mini-edit.xpm
-"¤±¤¤¤µ¤ó¤­" Action Exec "xcal" exec xcalc, Icon mini-calc.xpm
+"ãŸãƒ¼ã¿ãªã‚‹"	Icon mini-display.xpm, Action Exec "kterm" exec kterm -ls
+"ãˆã§ãƒãŸ"  Action Exec "mule" exec mule, Icon mini-edit.xpm
+"ã‘ã„ã•ã‚“ã" Action Exec "xcal" exec xcalc, Icon mini-calc.xpm
 END
 
-Menu def-File, Label "¥Õ¥¡¥¤¥ë", Left
-"¿·µ¬¥Õ¥©¥ë¥À" NonSelect, Gray, Action Nop
-"³«¤±¤ë" NonSelect, Gray, Action Nop
-"°õºş" NonSelect, Gray, Action Nop
-"¥¦¥¤¥ó¥É¥¦¤òÊÄ¤¸¤ë" NonSelect, Gray, Action Nop
+Menu def-File, Label "ãƒ•ã‚¡ã‚¤ãƒ«", Left
+"æ–°è¦ãƒ•ã‚©ãƒ«ãƒ€" NonSelect, Gray, Action Nop
+"é–‹ã‘ã‚‹" NonSelect, Gray, Action Nop
+"å°åˆ·" NonSelect, Gray, Action Nop
+"ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã‚’é–‰ã˜ã‚‹" NonSelect, Gray, Action Nop
 "" NonSelect
-"¾ğÊó..."  NonSelect, Gray,Action Nop
-"Ê£À½" NonSelect, Gray, Action Nop
+"æƒ…å ±..."  NonSelect, Gray,Action Nop
+"è¤‡è£½" NonSelect, Gray, Action Nop
 "" NonSelect
-"¸¡º÷..." NonSelect, Gray, Action Nop
-"ºÆ¸¡º÷" NonSelect, Gray, Action Nop
+"æ¤œç´¢..." NonSelect, Gray, Action Nop
+"å†æ¤œç´¢" NonSelect, Gray, Action Nop
 "" NonSelect
-"ÍÑ»æÀßÄê..." NonSelect, Gray, Action Nop
-"¥Ç¥¹¥¯¥È¥Ã¥×¤ò°õºş..." NonSelect, Gray, Action Nop
+"ç”¨ç´™è¨­å®š..." NonSelect, Gray, Action Nop
+"ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚’å°åˆ·..." NonSelect, Gray, Action Nop
 END
 
-Menu def-Edit, Label "ÊÔ½¸"
-"¼è¤ê¾Ã¤·" Action Nop
+Menu def-Edit, Label "ç·¨é›†"
+"å–ã‚Šæ¶ˆã—" Action Nop
 "" NonSelect
-"ÀÚ¤ê¤È¤ê" Action Nop
-"Ê£À½" Action Nop
-"Ä¥¤êÉÕ¤±" Action Nop
-"¾Ãµî" Action Nop
-"¤¹¤Ù¤Æ¤òÁªÂò" Action Nop
+"åˆ‡ã‚Šã¨ã‚Š" Action Nop
+"è¤‡è£½" Action Nop
+"å¼µã‚Šä»˜ã‘" Action Nop
+"æ¶ˆå»" Action Nop
+"ã™ã¹ã¦ã‚’é¸æŠ" Action Nop
 "" NonSelect
-"¥¯¥ê¥Ã¥×¥Ü¡¼¥ÉÉ½¼¨" Action Nop
+"ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰è¡¨ç¤º" Action Nop
 END
 
-Menu def-View, Label "É½¼¨"
-"¥¢¥¤¥³¥ó" NonSelect, Gray
-"¾®¤µ¤¤¥¢¥¤¥³¥ó" NonSelect, Gray
-"Ì¾Á°" NonSelect, Gray
-"Âç¤­¤µ" NonSelect, Gray
-"¼ïÎà" NonSelect, Gray
-"ÆüÉÕ" NonSelect, Gray
-"¥Ğ¡¼¥¸¥ç¥ó" NonSelect, Gray
+Menu def-View, Label "è¡¨ç¤º"
+"ã‚¢ã‚¤ã‚³ãƒ³" NonSelect, Gray
+"å°ã•ã„ã‚¢ã‚¤ã‚³ãƒ³" NonSelect, Gray
+"åå‰" NonSelect, Gray
+"å¤§ãã•" NonSelect, Gray
+"ç¨®é¡" NonSelect, Gray
+"æ—¥ä»˜" NonSelect, Gray
+"ãƒãƒ¼ã‚¸ãƒ§ãƒ³" NonSelect, Gray
 END
 
-Menu def-Label, Label "¥é¥Ù¥ë"
-"¤Ê¤·" NonSelect, Gray
+Menu def-Label, Label "ãƒ©ãƒ™ãƒ«"
+"ãªã—" NonSelect, Gray
 "" NonSelect
-"É¬¿Ü" NonSelect, Gray
-"½ÅÍ×" NonSelect, Gray
-"¿Ê¹ÔÃæ" NonSelect, Gray
-"Ì¤·è" NonSelect, Gray
-"¸Ä¿ÍÍÑ" NonSelect, Gray
-"·×²è1" NonSelect, Gray
-"·×²è2" NonSelect, Gray
+"å¿…é ˆ" NonSelect, Gray
+"é‡è¦" NonSelect, Gray
+"é€²è¡Œä¸­" NonSelect, Gray
+"æœªæ±º" NonSelect, Gray
+"å€‹äººç”¨" NonSelect, Gray
+"è¨ˆç”»1" NonSelect, Gray
+"è¨ˆç”»2" NonSelect, Gray
 END
 
-Menu def-Special, Label "ÆÃÊÌ" 
-"¥Ç¥¹¥¯¥È¥Ã¥×¤òÀ°ÆÜ" Action Refresh
-"¥´¥ßÈ¢¤ò¶õ¤Ë" NonSelect, Gray
+Menu def-Special, Label "ç‰¹åˆ¥" 
+"ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚’æ•´é “" Action Refresh
+"ã‚´ãƒŸç®±ã‚’ç©ºã«" NonSelect, Gray
 "" NonSelect
-"¥Ç¥£¥¹¥¯¤Î¼è¤ê½Ğ¤·" NonSelect, Gray
-"¥Ç¥£¥¹¥¯¤Î¾Ãµî..." NonSelect, Gray
+"ãƒ‡ã‚£ã‚¹ã‚¯ã®å–ã‚Šå‡ºã—" NonSelect, Gray
+"ãƒ‡ã‚£ã‚¹ã‚¯ã®æ¶ˆå»..." NonSelect, Gray
 "" NonSelect
-"twm¤òµ¯Æ°" Action Restart twm
-"ºÆµ¯Æ°" Action Restart mlvwm
-"½ªÎ»" Action Exit
+"twmã‚’èµ·å‹•" Action Restart twm
+"å†èµ·å‹•" Action Restart mlvwm
+"çµ‚äº†" Action Exit
 END
 
 Menu def-Window 
-"°ÜÆ°" Action MoveWindow
-"Âç¤­¤µÊÑ¹¹" Action ResizeWindow
-"¥¹¥¯¥í¡¼¥ëÀÚÂØ¤¨" Action ToggleScroll
+"ç§»å‹•" Action MoveWindow
+"å¤§ãã•å¤‰æ›´" Action ResizeWindow
+"ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åˆ‡æ›¿ãˆ" Action ToggleScroll
 "" NonSelect
-"¥¦¥¤¥ó¥É¥¦¤òÊÄ¤¸¤ë" Action KillWindow
+"ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã‚’é–‰ã˜ã‚‹" Action KillWindow
 END
 
 
@@ -206,5 +206,5 @@ Style
 "XConsole"  NoSBarH, NoSBarV, NoResizeR, NoTitle, NoWinList, SkipSelect
 END
 
-# Â¾¤ÎÀßÄê¤òÆÉ¤à
+# ä»–ã®è¨­å®šã‚’èª­ã‚€
 Read Mlvwmrc-Kterm

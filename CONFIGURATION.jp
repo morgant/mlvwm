@@ -1,235 +1,235 @@
-$B@_Dj%U%!%$%k$ODL>o(B $HOME/.mlvwmrc $B%U%!%$%k$r8+$K$$$-$^$9!#5/F0;~$N(B -f 
-$B%*%W%7%g%s$K$h$C$F!"$3$N%U%!%$%k$rJQ99$9$k$3$H$,2DG=$G$9!#(B
-$B%5%s%W%k%U%!%$%k$,(B sample_rc/Mlvwmrc, Mlvwmrc-j $B$K$"$j$^$9$N$G!"I,MW$K(B
-$B1~$8$F$3$N%U%!%$%k$r(B ~/.mlvwmrc $B$K%3%T!<$7$FJQ99$7$F2<$5$$!#(B
-sample_rc/Mlvwmrc-j $B$OF|K\8lHG$N%5%s%W%k$G$9!#(B
-InstallSampleRC $B$,(B YES $B$N>l9g!"$=$A$i$b8+$K9T$-$^$9!#(B
+設定ファイルは通常 $HOME/.mlvwmrc ファイルを見にいきます。起動時の -f 
+オプションによって、このファイルを変更することが可能です。
+サンプルファイルが sample_rc/Mlvwmrc, Mlvwmrc-j にありますので、必要に
+応じてこのファイルを ~/.mlvwmrc にコピーして変更して下さい。
+sample_rc/Mlvwmrc-j は日本語版のサンプルです。
+InstallSampleRC が YES の場合、そちらも見に行きます。
 
-$BCm(B) $B@_Dj%U%!%$%k$NL>A0$,(B .desktop $B$+$i(B .mlvwmrc $B$KJQ99$K$J$j$^$7$?!#(B
-    .desktop $B$N$^$^$r4uK>$9$k>l9g$O!"(B configure.h $B$G(B OldRCFile $B$r(B YES 
-    $B$K@_Dj$7$F2<$5$$!#(B
+注) 設定ファイルの名前が .desktop から .mlvwmrc に変更になりました。
+    .desktop のままを希望する場合は、 configure.h で OldRCFile を YES 
+    に設定して下さい。
 
 Builtin Command
 
-$B%a%K%e!<!"%-!<%\!<%I%7%g!<%H%+%C%H$J$I$G;HMQ$G$-$kFbIt%3%^%s%I$O0J2<$N(B
-$BDL$j$G$9!#(B
+メニュー、キーボードショートカットなどで使用できる内部コマンドは以下の
+通りです。
 
-      Exec       $B30It%3%^%s%I$N<B9T$r9T$J$$$^$9!#0z?t$H$7$F<B9T$9$k30(B
-                 $BIt%3%^%s%I$r$H$j$^$9!#(B"" $B$G!"<B9T$9$k%"%W%j%1!<%7%g%s(B
-                 $B$NL>A0$r;XDj$7$F2<$5$$!#(B
-      Nop        $B2?$b$7$^$;$s!#(B
-      Refresh    $B2hLL$N%j%U%l%C%7%e$r$7$^$9!#(B
-      Restart    $B0z?t$H$7$F;XDj$5$l$?%&%$%s%I%&%^%M!<%8%c$r<B9T$7!"%&(B
-                 $B%$%s%I%&4D6-$N%j%9%?!<%H$r9T$J$$$^$9!#(B
-      Exit       $B%&%$%s%I%&%^%M!<%8%c$r=*N;$7$^$9!#(B
-      Desk       $B%G%9%/%H%C%W$N0\F0$r$7$^$9!#0z?t$O?t;z$^$?$O(B +, - $B$r(B
-                 $B<h$j$^$9!#?t;z$N>l9g$O$=$N?t;z$N<($9%G%9%/%H%C%W$K0\(B
-                 $BF0$7$^$9!#(B+(-) $B$N>l9g$O%+%l%s%H%G%9%/%H%C%W$K(B1$BB-$7$?(B
-                 ($B0z$$$?(B)$BHV9f$N%G%9%/%H%C%W$K0\F0$7$^$9!#(B
-      NextWindow $B8=:_$N%"%/%F%#%V%&%$%s%I%&$N$D$.$K%^%C%W$5$l$?%&%$%s(B
-                 $B%I%&$rA*Br$7$^$9!#(BHide $B$5$l$?%&%$%s%I%&$H(B SkipSelect 
-                 $B;XDj$5$l$?%&%$%s%I%&$OA*Br$5$l$^$;$s!#(B
+      Exec       外部コマンドの実行を行ないます。引数として実行する外
+                 部コマンドをとります。"" で、実行するアプリケーション
+                 の名前を指定して下さい。
+      Nop        何もしません。
+      Refresh    画面のリフレッシュをします。
+      Restart    引数として指定されたウインドウマネージャを実行し、ウ
+                 インドウ環境のリスタートを行ないます。
+      Exit       ウインドウマネージャを終了します。
+      Desk       デスクトップの移動をします。引数は数字または +, - を
+                 取ります。数字の場合はその数字の示すデスクトップに移
+                 動します。+(-) の場合はカレントデスクトップに1足した
+                 (引いた)番号のデスクトップに移動します。
+      NextWindow 現在のアクティブウインドウのつぎにマップされたウイン
+                 ドウを選択します。Hide されたウインドウと SkipSelect 
+                 指定されたウインドウは選択されません。
       PreviousWindow
-                 $B8=:_$N%"%/%F%#%V%&%$%s%I%&$N$^$($K%^%C%W$5$l$?%&%$%s(B
-                 $B%I%&$rA*Br$7$^$9!#(BHide $B$5$l$?%&%$%s%I%&$H(B SkipSelect 
-                 $B;XDj$5$l$?%&%$%s%I%&$OA*Br$5$l$^$;$s!#(B
+                 現在のアクティブウインドウのまえにマップされたウイン
+                 ドウを選択します。Hide されたウインドウと SkipSelect 
+                 指定されたウインドウは選択されません。
       NextSameDeskWindow
-                 $B8=:_$N%"%/%F%#%V%&%$%s%I%&$N<!$K%^%C%W$5$l$?F1$8%G%9(B
-                 $B%/%H%C%W>e$N%&%$%s%I%&$rA*Br$7$^$9!#(BHide $B$5$l$?%&%$%s(B
-                 $B%I%&$H(B SkipSelect $B;XDj$5$l$?%&%$%s%I%&$OA*Br$5$l$^$;(B
-                 $B$s!#(B
+                 現在のアクティブウインドウの次にマップされた同じデス
+                 クトップ上のウインドウを選択します。Hide されたウイン
+                 ドウと SkipSelect 指定されたウインドウは選択されませ
+                 ん。
       PreviousSameDeskWindow
-                 $B8=:_$N%"%/%F%#%V%&%$%s%I%&$N$^$($K%^%C%W$5$l$?F1$8%G(B
-                 $B%9%/%H%C%W>e$N%&%$%s%I%&$rA*Br$7$^$9!#(BHide $B$5$l$?%&%$(B
-                 $B%s%I%&$H(B SkipSelect $B;XDj$5$l$?%&%$%s%I%&$OA*Br$5$l$^(B
-                 $B$;$s!#(B
+                 現在のアクティブウインドウのまえにマップされた同じデ
+                 スクトップ上のウインドウを選択します。Hide されたウイ
+                 ンドウと SkipSelect 指定されたウインドウは選択されま
+                 せん。
       ShadeUnShadeActive
-                 $B8=:_$N%"%/%F%#%V%&%$%s%I%&$r(B Shade $B$^$?$O(B UnShade $B$7(B
-                 $B$^$9!#(B
-      HideActive $B8=:_$N%"%/%F%#%V%&%$%s%I%&$r1#$7$^$9!#(B
-      HideOthers $B8=:_$N%"%/%F%#%V%&%$%s%I%&0J30$r1#$7$^$9!#(B
-      ShowAll    $B1#$l$F$$$k%&%$%s%I%&$r$9$Y$FI=<($7$^$9!#(B
-      MoveWindow $B%&%$%s%I%&$rA*Br$N8e!"0\F0$7$^$9!#(B
+                 現在のアクティブウインドウを Shade または UnShade し
+                 ます。
+      HideActive 現在のアクティブウインドウを隠します。
+      HideOthers 現在のアクティブウインドウ以外を隠します。
+      ShowAll    隠れているウインドウをすべて表示します。
+      MoveWindow ウインドウを選択の後、移動します。
       ResizeWindow
-                 $B%&%$%s%I%&$rA*Br$N8e!"%j%5%$%:$7$^$9!#(B
-      KillWindow $B%&%$%s%I%&$rA*Br$N8e!"=*N;$7$^$9!#(B
-      SendMessage $B8=:_$N%"%/%F%#%V%&%$%s%I%&$K(B KeyPress $B$N%$%Y%s%H$rAw(B
-                  $B$j$^$9!#;XDjJ}K!$O!"%9%Z!<%9$r6g@Z$j$K$7$F%-!<%M!<%`(B
-                  $B$r5-=R$7$F$$$-$^$9!#%-!<%M!<%`$,0lJ8;z$N>l9g(B " $B$G3g$C(B
-                  $B$F!"O"B3$7$F;XDj$9$k$3$H$,$G$-$^$9!#(B
-                  $B%-!<%\!<%I%b%G%#%U%!%$%"$OBgJ8;z$G;XDj$r9T$J$$!"8e=R(B
-                  $B$9$k%-!<%\!<%I%7%g!<%H%+%C%H$HF1$8%-%c%i%/%?$K$h$j;X(B
-                  $BDj$G$-$^$9!#%-!<%\!<%I%b%G%#%U%!%$%"$O%-!<%M!<%`$H(B + 
-                  $B$G7k9g$9$k$3$H$K$h$j5-=R$G$-$^$9!#(B
-        $BNc(B) $B%3%s%H%m!<%k(B + x $B$N>l9g"*(B C+x
-      Wait $B%"%W%j%1!<%7%g%sL>(B $B$^$?$O(B $B%"%W%j%1!<%7%g%s%/%i%9(B
-                  $B%"%W%j%1!<%7%g%s$,N)$A>e$,$k$N$rBT$D!#(B                 
-      ShowBalloon $B%-!<%\!<%I%7%g!<%H%+%C%H$GMxMQ$9$k!#%P%k!<%s%X%k%W$r(B
-                  $BI=<($9$k!#(B
+                 ウインドウを選択の後、リサイズします。
+      KillWindow ウインドウを選択の後、終了します。
+      SendMessage 現在のアクティブウインドウに KeyPress のイベントを送
+                  ります。指定方法は、スペースを句切りにしてキーネーム
+                  を記述していきます。キーネームが一文字の場合 " で括っ
+                  て、連続して指定することができます。
+                  キーボードモディファイアは大文字で指定を行ない、後述
+                  するキーボードショートカットと同じキャラクタにより指
+                  定できます。キーボードモディファイアはキーネームと + 
+                  で結合することにより記述できます。
+        例) コントロール + x の場合→ C+x
+      Wait アプリケーション名 または アプリケーションクラス
+                  アプリケーションが立ち上がるのを待つ。                 
+      ShowBalloon キーボードショートカットで利用する。バルーンヘルプを
+                  表示する。
 
 Description
 
-$B=i4|@_Dj%U%!%$%k$G;XDj$G$-$k9`L\$O<!$N$H$*$j$G$9!#(B
+初期設定ファイルで指定できる項目は次のとおりです。
 
-  Desktopnum      $B2>A[2hLLKg?t!#%G%U%)%k%H$O(B1$B!#(B
-  StickyShade     $B%7%'!<%I$5$l$?%&%$%s%I%&$O%G%9%/%H%C%W$N0\F0$K4X78$J(B
-                  $B$/I=<($5$l$k!#%G%U%)%k%H$O$J$7!#(B
-  StickyHide      Hide $B$7$?%&%$%s%I%&$r%&%$%s%I%&%j%9%H$+$iA*Br$9$k$H!"(B
-                  $B%+%l%s%H$N%G%9%/%H%C%W$KI=<(!#(BShowAll $B$r9T$J$C$?;~$O(B
-                  $B%*%j%8%J%k$N%G%9%/%H%C%W$KI=<($5$l$k!#%G%U%)%k%H$O$J(B
-                  $B$7!#(B
-  ShadeMap        Shade $B$5$l$?%&%$%s%I%&$r(B Hide $B$7$?$"$H!"(B Map $B$9$k;~$K(B
-                  Shade $B$r2r=|$7$J$$!#%G%U%)%k%H$G$O(B Shade $B$,2r=|$5$l$k!#(B
-  DoubleClickTime $B%@%V%k%/%j%C%/$r9T$J$&$?$a$N%/%j%C%/4V3V$N@_Dj!#%G%U%)(B
-                  $B%k%H$O(B 300$B!#(B
-  Compatible      $B%&%$%s%I%&$N0\F0!"%j%5%$%:$N;~$KI=<($5$l$kOH$,E@@~$K$J(B
-                  $B$j$^$9!#(B
-  FollowToMouse   $B@_Dj$9$k$H%^%&%9$NF0$-$K$"$o$;$F%"%/%F%#%V%&%$%s%I%&$,(B
-                  $BJQ99$5$l$^$9!#%G%U%)%k%H$O$J$7!#(B
-  SloppyFocus     FollowToMouse $BF1MM$K%^%&%9$NF0$-$K$"$o$;$F%"%/%F%#%V%&(B
-                  $B%$%s%I%&$,JQ99$5$l$k!#%^%&%9$,%k!<%H%&%$%s%I%&$K=P$?(B
-                  $B>l9g$O%"%/%F%#%V%&%$%s%I%&$,JQ99$5$l$J$$!#(B
-  System8         $B%G%3%l!<%7%g%s$r(B System8 $BIw$K$9$k!#%+%i!<%b%K%?$N$_!#(B
-  OpaqueMove      $B0\F0;~$KCf?H$rI=<($7$?$^$^0\F0(B
-  OpaqueResize    $B%j%5%$%:;~$KCf?H$rI=<($7$?$^$^0\F0(B
-  OneClickMenu    $B%/%j%C%/$G%a%K%e!<$,%W%k%@%&%s$7$F!"$b$&0l2s$N%/%j%C%/(B
-                  $B$G<B9T(B
-  EdgeResistance  $B%&%$%s%I%&$,2hLL$N30$K=P$k$?$a$KI,MW$J0\F0NL$r(B x, y $B$GDI2C(B
-  ZoomWait        Hide $B$N%"%K%a!<%7%g%s%9%T!<%I$r(B ms $B$G;XDj!#%G%U%)%k%H$O(B
-                  10ms$B!#(B
-  RotateDesk      $B%G%9%/%H%C%W$N2C;;!"8:;;$r%m!<%F!<%7%g%s$9$k!#(B
+  Desktopnum      仮想画面枚数。デフォルトは1。
+  StickyShade     シェードされたウインドウはデスクトップの移動に関係な
+                  く表示される。デフォルトはなし。
+  StickyHide      Hide したウインドウをウインドウリストから選択すると、
+                  カレントのデスクトップに表示。ShowAll を行なった時は
+                  オリジナルのデスクトップに表示される。デフォルトはな
+                  し。
+  ShadeMap        Shade されたウインドウを Hide したあと、 Map する時に
+                  Shade を解除しない。デフォルトでは Shade が解除される。
+  DoubleClickTime ダブルクリックを行なうためのクリック間隔の設定。デフォ
+                  ルトは 300。
+  Compatible      ウインドウの移動、リサイズの時に表示される枠が点線にな
+                  ります。
+  FollowToMouse   設定するとマウスの動きにあわせてアクティブウインドウが
+                  変更されます。デフォルトはなし。
+  SloppyFocus     FollowToMouse 同様にマウスの動きにあわせてアクティブウ
+                  インドウが変更される。マウスがルートウインドウに出た
+                  場合はアクティブウインドウが変更されない。
+  System8         デコレーションを System8 風にする。カラーモニタのみ。
+  OpaqueMove      移動時に中身を表示したまま移動
+  OpaqueResize    リサイズ時に中身を表示したまま移動
+  OneClickMenu    クリックでメニューがプルダウンして、もう一回のクリック
+                  で実行
+  EdgeResistance  ウインドウが画面の外に出るために必要な移動量を x, y で追加
+  ZoomWait        Hide のアニメーションスピードを ms で指定。デフォルトは
+                  10ms。
+  RotateDesk      デスクトップの加算、減算をローテーションする。
   DisplayDeskNumber
-                  $B%&%$%s%I%&%j%9%H$N%&%$%s%I%&L>$K%G%9%/%H%C%WHV9f$r0l=o$K(B
-                  $BI=<($9$k!#(B
-  IconifyShade    WindowShade $B$5$l$?$b$N$r(B Inocify $B$H$_$J$9!#(B
-  IconifyHide     HideWindow $B$5$l$?$b$N$r(B Iconify $B$H$_$J$9!#(B
-  ScrollBarWidth  $B%9%/%m!<%k%P!<$NI=<($NI}$rJQ99$9$k!#%G%U%)%k%H$O(B19$B!#(B
-  FlashMenu       $B%a%K%e!<$NE@LG4V3V$H2s?t$r;XDj!#0z?t$O!"E@LG4V3V$H2s(B
-                  $B?t$G!">JN,$OIT2DG=!#%G%U%)%k%H$O!"E@LG4V3V$,(B 100, 
-                  $BE@LG2s?t$,(B 2$B!#E@LG4V3V$O(B ms $B$G;XDj!#(B
-  IconPath        $B%"%$%3%s%Q%9$r;XDj$7$^$9!#J#?t;XDj$9$k;~$O(B `:' $B$G6h@Z$C(B
-                  $B$F;XDj$7$F2<$5$$!#(BStyle $B$d(B IconMenuIcon $B$d(B Menu $B$NA0$K(B
-                  $B;XDj$r9T$J$o$J$$>l9g!"(BIcon $B$d(B MiniIcon $B$G;XDj$5$l$?(B 
-                  Icon $B$,FI$_9~$a$J$/$J$j$^$9!#(B
-  IconMenuIcon    $B1&C<$N%&%$%s%I%&%j%9%H%a%K%e!<$N%"%$%3%s$r;XDj$7$^$9!#(B
-                  $B;XDj$N$J$$>l9g$O(B ICON $B$NJ8;zNs$,I=<($5$l$^$9!#(B"" $B$G3g$i(B
-                  $B$J$/$J$j$^$7$?!#(B
-  UseRootWin      Root$B%&%$%s%I%&$N%^%&%9%$%Y%s%H$r$H$i$J$/$J$j$^$9!#(B
+                  ウインドウリストのウインドウ名にデスクトップ番号を一緒に
+                  表示する。
+  IconifyShade    WindowShade されたものを Inocify とみなす。
+  IconifyHide     HideWindow されたものを Iconify とみなす。
+  ScrollBarWidth  スクロールバーの表示の幅を変更する。デフォルトは19。
+  FlashMenu       メニューの点滅間隔と回数を指定。引数は、点滅間隔と回
+                  数で、省略は不可能。デフォルトは、点滅間隔が 100, 
+                  点滅回数が 2。点滅間隔は ms で指定。
+  IconPath        アイコンパスを指定します。複数指定する時は `:' で区切っ
+                  て指定して下さい。Style や IconMenuIcon や Menu の前に
+                  指定を行なわない場合、Icon や MiniIcon で指定された 
+                  Icon が読み込めなくなります。
+  IconMenuIcon    右端のウインドウリストメニューのアイコンを指定します。
+                  指定のない場合は ICON の文字列が表示されます。"" で括ら
+                  なくなりました。
+  UseRootWin      Rootウインドウのマウスイベントをとらなくなります。
   UseBalloon "str1" "str2", Icon iconname
-                  $B%P%k!<%s%X%k%W$rI=<($7$^$9!#(Bstr1 $B$O%P%k!<%s$,I=<($5$l$F(B
-                  $B$$$J$$;~$N%a%K%e!<9`L\L>$G$9!#(B
+                  バルーンヘルプを表示します。str1 はバルーンが表示されて
+                  いない時のメニュー項目名です。
   InitFunction
-  RestartFunction $BN)$A$"$2!"%j%9%?!<%H;~$K<B9T$9$kFbIt4X?t$r5-=R(B
-  MenuBarFont     $B%a%K%e!<%P!<$N%U%)%s%H$r@_Dj$7$^$9!#(B
-  MenuFont        $B%a%K%e!<%"%$%F%`$N%U%)%s%H$r@_Dj$7$^$9!#(B
-  TitleBarFont    $B%&%$%s%I%&$N%?%$%H%k%P!<$N%U%)%s%H$r@_Dj$7$^$9!#(B
-  BalloonFont     $B%P%k!<%s%X%k%W$N%U%)%s%H$r@_Dj$7$^$9!#(B
-  Read            $B;XDj$7$?%U%!%$%kL>$N@_Dj%U%!%$%k$rFI$_$^$9!#(B
+  RestartFunction 立ちあげ、リスタート時に実行する内部関数を記述
+  MenuBarFont     メニューバーのフォントを設定します。
+  MenuFont        メニューアイテムのフォントを設定します。
+  TitleBarFont    ウインドウのタイトルバーのフォントを設定します。
+  BalloonFont     バルーンヘルプのフォントを設定します。
+  Read            指定したファイル名の設定ファイルを読みます。
   RestartPreviousState
                   It allows to regenerate the screen as it was before
                   the previous window manager was shutdown or the
                   current window manager was restarted.
-  Menu            $B%a%K%e!<$r@_Dj$7$^$9!#(B END $B$^$G$,%a%K%e!<9`L\$G$9!#%a(B
-                  $B%K%e!<L>$rB3$1$F5-=R$7$^$9!#%a%K%e!<L>$K%9%Z!<%9$r4^(B
-                  $B$a$k$3$H$O$G$-$^$;$s!#(B
-                  $B%*%W%7%g%s$O!"(B, $B$G6h@Z$C$FF~NO$7$^$9!#%*%W%7%g%s$O<!$N(B
-                  $B$b$N$,$"$j$^$9!#(B
-    Right         $B%a%K%e!<%i%Y%k$r1&4s$7$^$9!#(B
-    Left          $B%a%K%e!<%i%Y%k$r:84s$7$^$9!#(B
-                  $B%a%K%e!<$N%G%U%)%k%H$O(B Left $B$G$"$j!">JN,2DG=$G$9!#(B
-    Icon $B%"%$%3%sL>(B
-                  $B%a%K%e!<%P!<$X$N%"%$%3%s$,;XDj$G$-$^$9!#%T%C%/%9%^%C(B
-                  $B%W!"%S%C%H%^%C%W$I$A$i$G$b;XDj$,$G$-$^$9!#(B
-    Label "$B%i%Y%k(B"
-                  $B%a%K%e!<%P!<$N%i%Y%k$r@_Dj$7$^$9!#(B
-    Stick         $B8e=R$9$k(B MenuBar $B$N;XDj$K$+$+$o$i$:I=<($7$^$9!#(B
-    NonStick      $B;XDj$5$l$?(B MenuBar $B$N$_$GI=<($r9T$J$$$^$9(B($B%G%U%)%k(B
-                  $B%H(B)$B!#(B
-  $B%a%K%e!<%"%$%F%`$N5-=RJ}K!(B
-      "$B%i%Y%k(B" options
-      $B$G$9!#(B
-      $B$G$9!#%i%Y%k$,(B "" $B$N>l9g$O!"E@@~$,0z$+$l$^$9!#>\$7$/$O%5%s%W%k$r(B
-      $B8+$F2<$5$$!#(B
-      $B%*%W%7%g%s$K$O<!$N$b$N$,$"$j$^$9!#%*%W%7%g%s$O(B , $B$G6h@Z$C$F2<$5$$!#(B
-    Gray                $B%a%K%e!<9`L\$NJ8;z$r%0%l%$$K$7$^$9!#(B
-    Black               $B%a%K%e!<9`L\$NJ8;z$r9u$K$7$^$9!#(B
-    Check               $B%A%'%C%/%^!<%/$r$D$1$^$9!#(B
-    NonCheck            $B%A%'%C%/%^!<%/$r$D$1$^$;$s!#(B
-    Select              $B%a%K%e!<9`L\$rA*Br2DG=$K$7$^$9!#(B
-    NonSelect           $B%a%K%e!<9`L\$rA*Br$G$-$J$$$h$&$K$7$^$9!#(B
-    Icon $B%"%$%3%sL>(B     $B%"%$%3%s$r;XDj$7$^$9!#%T%C%/%9%^%C%W!"%S%C%H%^%C(B
-                        $B%W$H$b$K;HMQ2DG=$G$9!#(B
-	SubMenu $B%a%K%e!<L>(B  $B%5%V%a%K%e!<$r;XDj$7$^$9!#(B
-    Action $BFbIt%3%^%s%I(B $B%a%K%e!<$,A*$P$l$?;~$N%3%^%s%I$r;XDj$7$^$9!#(B
-  Swallow         $B%a%K%e!<%P!<$KKd$a9~$`%"%W%j%1!<%7%g%s$r@_Dj$7$^$9!#(B
-                  $B%*%W%7%g%s$O!"(B, $B$G6h@Z$C$FF~NO$7$^$9!#%*%W%7%g%s$O<!$N(B
-                  $B$b$N$,$"$j$^$9!#(B
-    Right         $BKd$a9~$_%"%W%j%1!<%7%g%s$r1&4s$7$^$9!#(B
-    Left          $BKd$a9~$_%"%W%j%1!<%7%g%s$r:84s$7$^$9!#(B
-                  $BKd$a9~$_%"%W%j%1!<%7%g%s$N%G%U%)%k%H$O(B Right $B$G$"$j!">J(B
-                  $BN,2DG=$G$9!#(B
-    Action        $BKd$a9~$`%"%W%j%1!<%7%g%s$r;XDj$7$^$9!#5-=R$OFbIt%3%^%s%I$N(B
-                  Exec $B$N5-=R$r8e$m$KB3$1$F2<$5$$!#(B
-    Stick          $B8e=R$9$k(B MenuBar $B$N;XDj$K$+$+$o$i$:I=<($7$^$9(B($B%G%U%)%k%H(B)$B!#(B
-    NonStick       $B;XDj$5$l$?(B MenuBar $B$N$_$GI=<($r9T$J$$$^$9!#(B
-      $B$^$?!"%a%K%e!<%P!<$N%"%W%j%1!<%7%g%s$O6/@)E*$K9b$5$,%a%K%e!<%P!<$N9b(B
-      $B$5$K%j%5%$%:$5$l$^$9!"(B
+  Menu            メニューを設定します。 END までがメニュー項目です。メ
+                  ニュー名を続けて記述します。メニュー名にスペースを含
+                  めることはできません。
+                  オプションは、, で区切って入力します。オプションは次の
+                  ものがあります。
+    Right         メニューラベルを右寄します。
+    Left          メニューラベルを左寄します。
+                  メニューのデフォルトは Left であり、省略可能です。
+    Icon アイコン名
+                  メニューバーへのアイコンが指定できます。ピックスマッ
+                  プ、ビットマップどちらでも指定ができます。
+    Label "ラベル"
+                  メニューバーのラベルを設定します。
+    Stick         後述する MenuBar の指定にかかわらず表示します。
+    NonStick      指定された MenuBar のみで表示を行ないます(デフォル
+                  ト)。
+  メニューアイテムの記述方法
+      "ラベル" options
+      です。
+      です。ラベルが "" の場合は、点線が引かれます。詳しくはサンプルを
+      見て下さい。
+      オプションには次のものがあります。オプションは , で区切って下さい。
+    Gray                メニュー項目の文字をグレイにします。
+    Black               メニュー項目の文字を黒にします。
+    Check               チェックマークをつけます。
+    NonCheck            チェックマークをつけません。
+    Select              メニュー項目を選択可能にします。
+    NonSelect           メニュー項目を選択できないようにします。
+    Icon アイコン名     アイコンを指定します。ピックスマップ、ビットマッ
+                        プともに使用可能です。
+	SubMenu メニュー名  サブメニューを指定します。
+    Action 内部コマンド メニューが選ばれた時のコマンドを指定します。
+  Swallow         メニューバーに埋め込むアプリケーションを設定します。
+                  オプションは、, で区切って入力します。オプションは次の
+                  ものがあります。
+    Right         埋め込みアプリケーションを右寄します。
+    Left          埋め込みアプリケーションを左寄します。
+                  埋め込みアプリケーションのデフォルトは Right であり、省
+                  略可能です。
+    Action        埋め込むアプリケーションを指定します。記述は内部コマンドの
+                  Exec の記述を後ろに続けて下さい。
+    Stick          後述する MenuBar の指定にかかわらず表示します(デフォルト)。
+    NonStick       指定された MenuBar のみで表示を行ないます。
+      また、メニューバーのアプリケーションは強制的に高さがメニューバーの高
+      さにリサイズされます、
 
-  MenuBar         $BB3$1$FL>A0$r5-=R$7$^$9!#(BEND $B$^$G$N4V$K5-=R$5$l$?L>A0(B
-                  $B$N%a%K%e!<$,$3$N%a%K%e!<%P!<$N9`L\$H$J$j$^$9!#(B
-  Style           $B%&%$%s%I%&%G%3%l!<%7%g%s$r;XDj$G$-$^$9!#;XDjJ}K!$O!"(B
-                  "$B%&%$%s%I%&%M!<%`$^$?$O%/%i%9(B" $B%G%3%l!<%7%g%s%9%$%C%A(B, [...]
-                  $B$G$9!#(BEND$B$G;XDj$N=*N;$H$J$j$^$9!#(B
-                  $B%&%$%s%I%&%M!<%`$K$O(B * $B$H(B ? $B$,;HMQ$G$-$^$9!#(B
-                  $B%G%3%l!<%7%g%s%9%$%C%A$O<!$N$b$N$,$"$j$^$9!#(B
+  MenuBar         続けて名前を記述します。END までの間に記述された名前
+                  のメニューがこのメニューバーの項目となります。
+  Style           ウインドウデコレーションを指定できます。指定方法は、
+                  "ウインドウネームまたはクラス" デコレーションスイッチ, [...]
+                  です。ENDで指定の終了となります。
+                  ウインドウネームには * と ? が使用できます。
+                  デコレーションスイッチは次のものがあります。
 
-      NormalDecoration $BI8=`$N%G%3%l!<%7%g%s$r9T$J$&!#(B
-      NoSBarH    $B?eJ?%9%/%m!<%k%P!<$rI=<($7$J$$!#(B
-      NoSBarV    $B?bD>%9%/%m!<%k%P!<$rI=<($7$J$$!#(B
-      NoResizeR  $B%j%5%$%:%j%e!<%8%g%s$rI=<($7$J$$!#(B
-      NoTitle    $B%?%$%H%k%P!<$rI=<($7$J$$!#(B
-      NoMinMaxR  $B:GBg!&:G>.2=%j%e!<%8%g%s$rI=<($7$J$$(B(NoTitle $B$,;XDj$5$l$F(B
-                 $B$$$k>l9g$O<+F0E*$K;XDj$5$l$^$9(B)$B!#(B
-      NoCloseR   $B%/%m!<%:%j%e!<%8%g%s$rI=<($7$J$$(B(NoTitle $B$,;XDj$5$l$F$$$k(B
-                 $B>l9g$O<+F0E*$K;XDj$5$l$^$9(B)$B!#(B
-      NoShadeR   $B%&%$%s%I%&%7%'%$%I%j%e!<%8%g%s$rI=<($7$J$$!#(BSystem8 
-                 $B$,;XDj$5$l$F$$$k;~$N$_!#(B
-      NoWinList  $B%&%$%s%I%&%j%9%H$KI=<($7$J$$!#(B
-      NoFocus    $B%^%C%W$5$l$?;~$K%U%)!<%+%9$,F~$i$J$$!#(B
-      StayOnTop  $BA4$F$N%&%$%s%I%&$N>e$KI=<($9$k!#(B
-                 $B;XDj$7$F$"$k%&%$%s%I%&F1;N$N>l9g$O8e$+$iI=<($7$?%&%$%s%I%&(B
-                 $B$,>e$K$J$k!#(B
-      Sticky     $B%G%9%/%H%C%W$N0\F0$K4X78$J$/I=<($5$l$k!#(B
-      SkipSelect $BFbIt%3%^%s%I$N(B NextWindow, PreviousWindow $B$GA*Br$5$l(B
-                 $B$J$$!#(B
-      EnableScroll $B%9%/%m!<%k$,(B Enable $B$N>uBV$G!"%&%$%s%I%&$r%^%C%W$7(B
-                 $B$^$9!#(B
-      MaxmizeScale $B:GBg2=$9$k;~$N%Q!<%;%s%F!<%8$^$?$O(B $BI}(Bx$B9b$5(B $B$r;XDj!#(B
-      MiniIcon   $B%9%b!<%k%5%$%:$N%"%$%3%s$r;XDj!#%T%C%/%9%^%C%W!"%S%C(B
-                 $B%H%^%C%W$H$b$K;XDj$G$-$^$9!#(B
-      MenuBar    $B%"%W%j%1!<%7%g%s$G$b$A$$$k%a%K%e!<%P!<$r!"%a%K%e!<$N(B
-                 $BL>A0$rB3$1$F5-=R$9$k$3$H$K$h$j;XDj$7$^$9!#(B
+      NormalDecoration 標準のデコレーションを行なう。
+      NoSBarH    水平スクロールバーを表示しない。
+      NoSBarV    垂直スクロールバーを表示しない。
+      NoResizeR  リサイズリュージョンを表示しない。
+      NoTitle    タイトルバーを表示しない。
+      NoMinMaxR  最大・最小化リュージョンを表示しない(NoTitle が指定されて
+                 いる場合は自動的に指定されます)。
+      NoCloseR   クローズリュージョンを表示しない(NoTitle が指定されている
+                 場合は自動的に指定されます)。
+      NoShadeR   ウインドウシェイドリュージョンを表示しない。System8 
+                 が指定されている時のみ。
+      NoWinList  ウインドウリストに表示しない。
+      NoFocus    マップされた時にフォーカスが入らない。
+      StayOnTop  全てのウインドウの上に表示する。
+                 指定してあるウインドウ同士の場合は後から表示したウインドウ
+                 が上になる。
+      Sticky     デスクトップの移動に関係なく表示される。
+      SkipSelect 内部コマンドの NextWindow, PreviousWindow で選択され
+                 ない。
+      EnableScroll スクロールが Enable の状態で、ウインドウをマップし
+                 ます。
+      MaxmizeScale 最大化する時のパーセンテージまたは 幅x高さ を指定。
+      MiniIcon   スモールサイズのアイコンを指定。ピックスマップ、ビッ
+                 トマップともに指定できます。
+      MenuBar    アプリケーションでもちいるメニューバーを、メニューの
+                 名前を続けて記述することにより指定します。
       NoTransientDecorate
-                  $B0l;~%&%$%s%I%&$K%G%3%l!<%7%g%s$7$J$$!#(B
-      $B%G%U%)%k%H$N%&%$%s%I%&$OA4$F$N%G%3%l!<%7%g%s$rI=<($7!"%&%$%s%I%&%j%9(B
-      $B%H$KI=<($7$^$9!#(BStayOnTop$B$OL$;XDj!#(B
+                  一時ウインドウにデコレーションしない。
+      デフォルトのウインドウは全てのデコレーションを表示し、ウインドウリス
+      トに表示します。StayOnTopは未指定。
 
-  ShortCut       $B%-!<%\!<%I%7%g!<%H%+%C%H$N@_Dj$r9T$J$$$^$9!#(BEND$B$G;XDj(B
-                 $B$N=*N;$H$J$j$^$9!#;XDjJ}K!$O<!$NDL$j$G$9!#(B
-      $B%-!<%M!<%`(B   $B%-!<%\!<%I%b%G%#%U%!%$%"(B   $B%3%^%s%I(B
-      $B%3%^%s%I$O(B Menu $B$G;HMQ$G$-$k$b$N$O$9$Y$F;XDj2DG=$G$9!#%-!<%\!<%I(B
-      $B%b%G%#%U%!%$%"$OBgJ8;z$G;XDj$r9T$J$$!"<!$NDL$j$G$9!#(B
-        S  $B%7%U%H%-!<(B
-        C  $B%3%s%H%m!<%k%-!<(B
-        M  Mod1$B%-!<(B
-        1  Mod1$B%-!<(B
-        2  Mod2$B%-!<(B
-        3  Mod3$B%-!<(B
-        4  Mod4$B%-!<(B
-        5  Mod5$B%-!<(B
+  ShortCut       キーボードショートカットの設定を行ないます。ENDで指定
+                 の終了となります。指定方法は次の通りです。
+      キーネーム   キーボードモディファイア   コマンド
+      コマンドは Menu で使用できるものはすべて指定可能です。キーボード
+      モディファイアは大文字で指定を行ない、次の通りです。
+        S  シフトキー
+        C  コントロールキー
+        M  Mod1キー
+        1  Mod1キー
+        2  Mod2キー
+        3  Mod3キー
+        4  Mod4キー
+        5  Mod5キー
         A  AnyModifier
-        N  $B$J$7(B
+        N  なし
 
-$B@bL@$N$J$$$b$N$,$"$k$+$b$7$l$^$;$s$,!"$=$l$K$D$$$F$OE:IU$N(B Mlvwmrc $B%U%!(B
-$B%$%k$r;2>H$7$F2<$5$$!#$3$A$i$K$O!"6KNO$9$Y$F$N5-=R$r9T$J$&M=Dj$G$9!#(B
+説明のないものがあるかもしれませんが、それについては添付の Mlvwmrc ファ
+イルを参照して下さい。こちらには、極力すべての記述を行なう予定です。
 
