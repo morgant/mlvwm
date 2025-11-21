@@ -4,3 +4,4 @@ mlvwm/mlvwm
 **/*.o
 mlvwm.*
 **/*.swp
+.session.vim

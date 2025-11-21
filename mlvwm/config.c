@@ -31,7 +31,7 @@ struct configure key_modifiers[]=
   {0,0}
 };
 
-#define FALLBACK_FONT "-*-*-*-r-*-*-*-*-*-*-*-*-*-*"
+#define FALLBACK_FONT "-*-*-*-*-*-*-12-120-*-*-*-*-iso8859-*"
 
 char *NoTitleStyle( styles *tmp_style, char *str )
 {

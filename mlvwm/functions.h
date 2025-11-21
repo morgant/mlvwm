@@ -11,7 +11,7 @@
 typedef struct builtin_func
 {
 	char *label;
-	void (*action)();
+	void (*action)(char *);
 } builtin_func;
 
 extern void ShadeWindow( MlvwmWindow * );
